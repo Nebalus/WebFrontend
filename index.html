@@ -1,13 +1,65 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <title>Work And Progress 🚧</title>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <link rel="icon" type="image/icon" href="/favicon.ico" />
+
+    <meta name="author" content="Nebalus">
+    <meta property="og:site_name" content="Nebalus's Website">
+    <meta property="og:description" content="This is the website for the developer Nebalus, where he shows his projects">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="container"></div>
+      <style type="text/css" scoped>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #000000;
+          color: #ffffff;
+          margin: 0;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          position: relative;
+        }
+
+         .container {
+           --uib-size: 60px;
+           --uib-color: white;
+           --uib-speed: .9s;
+           --uib-stroke: 7px;
+           --mask-size: calc(var(--uib-size) / 2 - var(--uib-stroke));
+           position: relative;
+           display: flex;
+           align-items: center;
+           justify-content: flex-start;
+           height: var(--uib-size);
+           width: var(--uib-size);
+           --webkit-mask: radial-gradient(
+                   circle var(--mask-size),
+                   transparent 99%,
+                   #000 100%
+           );
+           mask: radial-gradient(circle var(--mask-size), transparent 99%, #000 100%);
+           background-image: conic-gradient(transparent 25%, var(--uib-color));
+           animation: spin calc(var(--uib-speed)) linear infinite;
+           border-radius: 50%;
+         }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
