@@ -1,7 +1,7 @@
 import {JSX} from "react";
 
 export default function workAndProgress(): JSX.Element {
-    document.addEventListener("DOMContentLoaded", function() {
+    function loadStars(): void {
         const starsContainer = document.getElementById('stars');
         const numStars = 100;
 
@@ -24,7 +24,9 @@ export default function workAndProgress(): JSX.Element {
                 starsContainer.appendChild(star);
             }
         }
-    });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadStars);
 
     return (
         <>
