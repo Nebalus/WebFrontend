@@ -61,7 +61,7 @@ export default function LandingPage() {
                 </div>
               </div>
               <img
-                src="/static/images/profilepic.png"
+                src="/static/images/profilepic.jpg"
                 width="550"
                 height="550"
                 alt="Hero"
