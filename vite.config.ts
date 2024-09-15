@@ -8,6 +8,12 @@ export default defineConfig(({ command, mode }) => {
   console.log(`CURRENT MODE: ${mode}`);
 
   return {
-    plugins: [react()]
+    plugins: [react()],
+    resolve: {
+        alias: {
+          "@": "/src",
+          "@assets": "/assets",
+        },
+    }
   }
 });

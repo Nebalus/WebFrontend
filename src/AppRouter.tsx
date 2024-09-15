@@ -1,6 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
-import WorkAndProgress from "./components/WorkAndProgress.tsx"
-import LoginView from "./components/LoginView.tsx";
+import WorkAndProgress from "@/components/WorkAndProgress.tsx"
+import LoginView from "@/components/LoginView.tsx";
 
 export const appRouter = createBrowserRouter([
     {
