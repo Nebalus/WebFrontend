@@ -26,14 +26,14 @@ To read more about using these font, please visit the Next.js documentation:
 import { Card, CardContent } from "@assets/components/ui/card"
 import { Label } from "@assets/components/ui/label"
 import { Input } from "@assets/components/ui/input"
-// import Link from "next/link"
 import { Button } from "@assets/components/ui/button"
-// import { Alert, AlertTitle, AlertDescription } from "@assets/components/ui/alert"
+import StarBackground from "@/components/StarBackground.tsx";
 
 export default function LoginView() {
   return (
     <div className="flex h-screen w-full items-center justify-center bg-background">
-      <div className="w-full max-w-md space-y-6">
+      <StarBackground />
+      <div className="w-full max-w-md space-y-6 bg-green-500">
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-bold">Welcome back</h1>
           <p className="text-muted-foreground">Please insert your login credentials</p>
