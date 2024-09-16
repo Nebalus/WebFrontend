@@ -3,7 +3,7 @@ import {JSX, useEffect} from "react";
 export default function StarBackground(): JSX.Element {
     useEffect(() => {
         const starsContainer = document.getElementById('stars');
-        const numStars = 100;
+        const numStars = 75;
 
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement('div');
@@ -11,7 +11,7 @@ export default function StarBackground(): JSX.Element {
 
             const size = Math.random() * 3 + 1;
             const left = Math.random() * 100;
-            const delay = Math.random() * 10;
+            const delay = Math.random() * 15;
             const duration = Math.random() * 5 + 5;
 
             star.style.width = `${size}px`;

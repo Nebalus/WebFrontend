@@ -31,39 +31,41 @@ import StarBackground from "@/components/StarBackground.tsx";
 
 export default function LoginView() {
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-background">
-      <StarBackground />
-      <div className="w-full max-w-md space-y-6 bg-green-500">
-        <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Welcome back</h1>
-          <p className="text-muted-foreground">Please insert your login credentials</p>
+      <>
+        <StarBackground/>
+        <div className="flex h-screen w-full items-center justify-center bg-background">
+          <div className="w-full max-w-md space-y-6 bg-green-500 z-10">
+            <div className="space-y-2 text-center">
+              <h1 className="text-3xl font-bold">Welcome back</h1>
+              <p className="text-muted-foreground">Please insert your login credentials</p>
+            </div>
+            <Card>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">E-Mail</Label>
+                  <Input id="email" type="email" placeholder="your email" required/>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="password">Password</Label>
+                    {/*<Link href="#" className="text-sm underline" prefetch={false}>*/}
+                    {/*  Passwort vergessen?*/}
+                    {/*</Link>*/}
+                  </div>
+                  <Input id="password" type="password" placeholder="your password" required/>
+                </div>
+                <Button className="w-full" type="submit">
+                  Anmelden
+                </Button>
+              </CardContent>
+            </Card>
+            {/*<Alert variant="destructive">*/}
+            {/*  <div />*/}
+            {/*  <AlertTitle>Oops, something went wrong!</AlertTitle>*/}
+            {/*  <AlertDescription>Please check your login details and try again</AlertDescription>*/}
+            {/*</Alert>*/}
+          </div>
         </div>
-        <Card>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">E-Mail</Label>
-              <Input id="email" type="email" placeholder="your email" required />
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
-                {/*<Link href="#" className="text-sm underline" prefetch={false}>*/}
-                {/*  Passwort vergessen?*/}
-                {/*</Link>*/}
-              </div>
-              <Input id="password" type="password" placeholder="your password" required />
-            </div>
-            <Button className="w-full" type="submit">
-              Anmelden
-            </Button>
-          </CardContent>
-        </Card>
-        {/*<Alert variant="destructive">*/}
-        {/*  <div />*/}
-        {/*  <AlertTitle>Oops, something went wrong!</AlertTitle>*/}
-        {/*  <AlertDescription>Please check your login details and try again</AlertDescription>*/}
-        {/*</Alert>*/}
-      </div>
-    </div>
+      </>
   )
 }
