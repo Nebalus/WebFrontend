@@ -11,8 +11,8 @@ export default function StarBackground(): JSX.Element {
 
             const size = Math.random() * 3 + 1;
             const left = Math.random() * 100;
-            const delay = Math.random() * 15;
-            const duration = Math.random() * 5 + 5;
+            const delay = Math.random() * 10;
+            const duration = Math.random() * 5 + 7;
 
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
