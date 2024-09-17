@@ -23,7 +23,7 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
-// import { Card, CardContent } from "@assets/components/ui/card.tsx"
+import { Card, CardContent } from "@assets/components/ui/card.tsx"
 // import { Input } from "@assets/components/ui/input.tsx"
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
@@ -76,7 +76,7 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <img
-                      src="/static/images/splash_hey_2.png"
+                      src="/images/splash_hey_2.png"
                       width="550"
                       height="550"
                       alt="Splash Pic"
@@ -85,59 +85,59 @@ export default function LandingPage() {
                 </div>
               </div>
             </section>
-            {/*<section id="projects" className="w-full py-12 md:py-24 lg:py-32 bg-muted">*/}
-            {/*  <div className="container px-4 md:px-6">*/}
-            {/*    <div className="flex flex-col items-center justify-center space-y-4 text-center">*/}
-            {/*      <div className="space-y-2">*/}
-            {/*        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">My Projects</h2>*/}
-            {/*        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">*/}
-            {/*          Here are some of my projects that I have worked on*/}
-            {/*        </p>*/}
-            {/*      </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="mx-auto grid max-w-8xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">*/}
-            {/*      <Card>*/}
-            {/*        <CardContent className="flex flex-col gap-2">*/}
-            {/*          <img*/}
-            {/*              src="/static/icons/placeholder.svg"*/}
-            {/*              width="550"*/}
-            {/*              height="310"*/}
-            {/*              alt="Projekt 1"*/}
-            {/*              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"*/}
-            {/*          />*/}
-            {/*          <h3 className="text-xl font-bold">Project 1</h3>*/}
-            {/*          <p className="text-muted-foreground">Bla</p>*/}
-            {/*        </CardContent>*/}
-            {/*      </Card>*/}
-            {/*      <Card>*/}
-            {/*        <CardContent className="flex flex-col gap-2">*/}
-            {/*          <img*/}
-            {/*              src="/static/icons/placeholder.svg"*/}
-            {/*              width="550"*/}
-            {/*              height="310"*/}
-            {/*              alt="Projekt 2"*/}
-            {/*              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"*/}
-            {/*          />*/}
-            {/*          <h3 className="text-xl font-bold">Project 2</h3>*/}
-            {/*          <p className="text-muted-foreground">Bla Bla</p>*/}
-            {/*        </CardContent>*/}
-            {/*      </Card>*/}
-            {/*      <Card>*/}
-            {/*        <CardContent className="flex flex-col gap-2">*/}
-            {/*          <img*/}
-            {/*              src="/static/icons/placeholder.svg"*/}
-            {/*              width="550"*/}
-            {/*              height="310"*/}
-            {/*              alt="Projekt 3"*/}
-            {/*              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"*/}
-            {/*          />*/}
-            {/*          <h3 className="text-xl font-bold">Project 3</h3>*/}
-            {/*          <p className="text-muted-foreground">Bla Bla Bla</p>*/}
-            {/*        </CardContent>*/}
-            {/*      </Card>*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*</section>*/}
+            <section id="projects" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+              <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                  <div className="space-y-2">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">My Projects</h2>
+                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                      Here are some of my projects that I have worked on
+                    </p>
+                  </div>
+                </div>
+                <div className="mx-auto grid max-w-8xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+                  <Card>
+                    <CardContent className="flex flex-col gap-2">
+                      <img
+                          src="/icons/placeholder.svg"
+                          width="550"
+                          height="310"
+                          alt="Projekt 1"
+                          className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                      />
+                      <h3 className="text-xl font-bold">Project 1</h3>
+                      <p className="text-muted-foreground">Bla</p>
+                    </CardContent>
+                  </Card>
+                  {/*<Card>*/}
+                  {/*  <CardContent className="flex flex-col gap-2">*/}
+                  {/*    <img*/}
+                  {/*        src="/static/icons/placeholder.svg"*/}
+                  {/*        width="550"*/}
+                  {/*        height="310"*/}
+                  {/*        alt="Projekt 2"*/}
+                  {/*        className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"*/}
+                  {/*    />*/}
+                  {/*    <h3 className="text-xl font-bold">Project 2</h3>*/}
+                  {/*    <p className="text-muted-foreground">Bla Bla</p>*/}
+                  {/*  </CardContent>*/}
+                  {/*</Card>*/}
+                  {/*<Card>*/}
+                  {/*  <CardContent className="flex flex-col gap-2">*/}
+                  {/*    <img*/}
+                  {/*        src="/static/icons/placeholder.svg"*/}
+                  {/*        width="550"*/}
+                  {/*        height="310"*/}
+                  {/*        alt="Projekt 3"*/}
+                  {/*        className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"*/}
+                  {/*    />*/}
+                  {/*    <h3 className="text-xl font-bold">Project 3</h3>*/}
+                  {/*    <p className="text-muted-foreground">Bla Bla Bla</p>*/}
+                  {/*  </CardContent>*/}
+                  {/*</Card>*/}
+                </div>
+              </div>
+            </section>
             {/*<section id="skills" className="w-full py-12 md:py-24 lg:py-32">*/}
             {/*  <div className="container px-4 md:px-6">*/}
             {/*    <div className="flex flex-col items-center justify-center space-y-4 text-center">*/}

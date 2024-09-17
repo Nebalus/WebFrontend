@@ -23,10 +23,10 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
-import { Card, CardContent } from "@assets/components/ui/card"
-import { Label } from "@assets/components/ui/label"
-import { Input } from "@assets/components/ui/input"
-import { Button } from "@assets/components/ui/button"
+import { Card, CardContent } from "@assets/components/shadcnui/card"
+import { Label } from "@assets/components/shadcnui/label"
+import { Input } from "@assets/components/shadcnui/input"
+import { Button } from "@assets/components/shadcnui/button"
 import StarBackground from "@/components/StarBackground.tsx";
 
 export default function LoginView() {

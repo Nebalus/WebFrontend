@@ -1,4 +1,5 @@
 import {JSX, useEffect} from "react";
+import '@/style/StarBackground.css';
 
 export default function StarBackground(): JSX.Element {
     useEffect(() => {

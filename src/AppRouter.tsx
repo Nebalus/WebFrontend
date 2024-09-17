@@ -1,7 +1,8 @@
 import {createBrowserRouter} from "react-router-dom";
 import WorkAndProgress from "@/components/WorkAndProgress.tsx"
-import LandingPage from "@/components/landingpage/LandingPage.tsx";
-import {ErrorPage} from "@/components/ErrorPage.tsx";
+import LandingPage from "@/components/LandingPage.tsx";
+import ErrorPage from "@/components/ErrorPage.tsx";
+import LoginView from "@/components/LoginView.tsx";
 
 export const appRouter = createBrowserRouter([
     {
@@ -12,7 +13,7 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: "login",
-        element: <WorkAndProgress />,
+        element: <LoginView />,
         errorElement: <WorkAndProgress />
     }
 ]);

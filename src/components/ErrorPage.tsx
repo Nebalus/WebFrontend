@@ -27,7 +27,7 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 
-export function ErrorPage() {
+export default function ErrorPage() {
   return (
       <>
         <StarBackground />
