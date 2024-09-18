@@ -4,7 +4,7 @@ import '@/style/StarBackground.css';
 export default function StarBackground(): JSX.Element {
     useEffect(() => {
         const starsContainer = document.getElementById('stars');
-        const numStars = 75;
+        const numStars = 60;
 
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement('div');
@@ -29,7 +29,7 @@ export default function StarBackground(): JSX.Element {
 
     return (
         <>
-            <div className="stars -z-[1]" id="stars"></div>
+            <div className="stars -z-[0]" id="stars"></div>
         </>
     )
 }

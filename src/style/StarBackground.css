@@ -5,12 +5,11 @@
   top: -10px;
   left: 0;
   pointer-events: none;
-  z-index: 0;
 }
 
 .star {
   position: fixed;
-  background-color: #fAfAfA;
+  background-color: #E1E1E1;
   border-radius: 50%;
   opacity: 0.8;
   animation: moveUp linear infinite, twinkle 2s infinite;
