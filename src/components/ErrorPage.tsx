@@ -31,7 +31,7 @@ export default function ErrorPage() {
   return (
       <>
         <StarBackground />
-        <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8 z-10">
+        <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-md text-center">
             <h1 className="text-9xl font-bold tracking-tight text-primary">404</h1>
             <p className="mt-4 text-2xl font-semibold tracking-tight text-foreground">

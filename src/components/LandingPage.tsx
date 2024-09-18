@@ -44,7 +44,7 @@ export default function LandingPage() {
       <>
         <StarBackground/>
         <div className="flex flex-col min-h-[100dvh] bg-black">
-          <header className="px-4 lg:px-6 h-14 flex items-center z-10">
+          <header className="px-4 lg:px-6 h-14 flex items-center">
             <div className="flex items-center">
               <SquareTerminal className="h-7 w-7"/>
               <span className="ml-2 text-lg font-bold">nebalus.dev</span>
@@ -76,7 +76,7 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <img
-                      src="/images/splash_hey_2.png"
+                      src="/static/images/splash_hey_2.png"
                       width="550"
                       height="550"
                       alt="Splash Pic"
@@ -99,7 +99,7 @@ export default function LandingPage() {
                   <Card>
                     <CardContent className="flex flex-col gap-2">
                       <img
-                          src="/icons/placeholder.svg"
+                          src="/static/icons/placeholder.svg"
                           width="550"
                           height="310"
                           alt="Projekt 1"

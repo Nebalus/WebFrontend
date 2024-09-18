@@ -6,7 +6,7 @@ export default function WorkAndProgress(): JSX.Element {
         <>
             <StarBackground />
             <div className="bg-black dark:bg-black w-screen h-screen flex items-center justify-center">
-                <h1 className="text-6xl z-10">🚀 Work And Progress 🚧</h1>
+                <h1 className="text-6xl">🚀 Work And Progress 🚧</h1>
             </div>
         </>
     )

@@ -34,7 +34,7 @@ export default function LoginView() {
       <>
         <StarBackground/>
         <div className="flex h-screen w-full items-center justify-center bg-background">
-          <div className="w-full max-w-md space-y-6 bg-green-500 z-10">
+          <div className="w-full max-w-md space-y-6 bg-green-500">
             <div className="space-y-2 text-center">
               <h1 className="text-3xl font-bold">Welcome back</h1>
               <p className="text-muted-foreground">Please insert your login credentials</p>
