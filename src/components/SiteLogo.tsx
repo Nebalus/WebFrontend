@@ -10,7 +10,7 @@ export default function SiteLogo({className}: SiteLogoProps) {
             <div className={className}>
                 <div className={"flex items-center"}>
                     <SquareTerminal className="h-8 w-8"/>
-                    <span className="ml-2 text-xl font-bold">nebalus.dev</span>
+                    <span className="ml-2 text-2xl font-bold">nebalus.dev</span>
                 </div>
             </div>
         </>
