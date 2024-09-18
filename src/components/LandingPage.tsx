@@ -27,9 +27,9 @@ import { Card, CardContent } from "@assets/components/shadcnui/card.tsx"
 // import { Input } from "@assets/components/ui/input.tsx"
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
-import {SquareTerminal} from "lucide-react";
 import {Link} from "react-router-dom";
 import StarBackground from "@/components/StarBackground.tsx";
+import SiteLogo from "@/components/SiteLogo.tsx";
 
 export default function LandingPage() {
 
@@ -39,16 +39,12 @@ export default function LandingPage() {
       return waving_hands[random_selektor];
   }
 
-
   return (
       <>
         <StarBackground/>
         <div className="flex flex-col min-h-[100dvh] bg-black">
           <header className="px-4 lg:px-6 h-14 flex items-center">
-            <div className="flex items-center">
-              <SquareTerminal className="h-7 w-7"/>
-              <span className="ml-2 text-lg font-bold">nebalus.dev</span>
-            </div>
+            <SiteLogo />
             <nav className="ml-auto flex gap-4 sm:gap-6">
               <Link className="text-sm font-bold hover:underline underline-offset-4" to={"/login"}>
                 Login
@@ -77,8 +73,6 @@ export default function LandingPage() {
                   </div>
                   <img
                       src="/static/images/splash_hey_2.png"
-                      width="550"
-                      height="550"
                       alt="Splash Pic"
                       className="mx-auto overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
                   />
@@ -96,25 +90,23 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="mx-auto grid max-w-8xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-                  <Card>
-                    <CardContent className="flex flex-col gap-2">
+                  <Card className="rounded-2xl">
+                    <CardContent className="flex flex-col gap-3">
                       <img
-                          src="/static/icons/placeholder.svg"
-                          width="550"
-                          height="310"
-                          alt="Projekt 1"
-                          className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                          src="/static/images/mandelbrot.jpg"
+                          alt="Picture of an mandelbrot fractal"
+                          className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
                       />
-                      <h3 className="text-xl font-bold">Project 1</h3>
-                      <p className="text-muted-foreground">Bla</p>
+                      <div className="flex flex-col gap-2">
+                        <h3 className="text-xl font-bold">Mandelbrot</h3>
+                        <p className="text-muted-foreground">A user interface written in java to explore the wonders of the Mandelbrot-set fractal.</p>
+                      </div>
                     </CardContent>
                   </Card>
                   {/*<Card>*/}
                   {/*  <CardContent className="flex flex-col gap-2">*/}
                   {/*    <img*/}
                   {/*        src="/static/icons/placeholder.svg"*/}
-                  {/*        width="550"*/}
-                  {/*        height="310"*/}
                   {/*        alt="Projekt 2"*/}
                   {/*        className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"*/}
                   {/*    />*/}
@@ -126,8 +118,6 @@ export default function LandingPage() {
                   {/*  <CardContent className="flex flex-col gap-2">*/}
                   {/*    <img*/}
                   {/*        src="/static/icons/placeholder.svg"*/}
-                  {/*        width="550"*/}
-                  {/*        height="310"*/}
                   {/*        alt="Projekt 3"*/}
                   {/*        className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"*/}
                   {/*    />*/}
