@@ -37,14 +37,14 @@ export default function LoginView() {
       <>
         <StarBackground />
         <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 z-50">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm z-10">
             <SiteLogo className="mx-auto h-3 w-auto flex justify-center items-center" />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-300">
               Sign in to your account
             </h2>
           </div>
 
-          <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
             <form action="#" method="POST" className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-300">
@@ -95,7 +95,7 @@ export default function LoginView() {
               </div>
             </form>
 
-            <p className="mt-10 text-center text-sm text-gray-500">
+            <p className="mt-10 text-center text-sm text-gray-500 z-10">
               Dont have an account?{' '}
               <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                 Register
