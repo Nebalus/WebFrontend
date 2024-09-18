@@ -5,6 +5,7 @@
 */
 
 import SiteLogo from "@/components/SiteLogo.tsx";
+import StarBackground from "@/components/StarBackground.tsx";
 
 /** Add fonts into your Next.js project:
 
@@ -34,7 +35,8 @@ To read more about using these font, please visit the Next.js documentation:
 export default function LoginView() {
   return (
       <>
-        <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <StarBackground />
+        <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 z-50">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <SiteLogo className="mx-auto h-3 w-auto flex justify-center items-center" />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-300">
