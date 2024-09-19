@@ -1,8 +1,9 @@
 import {createBrowserRouter} from "react-router-dom";
-import WorkAndProgress from "@/components/WorkAndProgress.tsx"
+// import WorkAndProgress from "@/components/WorkAndProgress.tsx"
 import LandingPage from "@/components/LandingPage.tsx";
 import ErrorPage from "@/components/ErrorPage.tsx";
-import LoginView from "@/components/LoginView.tsx";
+import LoginPage from "@/components/authentication/LoginPage.tsx";
+import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 
 export const appRouter = createBrowserRouter([
     {
@@ -13,7 +14,20 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: "login",
-        element: <LoginView />,
-        errorElement: <WorkAndProgress />
-    }
+        element: <LoginPage />,
+        errorElement: <ErrorPage />
+    },
+    {
+        path: "register",
+        element: <RegisterPage />,
+        errorElement: <ErrorPage />
+    },
+    {
+        path: "logout",
+        loader() {
+            console.log("LOGGING OUT!");
+            return null;
+        },
+        errorElement: <ErrorPage />
+    },
 ]);
