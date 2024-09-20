@@ -72,7 +72,7 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <img
-                      src="/static/images/splash_hey_2.png"
+                      src="/static/media/images/splash_hey_2.png"
                       alt="Splash Pic"
                       className="mx-auto overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
                   />
@@ -93,7 +93,7 @@ export default function LandingPage() {
                   <Card className="rounded-2xl">
                     <CardContent className="flex flex-col gap-3">
                       <img
-                          src="/static/images/mandelbrot.jpg"
+                          src="/static/media/images/mandelbrot.jpg"
                           alt="Picture of an mandelbrot fractal"
                           className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
                       />
