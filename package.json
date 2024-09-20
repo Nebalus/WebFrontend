@@ -14,6 +14,8 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
+    "@radix-ui/react-alert-dialog": "^1.1.1",
+    "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "autoprefixer": "^10.4.20",
@@ -29,6 +31,7 @@
     "react-router-dom": "^6.23.1",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "waait": "^1.0.5",
     "zod": "^3.23.8",
     "zustand": "^4.5.2"
   },
