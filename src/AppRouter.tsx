@@ -4,12 +4,18 @@ import LandingPage from "@/components/LandingPage.tsx";
 import ErrorPage from "@/components/ErrorPage.tsx";
 import LoginPage from "@/components/authentication/LoginPage.tsx";
 import RegisterPage from "@/components/authentication/RegisterPage.tsx";
+import DashboardRootLayout from "@/components/dashboard/DashboardRootLayout.tsx";
 
 export const appRouter = createBrowserRouter([
     {
         id: "root",
         path: "/",
         element: <LandingPage />,
+        errorElement: <ErrorPage />
+    },
+    {
+        path: "dashboard",
+        element: <DashboardRootLayout />,
         errorElement: <ErrorPage />
     },
     {
