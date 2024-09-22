@@ -27,7 +27,7 @@ import { Card, CardContent } from "@assets/components/shadcnui/card.tsx"
 // import { Input } from "@assets/components/ui/input.tsx"
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import StarBackground from "@/components/StarBackground.tsx";
 import SiteLogo from "@/components/SiteLogo.tsx";
 
@@ -41,6 +41,7 @@ export default function LandingPage() {
 
   return (
       <>
+        <Outlet></Outlet>
         <StarBackground/>
         <div className="flex flex-col min-h-[100dvh] bg-black">
           <header className="px-4 lg:px-6 h-14 flex items-center">
