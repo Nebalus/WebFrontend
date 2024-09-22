@@ -6,6 +6,8 @@ import LoginPage from "@/components/authentication/LoginPage.tsx";
 import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/DashboardRootLayout.tsx";
 import PopUp from "@/components/PopUp.tsx";
+import loginAction from "@/actions/loginAction.ts";
+import registerAction from "@/actions/registerAction.ts";
 
 export const appRouter = createBrowserRouter([
     {
@@ -22,25 +24,23 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: "dashboard",
-        element: <DashboardRootLayout />,
-        errorElement: <ErrorPage />
+        element: <DashboardRootLayout />
     },
     {
         path: "login",
-        element: <LoginPage />,
-        errorElement: <ErrorPage />
+        action: loginAction,
+        element: <LoginPage />
     },
     {
         path: "register",
-        element: <RegisterPage />,
-        errorElement: <ErrorPage />
+        action: registerAction,
+        element: <RegisterPage />
     },
     {
         path: "logout",
         loader() {
             console.log("LOGGING OUT!");
             return null;
-        },
-        errorElement: <ErrorPage />
+        }
     },
 ]);

@@ -6,7 +6,9 @@
 
 import SiteLogo from "@/components/SiteLogo.tsx";
 import StarBackground from "@/components/StarBackground.tsx";
-import {Link} from "react-router-dom";
+import {Form, Link, useActionData, useNavigation} from "react-router-dom";
+import {Button} from "@assets/components/shadcnui/button.tsx";
+import {CircleAlert} from "lucide-react";
 
 /** Add fonts into your Next.js project:
 
@@ -34,6 +36,10 @@ To read more about using these font, please visit the Next.js documentation:
 // import StarBackground from "@/components/StarBackground.tsx";
 
 export default function LoginPage() {
+  const navigation = useNavigation();
+  const isLoggingIn = navigation.state === 'submitting';
+  const actionData = useActionData() as { error: string } | undefined;
+
   return (
       <>
         <StarBackground />
@@ -46,7 +52,15 @@ export default function LoginPage() {
           </div>
 
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
-            <form action="#" method="POST" className="space-y-6">
+            {actionData && 'error' in actionData ? (
+                <div className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center">
+                  <CircleAlert size="30" min="30" className="mr-3 min-w-[25px]"/>
+                  <p>
+                    {actionData.error}
+                  </p>
+                </div>
+            ) : null}
+            <Form method="POST" className="space-y-6">
               <div>
                 <label className="block text-sm font-medium leading-6 text-gray-300">
                   Username
@@ -87,14 +101,15 @@ export default function LoginPage() {
               </div>
 
               <div>
-                <button
+                <Button
                     type="submit"
+                    disabled={isLoggingIn}
                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Sign in
-                </button>
+                  {isLoggingIn ? 'Signing in' : 'Sign in'}
+                </Button>
               </div>
-            </form>
+            </Form>
 
             <p className="mt-10 text-center text-sm text-gray-500 z-10">
               Dont have an account?{' '}
