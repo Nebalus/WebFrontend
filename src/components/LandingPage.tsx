@@ -58,17 +58,17 @@ export default function LandingPage() {
                 <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_700px]">
                   <div className="flex flex-col justify-center space-y-4">
                     <div className="space-y-2">
-                      <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-black">Hey there, im
+                      <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-black">Hey there, I'm
                         Nebalus {getWavingHandColor()}</h1>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
-                        I'm a <strong>Fullstack</strong> Computer Engineer trainee based in germany.
+                        I'm a <strong>Fullstack</strong> Computer Engineer trainee based in Germany.
                       </p>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
-                        I spend my days coding on some crazy projects, diving into exciting games, and enjoying life’s
-                        little adventures.
+                        I spend my days coding on some hobby projects, diving into games, and enjoying life’s
+                        little adventures. ;)
                       </p>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
-                        On this corner of the web, i will host & present a small variety of my services and personal hobby projects.
+                        On this corner of the web, I will host & present a small variety of my services and personal hobby projects.
                       </p>
                     </div>
                   </div>
@@ -100,7 +100,7 @@ export default function LandingPage() {
                       />
                       <div className="flex flex-col gap-2">
                         <h3 className="text-xl font-bold">Mandelbrot</h3>
-                        <p className="text-muted-foreground">A user interface written in java to explore the wonders of the Mandelbrot-set fractal.</p>
+                        <p className="text-muted-foreground">An user interface written in Java to explore the wonders of the Mandelbrot-set fractal.</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -112,7 +112,7 @@ export default function LandingPage() {
                           className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
                       />
                       <h3 className="text-xl font-bold">Melody </h3>
-                      <p className="text-muted-foreground">A open-source Discord music bot in Java! Currently WIP!!!</p>
+                      <p className="text-muted-foreground">An open-source Discord music bot in Java! Currently WIP!!!</p>
                     </CardContent>
                   </Card>
                   <Card>
@@ -123,7 +123,7 @@ export default function LandingPage() {
                           className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
                       />
                       <h3 className="text-xl font-bold">Cosmoventure</h3>
-                      <p className="text-muted-foreground">This is a 2D jump n run-, story game made with my houseown Gameengine. Currently WIP!!!</p>
+                      <p className="text-muted-foreground">This is a 2D jump n run, story game made with my house own game engine. Currently WIP!!!</p>
                     </CardContent>
                   </Card>
                 </div>
