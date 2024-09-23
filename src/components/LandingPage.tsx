@@ -41,7 +41,7 @@ export default function LandingPage() {
 
   return (
       <>
-        <Outlet></Outlet>
+        <Outlet />
         <StarBackground/>
         <div className="flex flex-col min-h-[100dvh] bg-black">
           <header className="px-4 lg:px-6 h-14 flex items-center">
