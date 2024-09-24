@@ -24,7 +24,18 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: "dashboard",
-        element: <DashboardRootLayout />
+        element: <DashboardRootLayout />,
+        children: [
+            {
+                path: "referrals"
+            },
+            {
+                path: "linktree"
+            },
+            {
+                path: "analytics"
+            }
+        ]
     },
     {
         path: "login",
