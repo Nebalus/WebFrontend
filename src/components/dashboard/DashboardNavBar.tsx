@@ -1,7 +1,7 @@
 import SiteLogo from "@/components/SiteLogo.tsx";
 import {NavLink, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {Home, Link, ListTree} from "lucide-react";
+import {ChartSpline, Home, Link, ListTree} from "lucide-react";
 
 export default function DashboardNavBar() {
     const location = useLocation();
@@ -33,6 +33,10 @@ export default function DashboardNavBar() {
                             </NavLink>
                             <NavLink to="/dashboard/linktree" className={currentPage === '/dashboard/linktree' ? classActive : classNotAction}>
                                 <ListTree className="h-5 w-5"/>
+                                Linktree
+                            </NavLink>
+                            <NavLink to="/dashboard/analytics" className={currentPage === '/dashboard/analytics' ? classActive : classNotAction}>
+                                <ChartSpline className="h-5 w-5"/>
                                 Linktree
                             </NavLink>
                         </nav>
