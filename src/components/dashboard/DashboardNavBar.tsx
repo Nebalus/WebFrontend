@@ -37,7 +37,7 @@ export default function DashboardNavBar() {
                             </NavLink>
                             <NavLink to="/dashboard/analytics" className={currentPage === '/dashboard/analytics' ? classActive : classNotAction}>
                                 <ChartSpline className="h-5 w-5"/>
-                                Linktree
+                                Analytics
                             </NavLink>
                         </nav>
                     </div>
