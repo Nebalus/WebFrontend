@@ -1,7 +1,7 @@
 import SiteLogo from "@/components/SiteLogo.tsx";
 import {NavLink, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {ChartSpline, Home, Link, ListTree} from "lucide-react";
+import {ChartSpline, ClipboardList, Home, Link, ListTree} from "lucide-react";
 
 export default function DashboardNavBar() {
     const location = useLocation();
@@ -9,6 +9,7 @@ export default function DashboardNavBar() {
 
     const classActive = 'flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary';
     const classNotAction = 'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary';
+    const classIconSize = 'h-5 w-5';
 
     useEffect(() => {
         setCurrentPage(location.pathname);
@@ -24,20 +25,24 @@ export default function DashboardNavBar() {
                     <div className="flex-1">
                         <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                             <NavLink to="/dashboard" className={currentPage === '/dashboard' ? classActive : classNotAction}>
-                                <Home className="h-5 w-5" />
+                                <Home className={classIconSize} />
                                 Dashboard
                             </NavLink>
                             <NavLink to="/dashboard/referrals" className={currentPage === '/dashboard/referrals' ? classActive : classNotAction}>
-                                <Link className="h-5 w-5" />
+                                <Link className={classIconSize} />
                                 Referrals
                             </NavLink>
                             <NavLink to="/dashboard/linktree" className={currentPage === '/dashboard/linktree' ? classActive : classNotAction}>
-                                <ListTree className="h-5 w-5"/>
+                                <ListTree className={classIconSize}/>
                                 Linktree
                             </NavLink>
                             <NavLink to="/dashboard/analytics" className={currentPage === '/dashboard/analytics' ? classActive : classNotAction}>
-                                <ChartSpline className="h-5 w-5"/>
+                                <ChartSpline className={classIconSize}/>
                                 Analytics
+                            </NavLink>
+                            <NavLink to="/dashboard/todos" className={currentPage === '/dashboard/todos' ? classActive : classNotAction}>
+                                <ClipboardList className={classIconSize}/>
+                                Todos
                             </NavLink>
                         </nav>
                     </div>
