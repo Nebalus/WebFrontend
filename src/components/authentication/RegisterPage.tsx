@@ -128,6 +128,24 @@ export default function RegisterPage() {
               </div>
 
               <div>
+                <div className="flex items-center justify-between">
+                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-300">
+                    Confirm Password
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <input
+                      id="password-confirm"
+                      name="password"
+                      type="password"
+                      required
+                      autoComplete="current-password"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6 p-2 text-l"
+                  />
+                </div>
+              </div>
+
+              <div>
                 <Button
                     type="submit"
                     disabled={isRegistering}
