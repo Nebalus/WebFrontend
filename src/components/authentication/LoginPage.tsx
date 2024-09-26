@@ -9,6 +9,7 @@ import StarBackground from "@/components/StarBackground.tsx";
 import {Form, Link, useActionData, useNavigation} from "react-router-dom";
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {CircleAlert} from "lucide-react";
+import {Alert, AlertDescription, AlertTitle} from "@assets/components/shadcnui/alert.tsx";
 
 /** Add fonts into your Next.js project:
 
@@ -38,7 +39,7 @@ To read more about using these font, please visit the Next.js documentation:
 export default function LoginPage() {
   const navigation = useNavigation();
   const isLoggingIn = navigation.state === 'submitting';
-  const actionData = useActionData() as { error: string } | undefined;
+  const actionData = useActionData() as { has_error: boolean, error_title: string ,error_message: string } | undefined;
 
   return (
       <>
@@ -52,14 +53,20 @@ export default function LoginPage() {
           </div>
 
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
-            {actionData && 'error' in actionData ? (
-                <div className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center">
+            {actionData && 'has_error' in actionData ? (
+                <Alert className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center overflow-scroll">
                   <CircleAlert size="30" min="30" className="mr-3 min-w-[25px]"/>
-                  <p>
-                    {actionData.error}
-                  </p>
-                </div>
+                  <div>
+                    <AlertTitle>
+                      {actionData.error_title}
+                    </AlertTitle>
+                    <AlertDescription className="overflow-">
+                      {actionData.error_message}
+                    </AlertDescription>
+                  </div>
+                </Alert>
             ) : null}
+
             <Form method="POST" className="space-y-6">
               <div>
                 <label className="block text-sm font-medium leading-6 text-gray-300">
@@ -79,7 +86,7 @@ export default function LoginPage() {
 
               <div>
                 <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-300">
+                  <label htmlFor="password" className="block text-sm font-medium leading-4 text-gray-300">
                     Password
                   </label>
                   {/*<div className="text-sm">*/}
@@ -125,39 +132,3 @@ export default function LoginPage() {
       </>
   )
 }
-// <>
-//   <StarBackground/>
-//   <div className="flex h-screen w-full items-center justify-center">
-//     <div className="w-full max-w-md space-y-6 bg-green-500">
-//       <div className="space-y-2 text-center">
-//         <h1 className="text-3xl font-bold">Welcome back</h1>
-//         <p className="text-muted-foreground">Please insert your login credentials</p>
-//       </div>
-//       <Card>
-//         <CardContent className="space-y-4">
-//           <div className="space-y-2">
-//             <Label htmlFor="email">E-Mail</Label>
-//             <Input id="email" type="email" placeholder="your email" required/>
-//           </div>
-//           <div className="space-y-2">
-//             <div className="flex items-center justify-between">
-//               <Label htmlFor="password">Password</Label>
-//               {/*<Link href="#" className="text-sm underline" prefetch={false}>*/}
-//               {/*  Passwort vergessen?*/}
-//               {/*</Link>*/}
-//             </div>
-//             <Input id="password" type="password" placeholder="your password" required/>
-//           </div>
-//           <Button className="w-full" type="submit">
-//             Anmelden
-//           </Button>
-//         </CardContent>
-//       </Card>
-//       {/*<Alert variant="destructive">*/}
-//       {/*  <div />*/}
-//       {/*  <AlertTitle>Oops, something went wrong!</AlertTitle>*/}
-//       {/*  <AlertDescription>Please check your login details and try again</AlertDescription>*/}
-//       {/*</Alert>*/}
-//     </div>
-//   </div>
-// </>

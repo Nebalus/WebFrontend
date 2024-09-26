@@ -5,7 +5,7 @@ import ErrorPage from "@/components/ErrorPage.tsx";
 
 function App() {
     return (
-          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <ThemeProvider defaultTheme="system" storageKey="ui-theme">
               <RouterProvider router={appRouter} fallbackElement={<ErrorPage />}></RouterProvider>
           </ThemeProvider>
     )

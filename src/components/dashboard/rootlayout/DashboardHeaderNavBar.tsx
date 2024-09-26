@@ -2,7 +2,6 @@
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {NavLink} from "react-router-dom";
 import {Avatar, AvatarFallback} from "@radix-ui/react-avatar";
-import ThemeToggle from "@/components/dashboard/ThemeToggle.tsx";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -16,7 +15,6 @@ export default function DashboardHeaderNavBar() {
     return (
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
             <div className="flex gap-2 ml-auto">
-                <ThemeToggle />
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="secondary" size="lg" className="rounded-full">

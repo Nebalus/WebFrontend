@@ -9,6 +9,7 @@ import StarBackground from "@/components/StarBackground.tsx";
 import {Form, Link, useActionData, useNavigation} from "react-router-dom";
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {CircleAlert} from "lucide-react";
+import {Alert, AlertDescription, AlertTitle} from "@assets/components/shadcnui/alert.tsx";
 
 /** Add fonts into your Next.js project:
 
@@ -38,7 +39,7 @@ To read more about using these font, please visit the Next.js documentation:
 export default function RegisterPage() {
   const navigation = useNavigation();
   const isRegistering = navigation.state === 'submitting';
-  const actionData = useActionData() as { error: string } | undefined;
+  const actionData = useActionData() as { has_error: boolean, error_title: string ,error_message: string } | undefined;
 
   return (
       <>
@@ -52,13 +53,18 @@ export default function RegisterPage() {
           </div>
 
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
-            {actionData && 'error' in actionData ? (
-                <div className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center">
+            {actionData && 'has_error' in actionData ? (
+                <Alert className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center overflow-scroll">
                   <CircleAlert size="30" min="30" className="mr-3 min-w-[25px]"/>
-                  <p>
-                    {actionData.error}
-                  </p>
-                </div>
+                  <div>
+                    <AlertTitle>
+                      {actionData.error_title}
+                    </AlertTitle>
+                    <AlertDescription className="overflow-">
+                      {actionData.error_message}
+                    </AlertDescription>
+                  </div>
+                </Alert>
             ) : null}
             <Form method="POST" className="space-y-6">
               <div>
@@ -71,14 +77,31 @@ export default function RegisterPage() {
                       name="activationtoken"
                       placeholder="0000-0000-0000-0000-0000"
                       type="text"
-                      required
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text sm:leading-6 p-2 text-l"
+                      required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium leading-6 text-gray-300">
+                <label htmlFor="email" className="block text-sm font-medium leading-4 text-gray-300">
+                  Email address
+                </label>
+                <div className="mt-2">
+                  <input
+                      id="email"
+                      name="email"
+                      placeholder="42@example.com"
+                      type="email"
+                      autoComplete="email"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6 p-2 text-l"
+                      required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium leading-4 text-gray-300">
                   Username
                 </label>
                 <div className="mt-2">
@@ -87,60 +110,40 @@ export default function RegisterPage() {
                       name="username"
                       placeholder=""
                       type="text"
-                      required
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text sm:leading-6 p-2 text-l"
+                      required
                   />
                 </div>
               </div>
 
-              {/*<div>*/}
-              {/*  <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-300">*/}
-              {/*    Email address*/}
-              {/*  </label>*/}
-              {/*  <div className="mt-2">*/}
-              {/*    <input*/}
-              {/*        id="email"*/}
-              {/*        name="email"*/}
-              {/*        type="email"*/}
-              {/*        required*/}
-              {/*        autoComplete="email"*/}
-              {/*        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6 p-2 text-l"*/}
-              {/*    />*/}
-              {/*  </div>*/}
-              {/*</div>*/}
-
               <div>
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-300">
-                    Password
-                  </label>
-                </div>
+                <label htmlFor="password" className="block text-sm font-medium leading-4 text-gray-300">
+                  Password
+                </label>
                 <div className="mt-2">
                   <input
                       id="password"
                       name="password"
                       type="password"
-                      required
                       autoComplete="current-password"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6 p-2 text-l"
+                      required
                   />
                 </div>
               </div>
 
               <div>
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-300">
-                    Confirm Password
-                  </label>
-                </div>
+                <label htmlFor="password" className="block text-sm font-medium leading-4 text-gray-300">
+                  Confirm Password
+                </label>
                 <div className="mt-2">
                   <input
                       id="password-confirm"
-                      name="password"
+                      name="password-confirm"
                       type="password"
-                      required
                       autoComplete="current-password"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6 p-2 text-l"
+                      required
                   />
                 </div>
               </div>

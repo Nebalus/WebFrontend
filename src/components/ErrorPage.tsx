@@ -42,14 +42,14 @@ export default function ErrorPage() {
                   to={"/"}
                   className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
-                Go to Homepage
+                Go to landing page
               </Link>
-              {/*<Link*/}
-              {/*    to={"/"}*/}
-              {/*    className="inline-flex items-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"*/}
-              {/*>*/}
-              {/*  About Us*/}
-              {/*</Link>*/}
+              <Link
+                  to={"/-/"}
+                  className="inline-flex items-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              >
+                Go to dashboard
+              </Link>
             </div>
           </div>
         </div>

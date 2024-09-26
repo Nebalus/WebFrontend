@@ -4,10 +4,16 @@ import LandingPage from "@/components/LandingPage.tsx";
 import ErrorPage from "@/components/ErrorPage.tsx";
 import LoginPage from "@/components/authentication/LoginPage.tsx";
 import RegisterPage from "@/components/authentication/RegisterPage.tsx";
-import DashboardRootLayout from "@/components/dashboard/DashboardRootLayout.tsx";
+import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import PopUp from "@/components/PopUp.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
+import Dashboard from "@/components/dashboard/Dashboard.tsx";
+import ReferralsBoard from "@/components/dashboard/ReferralsBoard.tsx";
+import LinktreeBoard from "@/components/dashboard/LinktreeBoard.tsx";
+import AnalyticsBoard from "@/components/dashboard/AnalyticsBoard.tsx";
+import TodosBoard from "@/components/dashboard/TodosBoard.tsx";
+import TicketsBoard from "@/components/dashboard/TicketsBoard.tsx";
 
 export const appRouter = createBrowserRouter([
     {
@@ -27,13 +33,28 @@ export const appRouter = createBrowserRouter([
         element: <DashboardRootLayout />,
         children: [
             {
-                path: "referrals"
+                path: "",
+                element: <Dashboard />
             },
             {
-                path: "linktree"
+                path: "referrals",
+                element: <ReferralsBoard />
             },
             {
-                path: "analytics"
+                path: "linktree",
+                element: <LinktreeBoard />
+            },
+            {
+                path: "analytics",
+                element: <AnalyticsBoard />
+            },
+            {
+                path: "todos",
+                element: <TodosBoard />
+            },
+            {
+                path: "tickets",
+                element: <TicketsBoard />
             }
         ]
     },
