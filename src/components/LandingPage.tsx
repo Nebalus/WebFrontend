@@ -126,6 +126,17 @@ export default function LandingPage() {
                       <p className="text-muted-foreground">This is a 2D jump n run, story game made with my house own game engine. Currently WIP!!!</p>
                     </CardContent>
                   </Card>
+                  <Card>
+                    <CardContent className="flex flex-col gap-3">
+                      <img
+                          src="/static/icons/placeholder.svg"
+                          alt="GFW Icon"
+                          className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                      />
+                      <h3 className="text-xl font-bold">GalaxyFrameWork</h3>
+                      <p className="text-muted-foreground">Simplifies Java app development by streamlining file organization, logging, GUI rendering, and source code optimization. Currently WIP!!!</p>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </section>
