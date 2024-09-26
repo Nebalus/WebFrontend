@@ -24,23 +24,23 @@ export default function DashboardNavBar() {
                     </div>
                     <div className="flex-1">
                         <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-                            <NavLink to="/dashboard" className={currentPage === '/dashboard' ? classActive : classNotAction}>
+                            <NavLink to="/-/" className={currentPage === '/-/' ? classActive : classNotAction}>
                                 <Home className={classIconSize} />
                                 Dashboard
                             </NavLink>
-                            <NavLink to="/dashboard/referrals" className={currentPage === '/dashboard/referrals' ? classActive : classNotAction}>
+                            <NavLink to="/-/referrals" className={currentPage === '/-/referrals' ? classActive : classNotAction}>
                                 <Link className={classIconSize} />
                                 Referrals
                             </NavLink>
-                            <NavLink to="/dashboard/linktree" className={currentPage === '/dashboard/linktree' ? classActive : classNotAction}>
+                            <NavLink to="/-/linktree" className={currentPage === '/-/linktree' ? classActive : classNotAction}>
                                 <ListTree className={classIconSize}/>
                                 Linktree
                             </NavLink>
-                            <NavLink to="/dashboard/analytics" className={currentPage === '/dashboard/analytics' ? classActive : classNotAction}>
+                            <NavLink to="/-/analytics" className={currentPage === '/-/analytics' ? classActive : classNotAction}>
                                 <ChartSpline className={classIconSize}/>
                                 Analytics
                             </NavLink>
-                            <NavLink to="/dashboard/todos" className={currentPage === '/dashboard/todos' ? classActive : classNotAction}>
+                            <NavLink to="/-/todos" className={currentPage === '/-/todos' ? classActive : classNotAction}>
                                 <ClipboardList className={classIconSize}/>
                                 Todos
                             </NavLink>

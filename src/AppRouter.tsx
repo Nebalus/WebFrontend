@@ -23,7 +23,7 @@ export const appRouter = createBrowserRouter([
         ]
     },
     {
-        path: "dashboard",
+        path: "-",
         element: <DashboardRootLayout />,
         children: [
             {
