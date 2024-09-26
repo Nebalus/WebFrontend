@@ -58,8 +58,9 @@ export default function LandingPage() {
                 <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_700px]">
                   <div className="flex flex-col justify-center space-y-4">
                     <div className="space-y-2">
-                      <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-black">Hey there, I'm
-                        Nebalus {getWavingHandColor()}</h1>
+                      <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-black">
+                        Hey there, I'm Nebalus {getWavingHandColor()}
+                      </h1>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
                         I'm a <strong>Fullstack</strong> Computer Engineer trainee based in Germany.
                       </p>
