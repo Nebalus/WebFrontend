@@ -35,8 +35,8 @@ export default function LandingPage() {
 
   const getWavingHandColor = () => {
       const waving_hands = ['👋', '👋🏻', '👋🏼', '👋🏽', '👋🏾', '👋🏿'];
-      const random_selektor = Math.floor(Math.random() * waving_hands.length);
-      return waving_hands[random_selektor];
+      const random_selector = Math.floor(Math.random() * waving_hands.length);
+      return waving_hands[random_selector];
   }
 
   return (
