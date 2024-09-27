@@ -74,6 +74,7 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <img
+                      draggable="false"
                       src="/static/media/images/splash_hey_2.png"
                       alt="Splash Pic"
                       className="mx-auto overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
@@ -95,6 +96,7 @@ export default function LandingPage() {
                   <Card className="rounded-2xl">
                     <CardContent className="flex flex-col gap-3">
                       <img
+                          draggable="false"
                           src="/static/media/images/mandelbrot.jpg"
                           alt="Picture of an mandelbrot fractal"
                           className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
@@ -108,6 +110,7 @@ export default function LandingPage() {
                   <Card>
                     <CardContent className="flex flex-col gap-3">
                       <img
+                          draggable="false"
                           src="/static/icons/placeholder.svg"
                           alt="Melodybot Icon"
                           className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
@@ -119,6 +122,7 @@ export default function LandingPage() {
                   <Card>
                     <CardContent className="flex flex-col gap-3">
                       <img
+                          draggable="false"
                           src="/static/icons/placeholder.svg"
                           alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"
                           className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
@@ -130,6 +134,7 @@ export default function LandingPage() {
                   <Card>
                     <CardContent className="flex flex-col gap-3">
                       <img
+                          draggable="false"
                           src="/static/icons/placeholder.svg"
                           alt="GFW Icon"
                           className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
