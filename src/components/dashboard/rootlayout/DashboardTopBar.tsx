@@ -13,7 +13,7 @@ import {
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import ThemeToggle from "@/components/dashboard/rootlayout/ThemeToggle.tsx";
 
-export default function DashboardHeaderNavBar() {
+export default function DashboardTopBar() {
     return (
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
             <div className="flex gap-2 ml-auto">

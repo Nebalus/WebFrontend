@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {ChartSpline, ClipboardList, Home, Hourglass, Link, ListTree, Ticket} from "lucide-react";
 import {APP_DASHBOARD_PATH, VERSION} from "@/constants.ts";
 
-export default function DashboardNavBar() {
+export default function DashboardSideBar() {
     const location = useLocation();
     const [currentPage, setCurrentPage] = useState(location.pathname);
 

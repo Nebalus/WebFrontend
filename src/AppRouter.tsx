@@ -17,7 +17,6 @@ import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
-import {ProfileSettings} from "@/components/settings/ProfileSettings.tsx";
 import WorkAndProgress from "@/components/WorkAndProgress.tsx";
 import TimeCapsuleBoard from "@/components/dashboard/TimeCapsuleBoard.tsx";
 
