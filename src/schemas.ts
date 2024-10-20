@@ -5,6 +5,7 @@ export const UserSchema = z.object({
     username: z.string(),
     email: z.string(),
     is_enabled: z.boolean(),
+    is_admin: z.boolean(),
     creation_date_timestamp: z.number(),
 });
 
