@@ -1,20 +1,20 @@
 import StarBackground from "@/components/StarBackground.tsx";
 import { trefoil } from 'ldrs';
-import {useParams} from "react-router-dom";
-import wait from "waait";
+// import {useParams} from "react-router-dom";
+// import wait from "waait";
 import {useEffect} from "react";
 
 export default function ReferralPage() {
-    const referralId = useParams<'referral_id'>().referral_id;
+    // const referralId = useParams<'referral_id'>().referral_id;
 
     trefoil.register()
 
     useEffect(() => {
         (async () => {
-            if (referralId === 'idsx342') {
-                await wait(2000);
-                window.location.href = 'https://www.swisstransfer.com/d/90fd58a1-4ebe-4273-809f-9db434990ea9';
-            }
+            // if (referralId === 'idsx342') {
+            //     await wait(2000);
+            //     window.location.href = 'https://www.swisstransfer.com/d/90fd58a1-4ebe-4273-809f-9db434990ea9';
+            // }
         })();
     }, []);
 
