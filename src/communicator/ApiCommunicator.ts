@@ -1,11 +1,12 @@
 import {APP_BACKEND_API_DOMAIN, APP_BACKEND_API_PORT, APP_BACKEND_API_PROTOCOL} from "@/constants.ts";
 import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
+import {SuccessfulLoginResponse} from "@/schemas/ApiResponseSchemas.ts";
 
 class ApiCommunicator {
     server = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
 
     async login(username: string, password: string): Promise<any> {
-        // const { setUser, setJwt } = useAuthenticatedUserStore.getState();
+        const { setUser, setJwt } = useAuthenticatedUserStore.getState();
         const formdata = new FormData();
         formdata.append('username', username);
         formdata.append('password', password);
@@ -16,13 +17,12 @@ class ApiCommunicator {
                 body: formdata,
             });
             if (response.ok) {
-                return await response.json();
-                // const loginResponse = LoginResponseSchema.parse(await response.json());
-                // if (loginResponse.success) {
-                //     setUser(loginResponse.user);
-                //     setJwt(loginResponse.jwt);
-                // }
-                // return loginResponse;
+                const loginResponse = SuccessfulLoginResponse.parse(await response.json());
+                if (loginResponse.success) {
+                    setUser(loginResponse.user);
+                    setJwt(loginResponse.jwt);
+                }
+                return loginResponse;
             }
         } catch (e) {
             /* empty */

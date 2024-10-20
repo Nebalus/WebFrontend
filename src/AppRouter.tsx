@@ -6,7 +6,7 @@ import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
-import Dashboard from "@/components/dashboard/Dashboard.tsx";
+import DashBoard from "@/components/dashboard/DashBoard.tsx";
 import ReferralsBoard from "@/components/dashboard/ReferralsBoard.tsx";
 import LinktreeBoard from "@/components/dashboard/LinktreeBoard.tsx";
 import AnalyticsBoard from "@/components/dashboard/AnalyticsBoard.tsx";
@@ -14,6 +14,12 @@ import TodosBoard from "@/components/dashboard/TodosBoard.tsx";
 import TicketsBoard from "@/components/dashboard/TicketsBoard.tsx";
 import ReferralPage from "@/components/referral/ReferralPage.tsx";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
+import protectedLoader from "@/loader/protectedLoader.ts";
+import authenticatedLoader from "@/loader/authenticatedLoader.ts";
+import {APP_DASHBOARD_PATH} from "@/constants.ts";
+import {ProfileSettings} from "@/components/settings/ProfileSettings.tsx";
+import WorkAndProgress from "@/components/WorkAndProgress.tsx";
+import TimeCapsuleBoard from "@/components/dashboard/TimeCapsuleBoard.tsx";
 
 export const appRouter = createBrowserRouter([
     {
@@ -23,12 +29,13 @@ export const appRouter = createBrowserRouter([
         errorElement: <ErrorPage />
     },
     {
-        path: "-",
+        path: APP_DASHBOARD_PATH,
         element: <DashboardRootLayout />,
+        loader: protectedLoader,
         children: [
             {
                 path: "",
-                element: <Dashboard />
+                element: <DashBoard />
             },
             {
                 path: "referrals",
@@ -49,6 +56,10 @@ export const appRouter = createBrowserRouter([
             {
                 path: "tickets",
                 element: <TicketsBoard />
+            },
+            {
+                path: "timecapsule",
+                element: <TimeCapsuleBoard />
             }
         ]
     },
@@ -57,13 +68,19 @@ export const appRouter = createBrowserRouter([
         element: <ReferralPage />
     },
     {
+        path: "linktree/:linktree_id",
+        element: <WorkAndProgress />
+    },
+    {
         path: "login",
         action: loginAction,
+        loader: authenticatedLoader,
         element: <LoginPage />
     },
     {
         path: "register",
         action: registerAction,
+        loader: authenticatedLoader,
         element: <RegisterPage />
     },
     {

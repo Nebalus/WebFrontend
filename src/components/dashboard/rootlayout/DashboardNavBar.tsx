@@ -1,8 +1,8 @@
 import SiteLogo from "@/components/SiteLogo.tsx";
 import {NavLink, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {ChartSpline, ClipboardList, Home, Link, ListTree, Ticket} from "lucide-react";
-import {VERSION} from "@/constants.ts";
+import {ChartSpline, ClipboardList, Home, Hourglass, Link, ListTree, Ticket} from "lucide-react";
+import {APP_DASHBOARD_PATH, VERSION} from "@/constants.ts";
 
 export default function DashboardNavBar() {
     const location = useLocation();
@@ -25,34 +25,39 @@ export default function DashboardNavBar() {
                     </div>
                     <div className="flex-1">
                         <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-                            <NavLink to="/-/" className={currentPage === '/-/' ? classActive : classNotActive}>
+                            <NavLink to={APP_DASHBOARD_PATH} className={currentPage === APP_DASHBOARD_PATH ? classActive : classNotActive}>
                                 <Home className={classIconSize}/>
                                 Dashboard
                             </NavLink>
-                            <NavLink to="/-/referrals"
-                                     className={currentPage === '/-/referrals' ? classActive : classNotActive}>
+                            <NavLink to={APP_DASHBOARD_PATH + "referrals"}
+                                     className={currentPage === APP_DASHBOARD_PATH + "referrals" ? classActive : classNotActive}>
                                 <Link className={classIconSize}/>
                                 Referrals
                             </NavLink>
-                            <NavLink to="/-/linktree"
-                                     className={currentPage === '/-/linktree' ? classActive : classNotActive}>
+                            <NavLink to={APP_DASHBOARD_PATH + "linktree"}
+                                     className={currentPage === APP_DASHBOARD_PATH + "linktree" ? classActive : classNotActive}>
                                 <ListTree className={classIconSize}/>
                                 Linktree
                             </NavLink>
-                            <NavLink to="/-/analytics"
-                                     className={currentPage === '/-/analytics' ? classActive : classNotActive}>
+                            <NavLink to={APP_DASHBOARD_PATH + "analytics"}
+                                     className={currentPage === APP_DASHBOARD_PATH + "analytics" ? classActive : classNotActive}>
                                 <ChartSpline className={classIconSize}/>
                                 Analytics
                             </NavLink>
-                            <NavLink to="/-/todos"
-                                     className={currentPage === '/-/todos' ? classActive : classNotActive}>
+                            <NavLink to={APP_DASHBOARD_PATH + "todos"}
+                                     className={currentPage === APP_DASHBOARD_PATH + "todos" ? classActive : classNotActive}>
                                 <ClipboardList className={classIconSize}/>
                                 Todos
                             </NavLink>
-                            <NavLink to="/-/tickets"
-                                     className={currentPage === '/-/tickets' ? classActive : classNotActive}>
+                            <NavLink to={APP_DASHBOARD_PATH + "tickets"}
+                                     className={currentPage === APP_DASHBOARD_PATH + "tickets" ? classActive : classNotActive}>
                                 <Ticket className={classIconSize}/>
                                 Tickets
+                            </NavLink>
+                            <NavLink to={APP_DASHBOARD_PATH + "timecapsule"}
+                                     className={currentPage === APP_DASHBOARD_PATH + "timecapsule" ? classActive : classNotActive}>
+                                <Hourglass className={classIconSize}/>
+                                Time Capsules
                             </NavLink>
                         </nav>
                     </div>

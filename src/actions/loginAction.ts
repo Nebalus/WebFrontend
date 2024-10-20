@@ -15,13 +15,13 @@ export default async function loginAction({request}: { request: Request}) {
 
     const loginResponse = await ApiCommunicator.login(username, password);
 
-    console.log(loginResponse);
+    if (loginResponse.success) {
+        return redirect('/-/');
+    }
 
-    return redirect('/-/');
-
-    // return {
-    //     has_error: true,
-    //     error_title: 'Authentication Failed',
-    //     error_message: 'The authentication services are currently unavailable.'
-    // }
+    return {
+        has_error: true,
+        error_title: 'Authentication Failed',
+        error_message: 'The authentication services are currently unavailable.'
+    }
 }
