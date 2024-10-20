@@ -1,3 +1,5 @@
+import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
+import {redirect} from "react-router-dom";
 
 export default async function loginAction({request}: { request: Request}) {
     const formData = await request.formData();
@@ -11,9 +13,15 @@ export default async function loginAction({request}: { request: Request}) {
         }
     }
 
-    return {
-        has_error: true,
-        error_title: 'Authentication Failed',
-        error_message: 'The authentication services are currently unavailable.'
-    }
+    const loginResponse = await ApiCommunicator.login(username, password);
+
+    console.log(loginResponse);
+
+    return redirect('/-/');
+
+    // return {
+    //     has_error: true,
+    //     error_title: 'Authentication Failed',
+    //     error_message: 'The authentication services are currently unavailable.'
+    // }
 }

@@ -1,4 +1,4 @@
-import {createBrowserRouter } from "react-router-dom";
+import {createBrowserRouter, redirect} from "react-router-dom";
 import LandingPage from "@/components/LandingPage.tsx";
 import ErrorPage from "@/components/ErrorPage.tsx";
 import LoginPage from "@/components/authentication/LoginPage.tsx";
@@ -13,6 +13,7 @@ import AnalyticsBoard from "@/components/dashboard/AnalyticsBoard.tsx";
 import TodosBoard from "@/components/dashboard/TodosBoard.tsx";
 import TicketsBoard from "@/components/dashboard/TicketsBoard.tsx";
 import ReferralPage from "@/components/referral/ReferralPage.tsx";
+import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 
 export const appRouter = createBrowserRouter([
     {
@@ -68,8 +69,8 @@ export const appRouter = createBrowserRouter([
     {
         path: "logout",
         loader() {
-            console.log("LOGGING OUT!");
-            return null;
+            ApiCommunicator.logout();
+            return redirect('/login');
         }
     },
 ]);
