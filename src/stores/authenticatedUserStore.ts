@@ -1,23 +1,22 @@
 import {User} from "@/schemas.ts";
 import {create} from "zustand";
 import {createJSONStorage, persist} from "zustand/middleware";
+import {STORAGE_PREFIX} from "@/constants.ts";
 
-type InternalAuthenticatedUserSchema = {
+type AuthenticatedUserState = {
     user: User | undefined
 }
 
-type Actions = {
+type AuthenticatedUserAction = {
     setUser: (user: User) => void,
     reset: () => void,
 }
 
-export type AuthenticatedUserStore = InternalAuthenticatedUserSchema & Actions;
-
-const initialState: InternalAuthenticatedUserSchema = {
+const initialState: AuthenticatedUserState = {
     user: undefined,
 }
 
-export const useAuthenticatedUserStore = create<AuthenticatedUserStore>()(
+export const useAuthenticatedUserStore = create<AuthenticatedUserState & AuthenticatedUserAction>()(
     persist(
         (set) => ({
             ...initialState,
@@ -25,7 +24,7 @@ export const useAuthenticatedUserStore = create<AuthenticatedUserStore>()(
             reset: () => set(initialState)
         }),
         {
-            name: 'USERSTORE',
+            name: STORAGE_PREFIX + 'USERSTORE',
             storage: createJSONStorage(() => localStorage)
         }
     ),
