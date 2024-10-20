@@ -14,6 +14,6 @@ export default async function loginAction({request}: { request: Request}) {
     return {
         has_error: true,
         error_title: 'Authentication Failed',
-        error_message: 'The authentication services is currently unavailable.'
+        error_message: 'The authentication services are currently unavailable.'
     }
 }

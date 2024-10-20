@@ -54,7 +54,7 @@ export default function RegisterPage() {
 
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
             {actionData && 'has_error' in actionData ? (
-                <Alert className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center overflow-scroll">
+                <Alert className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center">
                   <CircleAlert size="30" min="30" className="mr-3 min-w-[25px]"/>
                   <div>
                     <AlertTitle>
@@ -69,12 +69,12 @@ export default function RegisterPage() {
             <Form method="POST" className="space-y-6">
               <div>
                 <label className="block text-sm font-medium leading-6 text-gray-300">
-                  Activation token
+                  Invitation token
                 </label>
                 <div className="mt-2">
                   <input
-                      id="activationtoken"
-                      name="activationtoken"
+                      id="invitationtoken"
+                      name="invitationtoken"
                       placeholder="0000-0000-0000-0000-0000"
                       type="text"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text sm:leading-6 p-2 text-l"

@@ -54,7 +54,7 @@ export default function LoginPage() {
 
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
             {actionData && 'has_error' in actionData ? (
-                <Alert className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center overflow-scroll">
+                <Alert className="min-h-[50px] mb-3 bg-red-800 rounded-md p-2 flex flex-row items-center">
                   <CircleAlert size="30" min="30" className="mr-3 min-w-[25px]"/>
                   <div>
                     <AlertTitle>
