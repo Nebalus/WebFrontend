@@ -1,19 +1,39 @@
-import DashboardSideBar from "@/components/dashboard/rootlayout/DashboardSideBar.tsx";
-import DashboardTopBar from "@/components/dashboard/rootlayout/DashboardTopBar.tsx";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@assets/components/shadcnui/sidebar"
+import DashboardSideBar from "@/components/dashboard/rootlayout/DashboardSideBar"
+import { Separator } from "@assets/components/shadcnui/separator"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@assets/components/shadcnui/breadcrumb"
 import {Outlet} from "react-router-dom";
 import {Toaster} from "sonner";
 
 export default function DashboardRootLayout() {
-    return (
-        <div className="grid h-full w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] fixed">
-            <DashboardSideBar/>
-            <div className="flex flex-col">
-                <DashboardTopBar/>
-                <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-                    <Outlet/>
-                </main>
-                <Toaster/>
-            </div>
-        </div>
-    );
+  return (
+    <SidebarProvider defaultOpen={true}>
+      <DashboardSideBar />
+      <SidebarInset>
+        <header className="flex h-16 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 fixed bg-background">
+          <div className="flex items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        </header>
+        <main className="mt-16">
+          <Outlet/>
+        </main>
+        <Toaster />
+      </SidebarInset>
+    </SidebarProvider>
+  )
 }

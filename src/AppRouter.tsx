@@ -6,7 +6,7 @@ import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
-import DashBoard from "@/components/dashboard/DashBoard.tsx";
+import Dashboard from "@/components/dashboard/Dashboard.tsx";
 import ReferralsBoard from "@/components/dashboard/ReferralsBoard.tsx";
 import LinktreeBoard from "@/components/dashboard/LinktreeBoard.tsx";
 import AnalyticsBoard from "@/components/dashboard/AnalyticsBoard.tsx";
@@ -14,7 +14,7 @@ import TodosBoard from "@/components/dashboard/TodosBoard.tsx";
 import TicketsBoard from "@/components/dashboard/TicketsBoard.tsx";
 import ReferralPage from "@/components/referral/ReferralPage.tsx";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-import protectedLoader from "@/loader/protectedLoader.ts";
+// import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkAndProgress from "@/components/WorkAndProgress.tsx";
@@ -30,11 +30,11 @@ export const appRouter = createBrowserRouter([
     {
         path: APP_DASHBOARD_PATH,
         element: <DashboardRootLayout />,
-        loader: protectedLoader,
+        // loader: protectedLoader,
         children: [
             {
                 path: "",
-                element: <DashBoard />
+                element: <Dashboard />
             },
             {
                 path: "referrals",
