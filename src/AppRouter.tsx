@@ -6,7 +6,7 @@ import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
-import DashBoard from "@/components/dashboard/DashBoard.tsx";
+import Dashboard from "@/components/dashboard/Dashboard.tsx";
 import ReferralsBoard from "@/components/dashboard/ReferralsBoard.tsx";
 import LinktreeBoard from "@/components/dashboard/LinktreeBoard.tsx";
 import AnalyticsBoard from "@/components/dashboard/AnalyticsBoard.tsx";
@@ -34,7 +34,7 @@ export const appRouter = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <DashBoard />
+                element: <Dashboard />
             },
             {
                 path: "referrals",

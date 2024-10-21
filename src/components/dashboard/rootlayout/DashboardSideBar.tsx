@@ -1,4 +1,4 @@
-import { Hourglass, Home, Link, ChartSpline, ClipboardList, ListTree, Ticket } from "lucide-react"
+import { Hourglass, Home, Link, ChartSpline, ClipboardList, ListTree } from "lucide-react"
 
 import {
   Sidebar,
@@ -6,7 +6,6 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -14,13 +13,15 @@ import {
 } from "@assets/components/shadcnui/sidebar"
 import SiteLogo from "@/components/SiteLogo"
 import { NavUser } from "@/components/dashboard/rootlayout/DashboardSideBarUser"
-import { NavLink } from "react-router-dom"
+import {NavLink, useLocation} from "react-router-dom"
+import {useEffect, useState} from "react";
+import {APP_DASHBOARD_PATH} from "@/constants.ts";
 
 // Menu items.
 const items = [
   {
     title: "Home",
-    url: "",
+    url: APP_DASHBOARD_PATH,
     icon: Home,
   },
   {
@@ -47,15 +48,16 @@ const items = [
     title: "Time Capsules",
     url: "timecapsule",
     icon: Hourglass,
-  },
-  {
-    title: "Tickets",
-    url: "tickets",
-    icon: Ticket,
-  },
+  }
 ]
 
 export default function DashboardSideBar() {
+  const location = useLocation();
+  const [currentPage, setCurrentPage] = useState(location.pathname);
+
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location]);
 
   const user = {
     name: "TEST",
@@ -74,7 +76,7 @@ export default function DashboardSideBar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton isActive={currentPage === APP_DASHBOARD_PATH + item.url} asChild>
                     <NavLink to={item.url}>
                       <item.icon/>
                       <span>{item.title}</span>
