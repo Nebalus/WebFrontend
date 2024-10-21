@@ -14,7 +14,7 @@ import TodosBoard from "@/components/dashboard/TodosBoard.tsx";
 import TicketsBoard from "@/components/dashboard/TicketsBoard.tsx";
 import ReferralPage from "@/components/referral/ReferralPage.tsx";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-import protectedLoader from "@/loader/protectedLoader.ts";
+// import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkAndProgress from "@/components/WorkAndProgress.tsx";
