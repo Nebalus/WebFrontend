@@ -1,60 +1,84 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Hourglass, Home, Link, ChartSpline, ClipboardList, ListTree, Ticket } from "lucide-react"
 
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@assets/components/shadcnui/sidebar"
+import SiteLogo from "@/components/SiteLogo"
+import { NavUser } from "@/components/dashboard/rootlayout/DashboardSideBarUser"
+import { NavLink } from "react-router-dom"
 
 // Menu items.
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Refferals",
+    url: "referrals",
+    icon: Link,
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
+    title: "Linktree",
+    url: "linktree",
+    icon: ListTree,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: "Analytics",
+    url: "analytics",
+    icon: ChartSpline,
   },
   {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Todos",
+    url: "todos",
+    icon: ClipboardList,
+  },
+  {
+    title: "Time Capsules",
+    url: "timecapsule",
+    icon: Hourglass,
+  },
+  {
+    title: "Tickets",
+    url: "tickets",
+    icon: Ticket,
   },
 ]
 
 export default function DashboardSideBar() {
+
+  const user = {
+    name: "TEST",
+    email: "test@test.de",
+    avatar: "TT"
+  }
+
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon" >
+      <SidebarHeader className="pt-5 items-center">
+        <SiteLogo />  
+      </ SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
+                    <NavLink to={item.url}>
+                      <item.icon/>
                       <span>{item.title}</span>
-                    </a>
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -62,6 +86,9 @@ export default function DashboardSideBar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={user} />
+      </SidebarFooter>
     </Sidebar>
   )
 }

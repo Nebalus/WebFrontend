@@ -40,7 +40,7 @@ class ApiCommunicator {
 
         context.headers = new Headers({
             ...context.headers,
-            Authorization: `${jwt}`,
+            Authorization: `Bearer ${jwt}`,
         });
 
         return fetch(url, context);
