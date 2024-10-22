@@ -16,6 +16,7 @@ import { NavUser } from "@/components/dashboard/rootlayout/DashboardSideBarUser"
 import {NavLink, useLocation} from "react-router-dom"
 import {useEffect, useState} from "react";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@assets/components/shadcnui/tooltip"
 
 // Menu items.
 const items = [
@@ -75,14 +76,21 @@ export default function DashboardSideBar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton isActive={currentPage === APP_DASHBOARD_PATH + item.url} asChild>
-                    <NavLink to={item.url}>
-                      <item.icon/>
-                      <span>{item.title}</span>
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                <Tooltip >
+                  <TooltipTrigger>
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton isActive={currentPage === APP_DASHBOARD_PATH + item.url} asChild>
+                        <NavLink to={item.url}>
+                          <item.icon/>
+                          <span>{item.title}</span>
+                        </NavLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    {item.title}
+                  </TooltipContent>
+                </Tooltip>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
