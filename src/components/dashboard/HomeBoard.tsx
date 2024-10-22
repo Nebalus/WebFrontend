@@ -1,10 +1,10 @@
 import { Button } from "@assets/components/shadcnui/button";
 import {toast} from "sonner";
 
-export default function Dashboard() {
+export default function HomeBoard() {
     return (
         <>
-            DASHBOARD
+            HOME
             <Button
                 variant="outline"
                 onClick={() =>

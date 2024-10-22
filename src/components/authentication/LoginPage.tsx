@@ -7,7 +7,7 @@ import {Alert, AlertDescription, AlertTitle} from "@assets/components/shadcnui/a
 
 export default function LoginPage() {
   const navigation = useNavigation();
-  const isLoggingIn = navigation.state === 'submitting';
+  const isSigningIn = navigation.state === 'submitting';
   const actionData = useActionData() as { has_error: boolean, error_title: string ,error_message: string } | undefined;
 
   return (
@@ -79,10 +79,10 @@ export default function LoginPage() {
               <div>
                 <Button
                     type="submit"
-                    disabled={isLoggingIn}
+                    disabled={isSigningIn}
                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  {isLoggingIn ? 'Signing in' : 'Sign in'}
+                  {isSigningIn ? 'Signing in' : 'Sign in'}
                 </Button>
               </div>
             </Form>

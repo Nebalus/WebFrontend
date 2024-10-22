@@ -26,6 +26,7 @@ import {
   useSidebar,
 } from "@assets/components/shadcnui/sidebar"
 import { NavLink } from "react-router-dom"
+import {APP_DASHBOARD_PATH} from "@/constants.ts";
 
 export function NavUser({
   user,
@@ -78,7 +79,7 @@ export function NavUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-            <NavLink to="">
+            <NavLink to={APP_DASHBOARD_PATH + "settings"}>
               <DropdownMenuItem>
                 <Settings />
                 Settings

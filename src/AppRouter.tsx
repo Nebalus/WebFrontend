@@ -6,7 +6,7 @@ import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
-import Dashboard from "@/components/dashboard/Dashboard.tsx";
+import HomeBoard from "@/components/dashboard/HomeBoard.tsx";
 import ReferralsBoard from "@/components/dashboard/ReferralsBoard.tsx";
 import LinktreeBoard from "@/components/dashboard/LinktreeBoard.tsx";
 import AnalyticsBoard from "@/components/dashboard/AnalyticsBoard.tsx";
@@ -19,6 +19,7 @@ import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkAndProgress from "@/components/WorkAndProgress.tsx";
 import TimeCapsuleBoard from "@/components/dashboard/TimeCapsuleBoard.tsx";
+import {ProfileSettings} from "@/components/settings/ProfileSettings.tsx";
 
 export const appRouter = createBrowserRouter([
     {
@@ -34,7 +35,7 @@ export const appRouter = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <Dashboard />
+                element: <HomeBoard />
             },
             {
                 path: "referrals",
@@ -61,6 +62,11 @@ export const appRouter = createBrowserRouter([
                 element: <TimeCapsuleBoard />
             }
         ]
+    },
+    {
+        path: APP_DASHBOARD_PATH + "settings",
+        element: <ProfileSettings />,
+        // loader: protectedLoader,
     },
     {
         path: "ref/:referral_id",

@@ -17,13 +17,13 @@ export default async function registerAction({request}: { request: Request}) {
         }
     }
 
-    // if (!doesInvitationTokenHaveAValidChecksum(invitationToken)) {
-    //     return {
-    //         has_error: true,
-    //         error_title: 'Invalid Token',
-    //         error_message: 'The activation token is invalid.'
-    //     }
-    // }
+    if (!doesInvitationTokenHaveAValidChecksum(invitationToken)) {
+        return {
+            has_error: true,
+            error_title: 'Invalid Token',
+            error_message: 'The activation token is invalid.'
+        }
+    }
 
     if (!emailRegEx.test(email)) {
         return {
@@ -54,6 +54,17 @@ export default async function registerAction({request}: { request: Request}) {
     }
 }
 
-// function doesInvitationTokenHaveAValidChecksum(invitationToken: string): boolean {
-//
-// }
+function doesInvitationTokenHaveAValidChecksum(invitationToken: string): boolean {
+    const fields = invitationToken.split("-").map(Number);
+    if (fields.length <= 0) {
+        return false;
+    }
+    const fieldAmount = fields.length - 1;
+    let count = 0;
+    for (let i = 0; i < fieldAmount; i++) {
+        console.log(fields[i]);
+        count += fields[i];
+    }
+    const checksum = Math.floor( count / fieldAmount );
+    return checksum === fields[fields.length - 1];
+}
