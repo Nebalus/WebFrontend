@@ -1,4 +1,4 @@
-import { Hourglass, Home, Link, ChartSpline, ClipboardList, ListTree } from "lucide-react"
+import { Hourglass, Home, Link, ChartSpline, ClipboardList, ListTree, MoreHorizontal, Folder, Forward, Trash2 } from "lucide-react"
 
 import {
   Sidebar,
@@ -8,8 +8,10 @@ import {
   SidebarGroupContent,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@assets/components/shadcnui/sidebar"
 import SiteLogo from "@/components/SiteLogo"
 import { NavUser } from "@/components/dashboard/rootlayout/DashboardSideBarUser"
@@ -17,40 +19,66 @@ import {NavLink, useLocation} from "react-router-dom"
 import {useEffect, useState} from "react";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@assets/components/shadcnui/tooltip"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@assets/components/shadcnui/dropdown-menu"
 
 // Menu items.
-const items = [
-  {
-    title: "Home",
-    url: APP_DASHBOARD_PATH,
-    icon: Home,
+const data = {
+  user: {
+    name: "TEST",
+    email: "test@test.de",
+    avatar: "TT"
   },
-  {
-    title: "Refferals",
-    url: "referrals",
-    icon: Link,
-  },
-  {
-    title: "Linktree",
-    url: "linktree",
-    icon: ListTree,
-  },
-  {
-    title: "Analytics",
-    url: "analytics",
-    icon: ChartSpline,
-  },
-  {
-    title: "Todos",
-    url: "todos",
-    icon: ClipboardList,
-  },
-  {
-    title: "Time Capsules",
-    url: "timecapsule",
-    icon: Hourglass,
-  }
-]
+  navMain: [
+    {
+      title: "Home",
+      url: APP_DASHBOARD_PATH,
+      icon: Home,
+      tooltip: "TEST",
+      dropdown: []
+    },
+    {
+      title: "Refferals",
+      url: "referrals",
+      icon: Link,
+      tooltip: undefined,
+      dropdown: [
+        {
+          title: "T",
+          url: APP_DASHBOARD_PATH,
+          icon: Home,
+        }
+      ]
+    },
+    {
+      title: "Linktree",
+      url: "linktree",
+      icon: ListTree,
+      tooltip: undefined,
+      dropdown: []
+    },
+    {
+      title: "Analytics",
+      url: "analytics",
+      icon: ChartSpline,
+      tooltip: undefined,
+      dropdown: []
+    },
+    {
+      title: "Todos",
+      url: "todos",
+      icon: ClipboardList,
+      tooltip: undefined,
+      dropdown: []
+    },
+    {
+      title: "Time Capsules",
+      url: "timecapsule",
+      icon: Hourglass,
+      tooltip: undefined,
+      dropdown: []
+    }
+  ]
+}
 
 export default function DashboardSideBar() {
   const location = useLocation();
@@ -60,11 +88,7 @@ export default function DashboardSideBar() {
     setCurrentPage(location.pathname);
   }, [location]);
 
-  const user = {
-    name: "TEST",
-    email: "test@test.de",
-    avatar: "TT"
-  }
+  const { isMobile } = useSidebar()
 
   return (
     <Sidebar collapsible="icon" >
@@ -75,7 +99,7 @@ export default function DashboardSideBar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {data.navMain.map((item) => (
                 <Tooltip >
                   <TooltipTrigger>
                     <SidebarMenuItem key={item.title}>
@@ -85,11 +109,32 @@ export default function DashboardSideBar() {
                           <span>{item.title}</span>
                         </NavLink>
                       </SidebarMenuButton>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <SidebarMenuAction showOnHover>
+                            <MoreHorizontal />
+                            <span className="sr-only">More</span>
+                          </SidebarMenuAction>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          className="w-48 rounded-lg"
+                          side={isMobile ? "bottom" : "right"}
+                          align={isMobile ? "end" : "start"}
+                        >
+                          {data.navMain.forEach().map((dropdownItem) => (
+                            dropdownItem.
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </SidebarMenuItem>
                   </TooltipTrigger>
-                  <TooltipContent>
-                    {item.title}
-                  </TooltipContent>
+                  {
+                    item.tooltip && (
+                      <TooltipContent>
+                        {item.tooltip}
+                      </TooltipContent>
+                    )
+                  }
                 </Tooltip>
               ))}
             </SidebarMenu>
@@ -97,7 +142,7 @@ export default function DashboardSideBar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={user} />
+        <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>
   )
