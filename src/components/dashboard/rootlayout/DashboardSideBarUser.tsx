@@ -1,31 +1,17 @@
-import {
-  ChevronsUpDown,
-  HeartHandshake,
-  LogOut, Mail,
-  Settings, Ticket,
-} from "lucide-react"
+import {ChevronsUpDown, HeartHandshake, LogOut, Mail, Settings, Ticket,} from "lucide-react"
 
+import {Avatar, AvatarFallback, AvatarImage,} from "@assets/components/shadcnui/avatar"
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@assets/components/shadcnui/avatar"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
 } from "@assets/components/shadcnui/dropdown-menu"
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from "@assets/components/shadcnui/sidebar"
-import { NavLink } from "react-router-dom"
+import {SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar,} from "@assets/components/shadcnui/sidebar"
+import {NavLink} from "react-router-dom"
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 
 export function NavUser({

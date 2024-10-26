@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import StarBackground from "@/components/StarBackground.tsx";
 import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
 

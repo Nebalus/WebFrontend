@@ -1,7 +1,14 @@
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@assets/components/shadcnui/sidebar"
+import {SidebarInset, SidebarProvider, SidebarTrigger} from "@assets/components/shadcnui/sidebar"
 import DashboardSideBar from "@/components/dashboard/rootlayout/DashboardSideBar"
-import { Separator } from "@assets/components/shadcnui/separator"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@assets/components/shadcnui/breadcrumb"
+import {Separator} from "@assets/components/shadcnui/separator"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from "@assets/components/shadcnui/breadcrumb"
 import {Outlet} from "react-router-dom";
 import {Toaster} from "sonner";
 

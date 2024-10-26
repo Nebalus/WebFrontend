@@ -1,4 +1,14 @@
-import { Hourglass, Home, Link, ChartSpline, ClipboardList, ListTree, MoreHorizontal, Folder, Forward, Trash2, LucideIcon, Plus } from "lucide-react"
+import {
+  ChartSpline,
+  ClipboardList,
+  Home,
+  Hourglass,
+  Link,
+  ListTree,
+  LucideIcon,
+  MoreHorizontal,
+  Plus
+} from "lucide-react"
 
 import {
   Sidebar,
@@ -14,12 +24,17 @@ import {
   useSidebar,
 } from "@assets/components/shadcnui/sidebar"
 import SiteLogo from "@/components/SiteLogo"
-import { NavUser } from "@/components/dashboard/rootlayout/DashboardSideBarUser"
+import {NavUser} from "@/components/dashboard/rootlayout/DashboardSideBarUser"
 import {NavLink, useLocation} from "react-router-dom"
 import {useEffect, useState} from "react";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@assets/components/shadcnui/tooltip"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@assets/components/shadcnui/dropdown-menu"
+import {Tooltip, TooltipContent, TooltipTrigger} from "@assets/components/shadcnui/tooltip"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@assets/components/shadcnui/dropdown-menu"
 
 interface User {
   name: string;
@@ -58,7 +73,7 @@ const navigation: Navigation = {
       title: "Home",
       url: APP_DASHBOARD_PATH,
       icon: Home,
-      tooltip: "TEST",
+      tooltip: undefined,
       dropdown: []
     },
     {

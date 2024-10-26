@@ -1,4 +1,4 @@
-import { Button } from "@assets/components/shadcnui/button";
+import {Button} from "@assets/components/shadcnui/button";
 import {toast} from "sonner";
 
 export default function HomeBoard() {

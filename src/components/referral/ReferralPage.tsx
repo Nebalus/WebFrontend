@@ -1,5 +1,5 @@
 import StarBackground from "@/components/StarBackground.tsx";
-import { trefoil } from 'ldrs';
+import {trefoil} from 'ldrs';
 
 export default function ReferralPage() {
 

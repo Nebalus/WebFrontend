@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@assets/components/shadcnui/card.tsx"
+import {Card, CardContent} from "@assets/components/shadcnui/card.tsx"
 // import { Input } from "@assets/components/ui/input.tsx"
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
