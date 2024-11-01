@@ -28,7 +28,6 @@ import {NavUser} from "@/components/dashboard/rootlayout/DashboardSideBarUser"
 import {NavLink, useLocation} from "react-router-dom"
 import {useEffect, useState} from "react";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
-import {Tooltip, TooltipContent, TooltipTrigger} from "@assets/components/shadcnui/tooltip"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -73,14 +72,12 @@ const navigation: Navigation = {
       title: "Home",
       url: APP_DASHBOARD_PATH,
       icon: Home,
-      tooltip: undefined,
       dropdown: []
     },
     {
       title: "Refferals",
       url: "referrals",
       icon: Link,
-      tooltip: undefined,
       dropdown: [
         {
           title: "Create Referral",
@@ -93,28 +90,24 @@ const navigation: Navigation = {
       title: "Linktree",
       url: "linktree",
       icon: ListTree,
-      tooltip: undefined,
       dropdown: []
     },
     {
       title: "Analytics",
       url: "analytics",
       icon: ChartSpline,
-      tooltip: undefined,
       dropdown: []
     },
     {
       title: "Todos",
       url: "todos",
       icon: ClipboardList,
-      tooltip: undefined,
       dropdown: []
     },
     {
       title: "Time Capsules",
       url: "timecapsule",
       icon: Hourglass,
-      tooltip: undefined,
       dropdown: []
     }
   ]
@@ -170,26 +163,15 @@ export default function DashboardSideBar() {
             <SidebarMenu>
               {
                 navigation.navMain.map((navItem) => (
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <SidebarMenuItem key={navItem.title}>
-                        <SidebarMenuButton isActive={currentPage === APP_DASHBOARD_PATH + navItem.url} asChild>
-                          <NavLink to={navItem.url}>
-                            <navItem.icon/>
-                            <span>{navItem.title}</span>
-                          </NavLink>
-                        </SidebarMenuButton>
-                        {loadDropdownActions(navItem)}
-                      </SidebarMenuItem>
-                    </TooltipTrigger>
-                    {
-                      navItem.tooltip && (
-                        <TooltipContent>
-                          {navItem.tooltip}
-                        </TooltipContent>
-                      )
-                    }
-                  </Tooltip>
+                  <SidebarMenuItem key={navItem.title}>
+                    <SidebarMenuButton isActive={currentPage === APP_DASHBOARD_PATH + navItem.url} asChild>
+                      <NavLink to={navItem.url}>
+                        <navItem.icon/>
+                        <span>{navItem.title}</span>
+                      </NavLink>
+                    </SidebarMenuButton>
+                    {loadDropdownActions(navItem)}
+                  </SidebarMenuItem>
                 ))
               }
             </SidebarMenu>
