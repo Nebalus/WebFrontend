@@ -75,7 +75,7 @@ const navigation: Navigation = {
       dropdown: []
     },
     {
-      title: "Refferals",
+      title: "Referrals",
       url: "referrals",
       icon: Link,
       dropdown: [
