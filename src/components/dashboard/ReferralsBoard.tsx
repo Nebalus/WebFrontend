@@ -1,9 +1,9 @@
-import WorkAndProgress from "@/components/WorkAndProgress.tsx";
+import WorkInProgress from "@/components/WorkInProgress.tsx";
 
 export default function ReferralsBoard() {
     return (
         <>
-            <WorkAndProgress />
+            <WorkInProgress />
         </>
     );
 }

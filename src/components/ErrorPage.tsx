@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import StarBackground from "@/components/StarBackground.tsx";
 import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
+import {APP_DASHBOARD_PATH} from "@/constants.ts";
 
 export default function ErrorPage() {
   const { isAuthenticated } = useAuthenticatedUserStore();
@@ -9,7 +10,7 @@ export default function ErrorPage() {
     if (isAuthenticated()) {
       return (
         <Link
-            to={"/-/"}
+            to={APP_DASHBOARD_PATH}
             className="inline-flex items-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
           Go to dashboard

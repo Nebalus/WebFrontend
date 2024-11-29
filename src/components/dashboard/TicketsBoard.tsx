@@ -1,9 +1,9 @@
-import WorkAndProgress from "@/components/WorkAndProgress.tsx";
+import WorkInProgress from "@/components/WorkInProgress.tsx";
 
 export default function TicketsBoard() {
     return (
         <>
-            <WorkAndProgress />
+            <WorkInProgress />
         </>
     );
 }

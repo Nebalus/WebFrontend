@@ -17,7 +17,7 @@ import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 // import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
-import WorkAndProgress from "@/components/WorkAndProgress.tsx";
+import WorkInProgress from "@/components/WorkInProgress.tsx";
 import TimeCapsuleBoard from "@/components/dashboard/TimeCapsuleBoard.tsx";
 import {ProfileSettings} from "@/components/settings/ProfileSettings.tsx";
 
@@ -74,7 +74,7 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: "linktree/:linktree_id",
-        element: <WorkAndProgress />
+        element: <WorkInProgress />
     },
     {
         path: "login",
