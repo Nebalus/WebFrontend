@@ -1,15 +1,32 @@
 import {z} from "zod";
+import {UserSchema} from "@/schemas/schemas.ts";
 
-export const SuccessfulLoginResponse = z.object({
+export const GenericResponse = z.object({
+    success: z.boolean(),
+    message: z.string().nullable(),
+    status_code: z.number().min(100).max(599),
+    payload: z.any().nullable()
+})
+
+export const GenericSuccessResponse = GenericResponse.extend({
     success: z.literal(true),
-    code: z.number(),
-    jwt: z.string(),
-    user: z.object({
-        user_id: z.number().min(0),
-        username: z.string(),
-        email: z.string().email(),
-        is_admin: z.boolean(),
-        is_enabled: z.boolean(),
-        creation_date_timestamp: z.number(),
+})
+
+export const GenericErrorResponse = GenericResponse.extend({
+    success: z.literal(false),
+})
+
+export const SuccessfulLoginResponse = GenericSuccessResponse.extend({
+    payload: z.object({
+        jwt: z.string(),
+        user: UserSchema
     })
 })
+
+export type SuccessfulLoginResponse = z.infer<typeof SuccessfulLoginResponse>;
+
+export const SuccessfulRegisterResponse = GenericSuccessResponse.extend({
+    payload: UserSchema
+})
+
+export type SuccessfulRegisterResponse = z.infer<typeof SuccessfulLoginResponse>;

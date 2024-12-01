@@ -1,9 +1,40 @@
 import {APP_BACKEND_API_DOMAIN, APP_BACKEND_API_PORT, APP_BACKEND_API_PROTOCOL} from "@/constants.ts";
 import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
-import {SuccessfulLoginResponse} from "@/schemas/ApiResponseSchemas.ts";
+import {SuccessfulLoginResponse, SuccessfulRegisterResponse} from "@/schemas/ApiResponseSchemas.ts";
+import {InvitationToken} from "@/schemas/schemas.ts";
 
 class ApiCommunicator {
     server = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
+
+    async register(invitationToken: InvitationToken, username: string, email: string, password: string): Promise<SuccessfulRegisterResponse> {
+        const $registerRequest: Successful = {
+            "invitation_token": {
+                "field_1": invitationToken.field_1,
+                "field_2": invitationToken.field_2,
+                "field_3": invitationToken.field_3,
+                "field_4": invitationToken.field_4,
+                "checksum": invitationToken.checksum,
+            },
+            "email": email,
+            "username": username,
+            "password": password,
+        }
+
+        try {
+            const response = await this.apiFetch({
+                context: {
+                    method: "POST",
+                    body: JSON.stringify($registerRequest),
+                },
+                route: "/ui/register"
+            });
+            if(response.ok) {
+                return SuccessfulRegisterResponse.parse(await response.json());
+            }
+        } catch (e) {
+        }
+        return {};
+    }
 
     async login(username: string, password: string): Promise<any> {
         const { setUser, setJwt } = useAuthenticatedUserStore.getState();
