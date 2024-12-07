@@ -21,9 +21,8 @@ export function CommandMenu() {
             <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>
                 <CommandGroup heading="Suggestions">
-                    <CommandItem>Calendar</CommandItem>
-                    <CommandItem>Search Emoji</CommandItem>
-                    <CommandItem>Calculator</CommandItem>
+                    <CommandItem>Create an Referral</CommandItem>
+                    <CommandItem>View Referrals</CommandItem>
                 </CommandGroup>
             </CommandList>
         </CommandDialog>

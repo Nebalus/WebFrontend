@@ -1,14 +1,20 @@
 import SiteLogo from "@/components/SiteLogo.tsx";
 import StarBackground from "@/components/StarBackground.tsx";
-import {Form, Link, useActionData, useNavigation} from "react-router-dom";
+import {Form, Link, useActionData, useLocation, useNavigation} from "react-router-dom";
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {CircleAlert} from "lucide-react";
 import {Alert, AlertDescription, AlertTitle} from "@assets/components/shadcnui/alert.tsx";
+import {APP_DASHBOARD_PATH} from "@/constants.ts";
+import {Input} from "@assets/components/shadcnui/input.tsx";
 
 export default function LoginPage() {
   const navigation = useNavigation();
   const isSigningIn = navigation.state === 'submitting';
   const actionData = useActionData() as { has_error: boolean, error_title: string ,error_message: string } | undefined;
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const from = params.get('from') || APP_DASHBOARD_PATH;
 
   return (
       <>
@@ -84,6 +90,7 @@ export default function LoginPage() {
                 >
                   {isSigningIn ? 'Signing in' : 'Sign in'}
                 </Button>
+                <Input type="hidden" name="redirectTo" value={from} />
               </div>
             </Form>
 

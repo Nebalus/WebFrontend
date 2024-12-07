@@ -17,7 +17,8 @@ export default async function loginAction({request}: { request: Request}) {
     const loginResponse = await ApiCommunicator.login(username, password);
 
     if (loginResponse.success) {
-        return redirect(APP_DASHBOARD_PATH);
+        const redirectTo = formData.get('redirectTo') as string | null;
+        return redirect(redirectTo || APP_DASHBOARD_PATH);
     }
 
     return {
