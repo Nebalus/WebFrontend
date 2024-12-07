@@ -1,4 +1,4 @@
-import {ChevronsUpDown, HeartHandshake, LogOut, Mail, Settings, Ticket,} from "lucide-react"
+import {ChevronsUpDown, HeartHandshake, LogOut, Mail, Settings, Ticket, History} from "lucide-react"
 
 import {Avatar, AvatarFallback, AvatarImage,} from "@assets/components/shadcnui/avatar"
 import {
@@ -71,7 +71,7 @@ export function NavUser({
                 Settings
               </DropdownMenuItem>
             </NavLink>
-            <NavLink to="">
+            <NavLink to="mailto:support@nebalus.dev?subject=Help%20needed&body=Hello%20Support%2C%0AI%27m%20experiencing%20an%20issue%20and%20would%20appreciate%20your%20help.%0A-%20Description%3A%20%5BBrief%20issue%20description%5D%0A-%20Steps%20to%20Reproduce%3A%20%0A%20%201.%20%5BStep%201%5D%0A%20%202.%20%5BStep%202%5D%0A-%20Expected%20Result%3A%20%5BWhat%20should%20happen%5D%0A-%20Actual%20Result%3A%20%5BWhat%20happens%20instead%5D%0A-%20Device%2FOS%3A%20%5Be.g.%2C%20Windows%2010%2C%20macOS%5D%0A-%20Browser%20%28if%20applicable%29%3A%20%5Be.g.%2C%20Chrome%2C%20Firefox%5D%0A-%20Error%20Message%3A%20%5BAny%20error%20message%2C%20if%20applicable%5D%0A%0AAttachments%20%28if%20any%29%3A%20%5BScreenshots%2Ffiles%5D%0A%0AThanks%20for%20your%20assistance%21%0A%0ABest%2C%20%20%0A%5BYour%20Name%5D">
               <DropdownMenuItem>
                 <HeartHandshake />
                 Support
@@ -87,6 +87,12 @@ export function NavUser({
               <DropdownMenuItem>
                 <Ticket />
                 Tickets
+              </DropdownMenuItem>
+            </NavLink>
+            <NavLink to="">
+              <DropdownMenuItem>
+                <History />
+                Access History
               </DropdownMenuItem>
             </NavLink>
             </DropdownMenuGroup>

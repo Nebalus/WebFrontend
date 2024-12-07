@@ -4,6 +4,7 @@ import {Separator} from "@assets/components/shadcnui/separator"
 import {Outlet} from "react-router-dom";
 import {Toaster} from "sonner";
 import {DynamicBreadcrumb} from "@/components/dashboard/rootlayout/DynamicBreadcrumb.tsx";
+import {CommandMenu} from "@/components/dashboard/CommandMenu.tsx";
 
 export default function DashboardRootLayout() {
   return (
@@ -11,7 +12,7 @@ export default function DashboardRootLayout() {
       <SidebarProvider defaultOpen={true}>
         <DashboardSideBar />
         <SidebarInset>
-          <header className="flex h-16 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 fixed bg-background">
+          <header className="flex h-16 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 fixed w-full -z-[-1] backdrop-blur-lg border-b border-l border-r">
             <div className="flex items-center gap-2 px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="mr-2 h-4" />
@@ -24,6 +25,7 @@ export default function DashboardRootLayout() {
         </SidebarInset>
       </SidebarProvider>
       <Toaster />
+      <CommandMenu />
     </>
   )
 }

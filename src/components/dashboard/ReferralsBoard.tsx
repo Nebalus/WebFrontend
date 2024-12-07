@@ -1,9 +1,11 @@
-import WorkInProgress from "@/components/WorkInProgress.tsx";
+import ReferralAnalyticsCard from "@/components/referral/ReferralAnalyticsCard.tsx";
+import ReferralsCard from "@/components/referral/ReferralsCard.tsx";
 
 export default function ReferralsBoard() {
     return (
         <>
-            <WorkInProgress />
+            <ReferralAnalyticsCard></ReferralAnalyticsCard>
+            <ReferralsCard></ReferralsCard>
         </>
     );
 }
