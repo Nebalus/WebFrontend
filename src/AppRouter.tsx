@@ -6,19 +6,19 @@ import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
-import HomeBoard from "@/components/dashboard/HomeBoard.tsx";
-import ReferralsBoard from "@/components/dashboard/ReferralsBoard.tsx";
-import LinktreeBoard from "@/components/dashboard/LinktreeBoard.tsx";
-import AnalyticsBoard from "@/components/dashboard/AnalyticsBoard.tsx";
-import TodosBoard from "@/components/dashboard/TodosBoard.tsx";
-import TicketsBoard from "@/components/dashboard/TicketsBoard.tsx";
+import HomeBoard from "@/components/dashboard/boards/HomeBoard.tsx";
+import ReferralsBoard from "@/components/dashboard/boards/ReferralsBoard.tsx";
+import LinktreeBoard from "@/components/dashboard/boards/LinktreeBoard.tsx";
+import AnalyticsBoard from "@/components/dashboard/boards/AnalyticsBoard.tsx";
+import TodosBoard from "@/components/dashboard/boards/TodosBoard.tsx";
+import TicketsBoard from "@/components/dashboard/boards/TicketsBoard.tsx";
 import ReferralPage from "@/components/referral/ReferralPage.tsx";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 // import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkInProgress from "@/components/WorkInProgress.tsx";
-import TimeCapsuleBoard from "@/components/dashboard/TimeCapsuleBoard.tsx";
+import TimeCapsuleBoard from "@/components/dashboard/boards/TimeCapsuleBoard.tsx";
 import {ProfileSettings} from "@/components/settings/ProfileSettings.tsx";
 
 export const appRouter = createBrowserRouter([
