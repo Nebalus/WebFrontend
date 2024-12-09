@@ -14,7 +14,7 @@ export default async function registerAction({request}: { request: Request}) {
         return {
             has_error: true,
             error_title: 'Invalid Format',
-            error_message: 'The activation token is in a invalid format'
+            error_message: 'The invitation token is in a invalid format'
         }
     }
 
