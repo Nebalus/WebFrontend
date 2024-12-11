@@ -109,6 +109,12 @@ const navigation: Navigation = {
       url: "timecapsule",
       icon: Hourglass,
       dropdown: []
+    },
+    {
+      title: "Forms",
+      url: "forms",
+      icon: ClipboardList,
+      dropdown: []
     }
   ]
 }
