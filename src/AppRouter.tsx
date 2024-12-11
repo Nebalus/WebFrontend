@@ -77,6 +77,10 @@ export const appRouter = createBrowserRouter([
         element: <WorkInProgress />
     },
     {
+        path: "form/:form_id",
+        element: <WorkInProgress />
+    },
+    {
         path: "login",
         action: loginAction,
         loader: authenticatedLoader,
