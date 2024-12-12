@@ -81,6 +81,10 @@ export const appRouter = createBrowserRouter([
         element: <WorkInProgress />
     },
     {
+        path: "filetransfer/:file_id",
+        element: <WorkInProgress />
+    },
+    {
         path: "login",
         action: loginAction,
         loader: authenticatedLoader,
