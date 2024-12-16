@@ -7,7 +7,8 @@ import {
   ListTree,
   LucideIcon,
   MoreHorizontal,
-  Plus
+  Plus,
+  Telescope
 } from "lucide-react"
 
 import {
@@ -114,6 +115,12 @@ const navigation: Navigation = {
       title: "Forms",
       url: "forms",
       icon: ClipboardList,
+      dropdown: []
+    },
+    {
+      title: "APOD",
+      url: "apod",
+      icon: Telescope,
       dropdown: []
     }
   ]
