@@ -1,3 +1,4 @@
+import { Button } from "@assets/components/shadcnui/button"
 import {
     Card,
     CardContent,
@@ -5,26 +6,238 @@ import {
     CardHeader,
     CardTitle,
 } from "@assets/components/shadcnui/card"
+import { Input } from "@assets/components/shadcnui/input"
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@assets/components/shadcnui/pagination"
+import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@assets/components/shadcnui/table"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@assets/components/shadcnui/tooltip"
+import { Plus, RefreshCcw } from "lucide-react"
 
 
 export default function ReferralsCard() {
 
+  const invoices = [
+    {
+      invoice: "INV001",
+      paymentStatus: "Paid",
+      totalAmount: "$250.00",
+      paymentMethod: "Credit Card",
+    },
+    {
+      invoice: "INV002",
+      paymentStatus: "Pending",
+      totalAmount: "$150.00",
+      paymentMethod: "PayPal",
+    },
+    {
+      invoice: "INV003",
+      paymentStatus: "Unpaid",
+      totalAmount: "$350.00",
+      paymentMethod: "Bank Transfer",
+    },
+    {
+      invoice: "INV004",
+      paymentStatus: "Paid",
+      totalAmount: "$450.00",
+      paymentMethod: "Credit Card",
+    },
+    {
+      invoice: "INV005",
+      paymentStatus: "Paid",
+      totalAmount: "$550.00",
+      paymentMethod: "PayPal",
+    },
+    {
+      invoice: "INV006",
+      paymentStatus: "Pending",
+      totalAmount: "$200.00",
+      paymentMethod: "Bank Transfer",
+    },
+    {
+      invoice: "INV007",
+      paymentStatus: "Unpaid",
+      totalAmount: "$300.00",
+      paymentMethod: "Credit Card",
+    },
+    {
+      invoice: "INV001",
+      paymentStatus: "Paid",
+      totalAmount: "$250.00",
+      paymentMethod: "Credit Card",
+    },
+    {
+      invoice: "INV002",
+      paymentStatus: "Pending",
+      totalAmount: "$150.00",
+      paymentMethod: "PayPal",
+    },
+    {
+      invoice: "INV003",
+      paymentStatus: "Unpaid",
+      totalAmount: "$350.00",
+      paymentMethod: "Bank Transfer",
+    },
+    {
+      invoice: "INV004",
+      paymentStatus: "Paid",
+      totalAmount: "$450.00",
+      paymentMethod: "Credit Card",
+    },
+    {
+      invoice: "INV005",
+      paymentStatus: "Paid",
+      totalAmount: "$550.00",
+      paymentMethod: "PayPal",
+    },
+    {
+      invoice: "INV006",
+      paymentStatus: "Pending",
+      totalAmount: "$200.00",
+      paymentMethod: "Bank Transfer",
+    },
+    {
+      invoice: "INV007",
+      paymentStatus: "Unpaid",
+      totalAmount: "$300.00",
+      paymentMethod: "Credit Card",
+    },
+    {
+      invoice: "INV001",
+      paymentStatus: "Paid",
+      totalAmount: "$250.00",
+      paymentMethod: "Credit Card",
+    },
+    {
+      invoice: "INV002",
+      paymentStatus: "Pending",
+      totalAmount: "$150.00",
+      paymentMethod: "PayPal",
+    },
+    {
+      invoice: "INV003",
+      paymentStatus: "Unpaid",
+      totalAmount: "$350.00",
+      paymentMethod: "Bank Transfer",
+    },
+    {
+      invoice: "INV004",
+      paymentStatus: "Paid",
+      totalAmount: "$450.00",
+      paymentMethod: "Credit Card",
+    },
+    {
+      invoice: "INV005",
+      paymentStatus: "Paid",
+      totalAmount: "$550.00",
+      paymentMethod: "PayPal",
+    },
+    {
+      invoice: "INV006",
+      paymentStatus: "Pending",
+      totalAmount: "$200.00",
+      paymentMethod: "Bank Transfer",
+    },
+    {
+      invoice: "INV007",
+      paymentStatus: "Unpaid",
+      totalAmount: "$300.00",
+      paymentMethod: "Credit Card",
+    },
+  ]
+
     return (
         <Card>
-            <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
-                <div className="grid flex-1 gap-1 text-center sm:text-left">
-                    <CardTitle>Referrals</CardTitle>
-                    <CardDescription>
-                        Here are the referrals you own
-                    </CardDescription>
-                </div>
-            </CardHeader>
-            <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
-
-            </CardContent>
+          <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
+              <div className="grid flex-1 gap-1 text-center sm:text-left">
+                  <CardTitle>Referrals</CardTitle>
+                  <CardDescription>
+                      Here are the referrals you own
+                  </CardDescription>
+              </div>
+              <div className="flex-row flex-1 gap-1">
+                  <Input placeholder="Search" className="selection:border-accent-"/>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button variant="outline">
+                          <RefreshCcw />
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Reload all Referrals</p>
+                      </TooltipContent>
+                    </Tooltip>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button variant="outline">
+                          <Plus />
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Create Referral</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+              </div>
+          </CardHeader>
+          <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
+            <Table>
+              <TableHeader className="">
+                <TableRow>
+                  <TableHead className="w-[100px]">Invoice</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead>Method</TableHead>
+                  <TableHead className="text-right">Amount</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {invoices.map((invoice) => (
+                  <TableRow key={invoice.invoice}>
+                    <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                    <TableCell>{invoice.paymentStatus}</TableCell>
+                    <TableCell>{invoice.paymentMethod}</TableCell>
+                    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
         </Card>
     )
 }
+
+/*
+<TableFooter className="">
+                <div className="mx-auto flex w-full justify-center">
+                  <Pagination className="">
+                    <PaginationContent className="">
+                      <PaginationItem>
+                        <PaginationPrevious href="#" />
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">1</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#" isActive>
+                          2
+                        </PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">3</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationEllipsis />
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationNext href="#" />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </div>
+              </TableFooter>
+
+
+
+
 /*
 import * as React from "react"
 import {
