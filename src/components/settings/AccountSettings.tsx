@@ -1,4 +1,4 @@
-export function ProfileSettings() {
+export function AccountSettings() {
   return (
     <div className="flex w-full min-h-screen bg-gray-900 text-white">
       <aside className="w-1/5 p-4 bg-gray-800">

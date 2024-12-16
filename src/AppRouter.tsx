@@ -12,14 +12,16 @@ import LinktreeBoard from "@/components/dashboard/boards/LinktreeBoard.tsx";
 import AnalyticsBoard from "@/components/dashboard/boards/AnalyticsBoard.tsx";
 import TodosBoard from "@/components/dashboard/boards/TodosBoard.tsx";
 import TicketsBoard from "@/components/dashboard/boards/TicketsBoard.tsx";
-import ReferralPage from "@/components/referral/ReferralPage.tsx";
+import ReferralPage from "@/components/services/referral/ReferralPage";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 // import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkInProgress from "@/components/WorkInProgress.tsx";
 import TimeCapsuleBoard from "@/components/dashboard/boards/TimeCapsuleBoard.tsx";
-import {ProfileSettings} from "@/components/settings/ProfileSettings.tsx";
+import {AccountSettings, ProfileSettings} from "@/components/settings/AccountSettings";
+import FormsBoard from "./components/dashboard/boards/FormsBoard";
+import ApodBoard from "./components/dashboard/boards/ApodBoard";
 
 export const appRouter = createBrowserRouter([
     {
@@ -39,7 +41,13 @@ export const appRouter = createBrowserRouter([
             },
             {
                 path: "referrals",
-                element: <ReferralsBoard />
+                element: <ReferralsBoard />,
+                children: [
+                    {
+                        path: "create",
+                        element: <ReferralsBoard />,
+                    }
+                ]
             },
             {
                 path: "linktree",
@@ -60,13 +68,26 @@ export const appRouter = createBrowserRouter([
             {
                 path: "timecapsule",
                 element: <TimeCapsuleBoard />
+            },
+            {
+                path: "forms",
+                element: <FormsBoard />
+            },
+            {
+                path: "apod",
+                element: <ApodBoard />
             }
         ]
     },
     {
         path: APP_DASHBOARD_PATH + "settings",
-        element: <ProfileSettings />,
         // loader: protectedLoader,
+        children: [
+            {
+                path: "account",
+                element: <AccountSettings />,
+            },
+        ]
     },
     {
         path: "ref/:referral_id",
