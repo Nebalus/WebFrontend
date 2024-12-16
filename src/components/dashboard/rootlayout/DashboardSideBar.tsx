@@ -8,7 +8,8 @@ import {
   LucideIcon,
   MoreHorizontal,
   Plus,
-  Telescope
+  Telescope,
+  FileText
 } from "lucide-react"
 
 import {
@@ -114,7 +115,7 @@ const navigation: Navigation = {
     {
       title: "Forms",
       url: "forms",
-      icon: ClipboardList,
+      icon: FileText,
       dropdown: []
     },
     {
