@@ -6,22 +6,20 @@ import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
-import HomeBoard from "@/components/dashboard/boards/HomeBoard.tsx";
-import ReferralsBoard from "@/components/dashboard/boards/ReferralsBoard.tsx";
-import LinktreeBoard from "@/components/dashboard/boards/LinktreeBoard.tsx";
-import AnalyticsBoard from "@/components/dashboard/boards/AnalyticsBoard.tsx";
-import TodosBoard from "@/components/dashboard/boards/TodosBoard.tsx";
-import TicketsBoard from "@/components/dashboard/boards/TicketsBoard.tsx";
-import ReferralPage from "@/components/services/referral/ReferralPage";
+import HomeBoard from "@/components/dashboard/HomeBoard";
+import ReferralsBoard from "@/components/dashboard/services/referral/ReferralsBoard";
+import LinktreeBoard from "@/components/dashboard/services/linktree/LinktreeBoard";
+import TodosBoard from "@/components/dashboard/services/todos/TodosBoard";
+import ReferralPage from "@/components/dashboard/services/referral/ReferralPage";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 // import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkInProgress from "@/components/WorkInProgress.tsx";
-import TimeCapsuleBoard from "@/components/dashboard/boards/TimeCapsuleBoard.tsx";
-import {AccountSettings, ProfileSettings} from "@/components/settings/AccountSettings";
-import FormsBoard from "./components/dashboard/boards/FormsBoard";
-import ApodBoard from "./components/dashboard/boards/ApodBoard";
+import TimeCapsuleBoard from "@/components/dashboard/services/timecapsule/TimeCapsuleBoard";
+import {AccountSettings} from "@/components/settings/AccountSettings";
+import FormsBoard from "./components/dashboard/services/forms/FormsBoard";
+import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
 
 export const appRouter = createBrowserRouter([
     {
@@ -52,10 +50,6 @@ export const appRouter = createBrowserRouter([
             {
                 path: "linktree",
                 element: <LinktreeBoard />
-            },
-            {
-                path: "analytics",
-                element: <AnalyticsBoard />
             },
             {
                 path: "todos",

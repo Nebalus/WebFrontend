@@ -95,12 +95,6 @@ const navigation: Navigation = {
       dropdown: []
     },
     {
-      title: "Analytics",
-      url: "analytics",
-      icon: ChartSpline,
-      dropdown: []
-    },
-    {
       title: "Todos",
       url: "todos",
       icon: ClipboardList,
@@ -121,6 +115,12 @@ const navigation: Navigation = {
     {
       title: "APOD",
       url: "apod",
+      icon: Telescope,
+      dropdown: []
+    },
+    {
+      title: "Paste Bin",
+      url: "paste_bin",
       icon: Telescope,
       dropdown: []
     }
