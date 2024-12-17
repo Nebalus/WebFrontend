@@ -14,7 +14,9 @@ export function DynamicBreadcrumb() {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x && x !== Array.from(APP_DASHBOARD_PATH).filter(char => char !== "/").join(''));
 
-    const capitalize = (s: string) => (s.charAt(0).toUpperCase() + s.slice(1)).replace("_", " ").replace("-", " ");
+    const format = (s: string) => {
+        return (s.charAt(0).toUpperCase() + s.slice(1)).replace("_", " ").replace("-", " ");
+    };
 
     return (
         <Breadcrumb>
@@ -33,10 +35,10 @@ export function DynamicBreadcrumb() {
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
                                 {isLast ? (
-                                    <BreadcrumbPage>{capitalize(name)}</BreadcrumbPage>
+                                    <BreadcrumbPage>{format(name)}</BreadcrumbPage>
                                 ) : (
                                     <BreadcrumbLink href={routeTo}>
-                                        {capitalize(name)}
+                                        {format(name)}
                                     </BreadcrumbLink>
                                 )}
                             </BreadcrumbItem>
