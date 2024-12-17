@@ -20,6 +20,7 @@ import TimeCapsuleBoard from "@/components/dashboard/services/timecapsule/TimeCa
 import {AccountSettings} from "@/components/settings/AccountSettings";
 import FormsBoard from "./components/dashboard/services/forms/FormsBoard";
 import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
+import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoard";
 
 export const appRouter = createBrowserRouter([
     {
@@ -66,7 +67,11 @@ export const appRouter = createBrowserRouter([
             {
                 path: "apod",
                 element: <ApodBoard />
-            }
+            },
+            {
+                path: "paste_bin",
+                element: <PasteBinBoard />
+            },
         ]
     },
     {

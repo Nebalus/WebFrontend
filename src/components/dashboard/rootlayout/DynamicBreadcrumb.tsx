@@ -14,7 +14,7 @@ export function DynamicBreadcrumb() {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x && x !== Array.from(APP_DASHBOARD_PATH).filter(char => char !== "/").join(''));
 
-    const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+    const capitalize = (s: string) => (s.charAt(0).toUpperCase() + s.slice(1)).replace("_", " ").replace("-", " ");
 
     return (
         <Breadcrumb>
