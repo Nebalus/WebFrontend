@@ -56,10 +56,6 @@ export const appRouter = createBrowserRouter([
                 element: <TodosBoard />
             },
             {
-                path: "tickets",
-                element: <TicketsBoard />
-            },
-            {
                 path: "timecapsule",
                 element: <TimeCapsuleBoard />
             },

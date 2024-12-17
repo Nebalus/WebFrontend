@@ -17,133 +17,17 @@ import { Label } from "@assets/components/shadcnui/label"
 
 export default function ReferralsCard() {
 
-  const invoices = [
+  const referrals = [
     {
-      invoice: "INV001",
-      paymentStatus: "Paid",
-      totalAmount: "$250.00",
-      paymentMethod: "Credit Card",
+      code: "IPq1vObp",
+      name: "Test Referral",
+      pointer: "https://nebalus.dev",
     },
     {
-      invoice: "INV002",
-      paymentStatus: "Pending",
-      totalAmount: "$150.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "Unpaid",
-      totalAmount: "$350.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "Paid",
-      totalAmount: "$450.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "Paid",
-      totalAmount: "$550.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "Pending",
-      totalAmount: "$200.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV007",
-      paymentStatus: "Unpaid",
-      totalAmount: "$300.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV001",
-      paymentStatus: "Paid",
-      totalAmount: "$250.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "Pending",
-      totalAmount: "$150.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "Unpaid",
-      totalAmount: "$350.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "Paid",
-      totalAmount: "$450.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "Paid",
-      totalAmount: "$550.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "Pending",
-      totalAmount: "$200.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV007",
-      paymentStatus: "Unpaid",
-      totalAmount: "$300.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV001",
-      paymentStatus: "Paid",
-      totalAmount: "$250.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "Pending",
-      totalAmount: "$150.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "Unpaid",
-      totalAmount: "$350.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "Paid",
-      totalAmount: "$450.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "Paid",
-      totalAmount: "$550.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "Pending",
-      totalAmount: "$200.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV007",
-      paymentStatus: "Unpaid",
-      totalAmount: "$300.00",
-      paymentMethod: "Credit Card",
-    },
+      code: "rwm4KlSK",
+      name: "Crazy Referral",
+      pointer: "https://google.com",
+    }
   ]
 
     return (
@@ -155,78 +39,60 @@ export default function ReferralsCard() {
                       Here are the referrals you own
                   </CardDescription>
               </div>
-              <div className="flex-row flex-1 gap-1">
-                  <Input placeholder="Search" className="selection:border-accent-"/>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button variant="outline">
-                          <RefreshCcw />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Reload all Referrals</p>
-                      </TooltipContent>
-                    </Tooltip>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button variant="outline">
-                              <Plus />
-                            </Button>
-                          </ DialogTrigger>
-                          <DialogContent className="sm:max-w-[425px]">
-                            <DialogHeader>
-                              <DialogTitle>Edit profile</DialogTitle>
-                              <DialogDescription>
-                                Make changes to your profile here. Click save when you're done.
-                              </DialogDescription>
-                            </DialogHeader>
-                            <div className="grid gap-4 py-4">
-                              <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="name" className="text-right">
-                                  Name
-                                </Label>
-                                <Input id="name" value="Pedro Duarte" className="col-span-3" />
-                              </div>
-                              <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="username" className="text-right">
-                                  Username
-                                </Label>
-                                <Input id="username" value="@peduarte" className="col-span-3" />
-                              </div>
-                            </div>
-                            <DialogFooter>
-                              <Button type="submit">Save changes</Button>
-                            </DialogFooter>
-                          </DialogContent>
-                        </Dialog>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Create Referral</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-              </div>
+            <div className="flex-row flex-1 gap-1">
+              <Input placeholder="Search" className="selection:border-accent-"/>
+              <Button variant="outline">
+                <RefreshCcw />
+              </Button>      
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline">
+                    <Plus />
+                  </Button>
+                </ DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>Create referral</DialogTitle>
+                    <DialogDescription>
+                      Bla Bla Bla Bla Bla Bla
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Label htmlFor="name" className="text-right">
+                        Name
+                      </Label>
+                      <Input id="name" placeholder="Insert your referral name" className="col-span-3" />
+                    </div>
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Label htmlFor="username" className="text-right">
+                        URL
+                      </Label>
+                      <Input id="url" placeholder="Insert your URL" type="url" className="col-span-3" />
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button type="submit" className="bg-green-600">Create</Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </div>
           </CardHeader>
           <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
             <Table>
               <TableHeader className="">
                 <TableRow>
-                  <TableHead className="w-[100px]">Invoice</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Method</TableHead>
-                  <TableHead className="text-right">Amount</TableHead>
+                  <TableHead className="w-[100px]">Code</TableHead>
+                  <TableHead>Name</TableHead>
+                  <TableHead>Pointer</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {invoices.map((invoice) => (
-                  <TableRow key={invoice.invoice}>
-                    <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                    <TableCell>{invoice.paymentStatus}</TableCell>
-                    <TableCell>{invoice.paymentMethod}</TableCell>
-                    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+                {referrals.map((referral) => (
+                  <TableRow key={"REFERRAL" + referral.code}>
+                    <TableCell className="font-medium">{referral.code}</TableCell>
+                    <TableCell>{referral.name}</TableCell>
+                    <TableCell>{referral.pointer}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

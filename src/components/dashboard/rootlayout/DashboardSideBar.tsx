@@ -1,5 +1,5 @@
 import {
-  ChartSpline,
+  Clipboard,
   ClipboardList,
   Home,
   Hourglass,
@@ -121,7 +121,7 @@ const navigation: Navigation = {
     {
       title: "Paste Bin",
       url: "paste_bin",
-      icon: Telescope,
+      icon: Clipboard,
       dropdown: []
     }
   ]
