@@ -1,10 +1,11 @@
-import {Card, CardContent} from "@assets/components/shadcnui/card.tsx"
+import {Card, CardContent, CardHeader} from "@assets/components/shadcnui/card.tsx"
 // import { Input } from "@assets/components/ui/input.tsx"
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
 import {Link, Outlet} from "react-router-dom";
 import StarBackground from "@/components/StarBackground.tsx";
 import SiteLogo from "@/components/SiteLogo.tsx";
+import ProjectCard from "./ProjectCard";
 
 export default function LandingPage() {
 
@@ -60,7 +61,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </section>
-            <section id="projects" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+            <section id="projects" className="w-full py-12 md:py-24 lg:py-32 bg-gray-950 border-t">
               <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
                   <div className="space-y-2">
@@ -71,56 +72,35 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="mx-auto grid max-w-8xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-                  <Card className="rounded-2xl">
-                    <CardContent className="flex flex-col gap-3">
-                      <img
-                          draggable="false"
-                          src="/static/media/images/mandelbrot.jpg"
-                          alt="Picture of an mandelbrot fractal"
-                          className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                      />
-                      <div className="flex flex-col gap-2">
-                        <h3 className="text-xl font-bold">Mandelbrot</h3>
-                        <p className="text-muted-foreground">An user interface written in Java to explore the wonders of the Mandelbrot-set fractal.</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="flex flex-col gap-3">
-                      <img
-                          draggable="false"
-                          src="/static/icons/placeholder.svg"
-                          alt="Melodybot Icon"
-                          className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                      />
-                      <h3 className="text-xl font-bold">Melody </h3>
-                      <p className="text-muted-foreground">An open-source Discord music bot in Java! Currently WIP!!!</p>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="flex flex-col gap-3">
-                      <img
-                          draggable="false"
-                          src="/static/icons/placeholder.svg"
-                          alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"
-                          className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                      />
-                      <h3 className="text-xl font-bold">Cosmoventure</h3>
-                      <p className="text-muted-foreground">This is a 2D jump n run, story game made with my house own game engine. Currently WIP!!!</p>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardContent className="flex flex-col gap-3">
-                      <img
-                          draggable="false"
-                          src="/static/icons/placeholder.svg"
-                          alt="GFW Icon"
-                          className="aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                      />
-                      <h3 className="text-xl font-bold">GalaxyFrameWork</h3>
-                      <p className="text-muted-foreground">Simplifies Java app development by streamlining file organization, logging, GUI rendering, and source code optimization. Currently WIP!!!</p>
-                    </CardContent>
-                  </Card>
+                  <ProjectCard 
+                    pic_link="/static/media/images/mandelbrot.jpg"
+                    pic_alt="Picture of an mandelbrot fractal"
+                    title="Mandelbrot"
+                    description="An user interface written in Java to explore the wonders of the Mandelbrot-set fractal."
+                    github_link="https://github.com/Nebalus/Mandelbrot-Fractal"
+                    workandprogress={false}
+                  />
+                  <ProjectCard 
+                    pic_link="/static/icons/placeholder.svg"
+                    pic_alt="Melodybot Icon"
+                    title="Melody"
+                    description="An open-source Discord music bot in Java!"
+                    workandprogress={true}
+                  />
+                  <ProjectCard 
+                    pic_link="/static/icons/placeholder.svg"
+                    pic_alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"
+                    title="Cosmoventure"
+                    description="This is a 2D jump n run, story game made with my house own game engine."
+                    workandprogress={true}
+                  />
+                  <ProjectCard 
+                    pic_link="/static/icons/placeholder.svg"
+                    pic_alt="Picture of an mandelbrot fractal"
+                    title="GalaxyFrameWork"
+                    description="Simplifies Java app development by streamlining file organization, logging, GUI rendering, and source code optimization."
+                    workandprogress={true}
+                  />
                 </div>
               </div>
             </section>
@@ -184,7 +164,7 @@ export default function LandingPage() {
             {/*  </div>*/}
             {/*</section>*/}
           </main>
-          <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-muted z-10">
+          <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-gray-950 z-10">
             <nav className="sm:ml-auto flex gap-4 sm:gap-6">
               <p>Made with ♥️ by Nebalus</p>
               {/*<Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>*/}

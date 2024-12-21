@@ -1,5 +1,5 @@
 import {createBrowserRouter, redirect} from "react-router-dom";
-import LandingPage from "@/components/LandingPage.tsx";
+import LandingPage from "@/components/landingpage/LandingPage";
 import ErrorPage from "@/components/ErrorPage.tsx";
 import LoginPage from "@/components/authentication/LoginPage.tsx";
 import RegisterPage from "@/components/authentication/RegisterPage.tsx";
