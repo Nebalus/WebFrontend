@@ -64,11 +64,6 @@ interface Navigation {
 
 // Menu items.
 const navigation: Navigation = {
-  user: {
-    name: "TEST",
-    email: "test@test.de",
-    avatar: "TT"
-  },
   navMain: [
     {
       title: "Home",

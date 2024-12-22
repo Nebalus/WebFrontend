@@ -12,7 +12,7 @@ import LinktreeBoard from "@/components/dashboard/services/linktree/LinktreeBoar
 import TodosBoard from "@/components/dashboard/services/todos/TodosBoard";
 import ReferralPage from "@/components/dashboard/services/referral/ReferralPage";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-// import protectedLoader from "@/loader/protectedLoader.ts";
+import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkInProgress from "@/components/WorkInProgress.tsx";
@@ -32,7 +32,7 @@ export const appRouter = createBrowserRouter([
     {
         path: APP_DASHBOARD_PATH,
         element: <DashboardRootLayout />,
-        // loader: protectedLoader,
+        loader: protectedLoader,
         children: [
             {
                 path: "",

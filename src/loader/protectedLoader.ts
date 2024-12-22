@@ -1,4 +1,4 @@
-import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
+import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import {redirect} from "react-router-dom";
 
 export default function protectedLoader() {

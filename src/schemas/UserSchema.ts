@@ -4,9 +4,8 @@ export const UserSchema = z.object({
     user_id: z.number(),
     username: z.string().transform(username => username.trim().toLowerCase().replace(/\s/g, "")),
     email: z.string().email('Invalid email format'),
-    is_enabled: z.boolean(),
-    is_admin: z.boolean(),
-    creation_date_timestamp: z.number().min(0),
+    disabled: z.boolean(),
+    created_at_timestamp: z.number().min(0),
 });
 
 export type User = z.infer<typeof UserSchema>;

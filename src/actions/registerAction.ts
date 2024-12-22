@@ -1,5 +1,5 @@
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-import {InvitationTokenSchema} from "@/schemas/schemas.ts";
+import {InvitationTokenSchema} from "@/schemas/UserSchema.ts";
 
 export default async function registerAction({request}: { request: Request}) {
     const formData = await request.formData();
