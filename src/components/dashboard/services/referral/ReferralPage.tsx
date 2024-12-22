@@ -1,9 +1,35 @@
 import StarBackground from "@/components/StarBackground.tsx";
 import {trefoil} from 'ldrs';
+import {server_url} from "@/communicator/ApiCommunicator.ts";
+import {useEffect} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {ReferralClickSuccessResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 
 export default function ReferralPage() {
+    const navigate = useNavigate();
+    const referralCode = useParams<'referral_code'>().referral_code;
 
-    trefoil.register()
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch(`${server_url}/services/referral/` + referralCode, {
+                    method: 'GET',
+                });
+
+                if (response.ok) {
+                    const referralResponse = ReferralClickSuccessResponse.parse(await response.json());
+                    window.location.href = referralResponse.payload.pointer;
+                    return null;
+                } else {
+                    navigate('/');
+                }
+            } catch (e) {
+                navigate('/');
+            }
+        })();
+    }, []);
+
+    trefoil.register();
 
     return (
         <>

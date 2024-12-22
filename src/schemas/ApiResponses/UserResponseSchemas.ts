@@ -1,6 +1,6 @@
 import {z} from "zod";
 import {UserSchema} from "@/schemas/UserSchema.ts";
-import {GenericSuccessResponse} from "@/schemas/ApiResponses/GenericApiResponseSchemas.ts";
+import {GenericSuccessResponse} from "@/schemas/ApiResponses/GenericResponseSchemas.ts";
 
 export const SuccessfulLoginResponse = GenericSuccessResponse.extend({
     payload: z.object({

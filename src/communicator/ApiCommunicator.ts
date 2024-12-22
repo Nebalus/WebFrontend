@@ -1,9 +1,10 @@
 import {APP_BACKEND_API_DOMAIN, APP_BACKEND_API_PORT, APP_BACKEND_API_PROTOCOL} from "@/constants.ts";
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
-import {SuccessfulLoginResponse} from "@/schemas/ApiResponses/ApiResponseSchemas.ts";
+import {SuccessfulLoginResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
+
+export const server_url = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
 
 class ApiCommunicator {
-    server = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
 
     // async register(invitationToken: InvitationToken, username: string, email: string, password: string): Promise<SuccessfulRegisterResponse> {
     //     const $registerRequest: Successful = {
@@ -44,7 +45,7 @@ class ApiCommunicator {
         }
 
         try {
-            const response = await fetch(`${this.server}/ui/auth`, {
+            const response = await fetch(`${server_url}/ui/auth`, {
                 method: 'POST',
                 body: JSON.stringify($loginRequest),
             });
@@ -70,7 +71,7 @@ class ApiCommunicator {
     }
 
     async apiFetch({ context = {}, route }: { context: RequestInit; route: `/${string}` }): Promise<Response> {
-        const url = `${this.server}${route}`;
+        const url = `${server_url}${route}`;
         const { jwt } = useAuthenticatedUserStore.getState();
 
         context.headers = new Headers({

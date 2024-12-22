@@ -85,7 +85,7 @@ export const appRouter = createBrowserRouter([
         ]
     },
     {
-        path: "ref/:referral_id",
+        path: "ref/:referral_code",
         element: <ReferralPage />
     },
     {
