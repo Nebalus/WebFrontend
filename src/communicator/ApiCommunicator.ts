@@ -3,7 +3,7 @@ import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import {SuccessfulLoginResponse} from "@/schemas/ApiResponses/ApiResponseSchemas.ts";
 
 class ApiCommunicator {
-    server = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}/ui`;
+    server = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
 
     // async register(invitationToken: InvitationToken, username: string, email: string, password: string): Promise<SuccessfulRegisterResponse> {
     //     const $registerRequest: Successful = {
@@ -44,7 +44,7 @@ class ApiCommunicator {
         }
 
         try {
-            const response = await fetch(`${this.server}/auth`, {
+            const response = await fetch(`${this.server}/ui/auth`, {
                 method: 'POST',
                 body: JSON.stringify($loginRequest),
             });
