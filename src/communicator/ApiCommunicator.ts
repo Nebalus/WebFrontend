@@ -56,14 +56,14 @@ class ApiCommunicator {
                 if (loginResponse.success) {
                     setUser(loginResponse.payload.user);
                     setJwt(loginResponse.payload.jwt);
+                    return true;
                 }
-                return loginResponse;
             }
 
         } catch (e) {
            console.error(e);
         }
-        return { success: false, error_message: 'Authentication failed. Please try again.' };
+        return false;
     }
 
     logout() {

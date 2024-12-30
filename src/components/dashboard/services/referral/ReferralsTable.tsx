@@ -7,9 +7,7 @@ import {
     CardTitle,
 } from "@assets/components/shadcnui/card"
 import { Input } from "@assets/components/shadcnui/input"
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@assets/components/shadcnui/pagination"
-import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@assets/components/shadcnui/table"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@assets/components/shadcnui/tooltip"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@assets/components/shadcnui/table"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@assets/components/shadcnui/dialog"
 import { Plus, RefreshCcw } from "lucide-react"
 import { Label } from "@assets/components/shadcnui/label"
