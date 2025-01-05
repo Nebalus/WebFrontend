@@ -21,6 +21,7 @@ import {AccountSettings} from "@/components/settings/AccountSettings";
 import FormsBoard from "./components/dashboard/services/forms/FormsBoard";
 import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
 import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoard";
+import GamesIRLBoard from "@/components/dashboard/services/gamesirl/GamesIRLBoard.tsx";
 
 export const appRouter = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export const appRouter = createBrowserRouter([
             {
                 path: "",
                 element: <HomeBoard />
+            },
+            {
+                path: "games_irl",
+                element: <GamesIRLBoard />
             },
             {
                 path: "referrals",

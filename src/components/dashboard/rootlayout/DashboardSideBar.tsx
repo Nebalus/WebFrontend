@@ -9,7 +9,7 @@ import {
   MoreHorizontal,
   Plus,
   Telescope,
-  FileText
+  FileText, Earth
 } from "lucide-react"
 
 import {
@@ -37,12 +37,6 @@ import {
   DropdownMenuTrigger
 } from "@assets/components/shadcnui/dropdown-menu"
 
-interface User {
-  name: string;
-  email: string;
-  avatar: string;
-}
-
 interface NavItem {
   title: string;
   url: string;
@@ -58,7 +52,6 @@ interface DropdownItem {
 }
 
 interface Navigation {
-  user: User;
   navMain: NavItem[];
 }
 
@@ -69,6 +62,12 @@ const navigation: Navigation = {
       title: "Home",
       url: APP_DASHBOARD_PATH,
       icon: Home,
+      dropdown: []
+    },
+    {
+      title: "Games IRL",
+      url: "games_irl",
+      icon: Earth,
       dropdown: []
     },
     {
@@ -188,7 +187,7 @@ export default function DashboardSideBar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={navigation.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   )

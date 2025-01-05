@@ -1,4 +1,3 @@
-import {Card, CardContent, CardHeader} from "@assets/components/shadcnui/card.tsx"
 // import { Input } from "@assets/components/ui/input.tsx"
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
@@ -17,11 +16,11 @@ export default function LandingPage() {
 
   return (
       <>
-        <Outlet />
+        <Outlet/>
         <StarBackground/>
         <div className="flex flex-col min-h-[100dvh] bg-black">
-          <header className="px-4 lg:px-6 h-14 flex items-center">
-            <SiteLogo />
+          <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full z-[50] backdrop-blur-2xl border-b">
+            <SiteLogo/>
             <nav className="ml-auto flex gap-4 sm:gap-6">
               <Link className="text-sm font-bold hover:underline underline-offset-4" to={"https://status.nebalus.dev"}>
                 Status
@@ -48,7 +47,8 @@ export default function LandingPage() {
                         little adventures. ;)
                       </p>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
-                        On this corner of the web, I will host & present a small variety of my services and personal hobby projects.
+                        On this corner of the web, I will host & present a small variety of my services and personal
+                        hobby projects.
                       </p>
                     </div>
                   </div>
@@ -61,7 +61,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </section>
-            <section id="projects" className="w-full py-12 md:py-24 lg:py-32 bg-gray-950 border-t">
+            <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-950 border-t">
               <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
                   <div className="space-y-2">
@@ -72,39 +72,47 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="mx-auto grid max-w-8xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-                  <ProjectCard 
-                    pic_link="/static/media/images/mandelbrot.jpg"
-                    pic_alt="Picture of an mandelbrot fractal"
-                    title="Mandelbrot"
-                    description="An user interface written in Java to explore the wonders of the Mandelbrot-set fractal."
-                    github_link="https://github.com/Nebalus/Mandelbrot-Fractal"
-                    workandprogress={false}
+                  <ProjectCard
+                      pic_link="/static/media/images/mandelbrot.jpg"
+                      pic_alt="Picture of an mandelbrot fractal"
+                      title="Mandelbrot"
+                      description="An user interface written in Java to explore the wonders of the Mandelbrot-set fractal."
+                      github_link="https://github.com/Nebalus/Mandelbrot-Fractal"
+                      work_and_progress={false}
                   />
-                  <ProjectCard 
-                    pic_link="/static/icons/placeholder.svg"
-                    pic_alt="Melodybot Icon"
-                    title="Melody"
-                    description="An open-source Discord music bot in Java!"
-                    workandprogress={true}
+                  <ProjectCard
+                      pic_link="/static/icons/placeholder.svg"
+                      pic_alt="Games IRL Icon"
+                      title="Games IRL Mobile App"
+                      description='"Games IRL" is a mobile app that is used to participate in real life games and events hosted in a city, country, continent or even the whole world.'
+                      github_link="https://github.com/Nebalus/GamesIRLMobile"
+                      work_and_progress={true}
                   />
-                  <ProjectCard 
-                    pic_link="/static/icons/placeholder.svg"
-                    pic_alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"
-                    title="Cosmoventure"
-                    description="This is a 2D jump n run, story game made with my house own game engine."
-                    workandprogress={true}
+                  <ProjectCard
+                      pic_link="/static/icons/placeholder.svg"
+                      pic_alt="Melodybot Icon"
+                      title="Melody"
+                      description="An open-source Discord music bot in Java!"
+                      work_and_progress={true}
                   />
-                  <ProjectCard 
-                    pic_link="/static/icons/placeholder.svg"
-                    pic_alt="Picture of an mandelbrot fractal"
-                    title="GalaxyFrameWork"
-                    description="Simplifies Java app development by streamlining file organization, logging, GUI rendering, and source code optimization."
-                    workandprogress={true}
+                  <ProjectCard
+                      pic_link="/static/icons/placeholder.svg"
+                      pic_alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"
+                      title="Cosmoventure"
+                      description="This is a 2D jump n run, story game made with my house own game engine."
+                      work_and_progress={true}
+                  />
+                  <ProjectCard
+                      pic_link="/static/icons/placeholder.svg"
+                      pic_alt="Picture of an mandelbrot fractal"
+                      title="GalaxyFrameWork"
+                      description="Simplifies Java app development by streamlining file organization, logging, GUI rendering, and source code optimization."
+                      work_and_progress={true}
                   />
                 </div>
               </div>
             </section>
-            {/*<section id="skills" className="w-full py-12 md:py-24 lg:py-32 bg-muted">*/}
+            {/*<section className="w-full py-12 md:py-24 lg:py-32 bg-muted">*/}
             {/*  <div className="container px-4 md:px-6">*/}
             {/*    <div className="flex flex-col items-center justify-center space-y-4 text-center">*/}
             {/*      <div className="space-y-2">*/}
@@ -143,7 +151,7 @@ export default function LandingPage() {
             {/*    </div>*/}
             {/*  </div>*/}
             {/*</section>*/}
-            {/*<section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-muted">*/}
+            {/*<section className="w-full py-12 md:py-24 lg:py-32 bg-muted">*/}
             {/*  <div className="container px-4 md:px-6">*/}
             {/*    <div className="flex flex-col items-center justify-center space-y-4 text-center">*/}
             {/*      <div className="space-y-2">*/}
