@@ -8,11 +8,11 @@ import {Alert, AlertDescription, AlertTitle} from "@assets/components/shadcnui/a
 export default function RegisterPage() {
   const navigation = useNavigation();
   const isRegistering = navigation.state === 'submitting';
-  const actionData = useActionData() as { has_error: boolean, error_title: string ,error_message: string } | undefined;
+  const actionData = useActionData() as { has_error: boolean, error_title: string, error_message: string } | undefined;
 
   return (
       <>
-        <StarBackground />
+        <StarBackground/>
         <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 z-50">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm z-10">
             <SiteLogo className="mx-auto h-3 w-auto flex justify-center items-center"/>
@@ -149,39 +149,3 @@ export default function RegisterPage() {
       </>
   )
 }
-// <>
-//   <StarBackground/>
-//   <div className="flex h-screen w-full items-center justify-center">
-//     <div className="w-full max-w-md space-y-6 bg-green-500">
-//       <div className="space-y-2 text-center">
-//         <h1 className="text-3xl font-bold">Welcome back</h1>
-//         <p className="text-muted-foreground">Please insert your login credentials</p>
-//       </div>
-//       <Card>
-//         <CardContent className="space-y-4">
-//           <div className="space-y-2">
-//             <Label htmlFor="email">E-Mail</Label>
-//             <Input id="email" type="email" placeholder="your email" required/>
-//           </div>
-//           <div className="space-y-2">
-//             <div className="flex items-center justify-between">
-//               <Label htmlFor="password">Password</Label>
-//               {/*<Link href="#" className="text-sm underline" prefetch={false}>*/}
-//               {/*  Passwort vergessen?*/}
-//               {/*</Link>*/}
-//             </div>
-//             <Input id="password" type="password" placeholder="your password" required/>
-//           </div>
-//           <Button className="w-full" type="submit">
-//             Anmelden
-//           </Button>
-//         </CardContent>
-//       </Card>
-//       {/*<Alert variant="destructive">*/}
-//       {/*  <div />*/}
-//       {/*  <AlertTitle>Oops, something went wrong!</AlertTitle>*/}
-//       {/*  <AlertDescription>Please check your login details and try again</AlertDescription>*/}
-//       {/*</Alert>*/}
-//     </div>
-//   </div>
-// </>
