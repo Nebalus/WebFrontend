@@ -1,6 +1,7 @@
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {redirect} from "react-router-dom";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
+import {UserLoginRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
 
 export default async function loginAction({request}: { request: Request}) {
     const formData = await request.formData();
@@ -15,7 +16,20 @@ export default async function loginAction({request}: { request: Request}) {
         }
     }
 
-    const loginResponse = await ApiCommunicator.login(username, password);
+    const userLoginRequest = UserLoginRequest.safeParse({
+        "username": username,
+        "password": password,
+    });
+
+    if (!userLoginRequest.success) {
+        return {
+            has_error: true,
+            error_title: 'Authentication Failed',
+            error_message: userLoginRequest.error.errors[0].message
+        }
+    }
+
+    const loginResponse = await ApiCommunicator.login(userLoginRequest.data);
 
     if (loginResponse) {
         const redirectTo = formData.get('redirectTo') as string | null;
@@ -25,6 +39,6 @@ export default async function loginAction({request}: { request: Request}) {
     return {
         has_error: true,
         error_title: 'Authentication Failed',
-        error_message: 'The authentication services are currently unavailable'
+        error_message: 'Your credentials are invalid'
     }
 }

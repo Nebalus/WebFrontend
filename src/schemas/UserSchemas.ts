@@ -5,10 +5,18 @@ export const UsernameSchema = z.string().min(3).max(32).transform(username => us
 
 export type Username = z.infer<typeof UsernameSchema>;
 
+export const EmailSchema = z.string().email('Invalid email format');
+
+export type Email = z.infer<typeof EmailSchema>;
+
+export const PasswordSchema = z.string();
+
+export type Password = z.infer<typeof PasswordSchema>;
+
 export const UserSchemas = z.object({
     user_id: IdSchema,
     username: UsernameSchema,
-    email: z.string().email('Invalid email format'),
+    email: EmailSchema,
     disabled: z.boolean(),
     created_at_timestamp: z.number().min(0),
 });
@@ -28,6 +36,6 @@ export const InvitationTokenSchema = z.object({
 }, {
     message: "The invitation token is invalid",
     path: ["field_1", "field_2", "field_3", "field_4"],
-})
+});
 
 export type InvitationToken = z.infer<typeof InvitationTokenSchema>;

@@ -1,67 +1,43 @@
 import {APP_BACKEND_API_DOMAIN, APP_BACKEND_API_PORT, APP_BACKEND_API_PROTOCOL} from "@/constants.ts";
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import {SuccessfulLoginResponse, SuccessfulRegisterResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
-import {InvitationToken} from "@/schemas/UserSchemas.ts";
-import {UserRegisterRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
+import {UserLoginRequest, UserRegisterRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
 
 export const server_url = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
 
 class ApiCommunicator {
 
-    async register(invitationToken: InvitationToken, username: string, email: string, password: string): Promise<SuccessfulRegisterResponse> {
-        const userRegisterRequest: UserRegisterRequest = {
-            "invitation_token": {
-                "field_1": invitationToken.field_1,
-                "field_2": invitationToken.field_2,
-                "field_3": invitationToken.field_3,
-                "field_4": invitationToken.field_4,
-                "checksum": invitationToken.checksum,
-            },
-            "email": email,
-            "username": username,
-            "password": password,
-        }
-
+    async register(userRegisterRequest: UserRegisterRequest): Promise<boolean> {
         try {
-            const response = await this.apiFetch({
-                context: {
-                    method: "POST",
-                    body: JSON.stringify(userRegisterRequest),
-                },
-                route: "/ui/register"
+            const response = await fetch(`${server_url}/ui/register`, {
+                method: "POST",
+                body: JSON.stringify(userRegisterRequest),
             });
             if(response.ok) {
-                return SuccessfulRegisterResponse.parse(await response.json());
+                const registerResponse = SuccessfulRegisterResponse.parse(await response.json());
+                return registerResponse.success;
             }
         } catch (e) {
+            console.error(e);
         }
-        return {};
+        return false;
     }
 
-    async login(username: string, password: string): Promise<any> {
+    async login(userLoginRequest: UserLoginRequest): Promise<boolean> {
         const { setUser, setJwt } = useAuthenticatedUserStore.getState();
-
-        const $loginRequest = {
-            "username": username,
-            "password": password,
-        }
 
         try {
             const response = await fetch(`${server_url}/ui/auth`, {
                 method: 'POST',
-                body: JSON.stringify($loginRequest),
+                body: JSON.stringify(userLoginRequest),
             });
 
             if (response.ok) {
                 const loginResponse = SuccessfulLoginResponse.parse(await response.json());
-
-                if (loginResponse.success) {
-                    setUser(loginResponse.payload.user);
-                    setJwt(loginResponse.payload.jwt);
-                    return true;
-                }
+                setUser(loginResponse.payload.user);
+                setJwt(loginResponse.payload.jwt);
+                return true;
             }
-
         } catch (e) {
            console.error(e);
         }
@@ -78,7 +54,7 @@ class ApiCommunicator {
 
         context.headers = new Headers({
             ...context.headers,
-            Authorization: `${jwt}`,
+            Authorization: `${jwt}`
         });
 
         return fetch(url, context);
