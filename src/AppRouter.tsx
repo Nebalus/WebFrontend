@@ -22,6 +22,7 @@ import FormsBoard from "./components/dashboard/services/forms/FormsBoard";
 import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
 import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoard";
 import GamesIRLBoard from "@/components/dashboard/services/gamesirl/GamesIRLBoard.tsx";
+import BlogBoard from "@/components/dashboard/services/blog/BlogBoard.tsx";
 
 export const appRouter = createBrowserRouter([
     {
@@ -77,6 +78,10 @@ export const appRouter = createBrowserRouter([
                 path: "paste_bin",
                 element: <PasteBinBoard />
             },
+            {
+                path: "blog",
+                element: <BlogBoard />
+            },
         ]
     },
     {
@@ -99,10 +104,6 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: "form/:form_id",
-        element: <WorkInProgress />
-    },
-    {
-        path: "filetransfer/:file_id",
         element: <WorkInProgress />
     },
     {

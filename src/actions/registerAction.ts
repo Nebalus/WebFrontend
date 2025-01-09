@@ -1,5 +1,5 @@
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-import {InvitationTokenSchema} from "@/schemas/UserSchema.ts";
+import {InvitationTokenSchema} from "@/schemas/UserSchemas.ts";
 
 export default async function registerAction({request}: { request: Request}) {
     const formData = await request.formData();
@@ -31,22 +31,15 @@ export default async function registerAction({request}: { request: Request}) {
     if (!invitationToken.success) {
         return {
             has_error: true,
-            error_title: 'Invalid Token',
-            error_message: 'The activation token is invalid'
-        }
-    }
-
-    if (!emailRegEx.test(email)) {
-        return {
-            has_error: true,
-            error_title: 'Invalid Email',
-            error_message: 'Email address is invalid'
+            error_title: 'Registration Failed',
+            error_message: invitationToken.error.errors[0].message
         }
     }
 
     if (username === '' || password === '') {
         return {
             has_error: true,
+            error_title: 'Registration Failed',
             error_message: 'Username or Password should not be empty'
         }
     }
@@ -54,11 +47,12 @@ export default async function registerAction({request}: { request: Request}) {
     if (password !== passwordConfirm) {
         return {
             has_error: true,
-            error_title: 'Passwords do not match',
+            error_title: 'Registration Failed',
+            error_message: 'The passwords do not match'
         }
     }
 
-    const registerResponse = await ApiCommunicator.register(invitationToken.data, "ass", "asd", "dsd")
+    const registerResponse = await ApiCommunicator.register(invitationToken.data, username, email, password)
 
     return {
         has_error: true,

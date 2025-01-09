@@ -10,7 +10,8 @@ export default async function loginAction({request}: { request: Request}) {
     if (username === '' || password === '') {
         return {
             has_error: true,
-            error_message: 'Username or Password should not be empty.'
+            error_title: 'Authentication Failed',
+            error_message: 'Username or Password should not be empty'
         }
     }
 
@@ -24,6 +25,6 @@ export default async function loginAction({request}: { request: Request}) {
     return {
         has_error: true,
         error_title: 'Authentication Failed',
-        error_message: 'The authentication services are currently unavailable.'
+        error_message: 'The authentication services are currently unavailable'
     }
 }

@@ -9,7 +9,7 @@ import {
   MoreHorizontal,
   Plus,
   Telescope,
-  FileText, Earth
+  FileText, Earth, TextQuote
 } from "lucide-react"
 
 import {
@@ -116,6 +116,12 @@ const navigation: Navigation = {
       title: "Paste Bin",
       url: "paste_bin",
       icon: Clipboard,
+      dropdown: []
+    },
+    {
+      title: "Blog",
+      url: "blog",
+      icon: TextQuote,
       dropdown: []
     }
   ]

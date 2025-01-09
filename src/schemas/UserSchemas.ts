@@ -1,14 +1,19 @@
 import {z} from 'zod';
+import {IdSchema} from "@/schemas/GenericSchemas.ts";
 
-export const UserSchema = z.object({
-    user_id: z.number(),
-    username: z.string().transform(username => username.trim().toLowerCase().replace(/\s/g, "")),
+export const UsernameSchema = z.string().min(3).max(32).transform(username => username.trim().toLowerCase().replace(/\s/g, ""));
+
+export type Username = z.infer<typeof UsernameSchema>;
+
+export const UserSchemas = z.object({
+    user_id: IdSchema,
+    username: UsernameSchema,
     email: z.string().email('Invalid email format'),
     disabled: z.boolean(),
     created_at_timestamp: z.number().min(0),
 });
 
-export type User = z.infer<typeof UserSchema>;
+export type User = z.infer<typeof UserSchemas>;
 
 export const InvitationTokenSchema = z.object({
     field_1: z.number().min(0).max(9999),
@@ -21,7 +26,7 @@ export const InvitationTokenSchema = z.object({
     const checksum = Math.floor( count / 4 );
     return checksum === data.checksum;
 }, {
-    message: "The activation token is invalid",
+    message: "The invitation token is invalid",
     path: ["field_1", "field_2", "field_3", "field_4"],
 })
 
