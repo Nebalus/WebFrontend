@@ -5,6 +5,7 @@ import {Link, Outlet} from "react-router-dom";
 import StarBackground from "@/components/StarBackground.tsx";
 import SiteLogo from "@/components/SiteLogo.tsx";
 import ProjectCard from "./ProjectCard";
+import { buttonVariants } from "@assets/components/shadcnui/button";
 
 export default function LandingPage() {
 
@@ -21,23 +22,23 @@ export default function LandingPage() {
         <div className="flex flex-col min-h-[100dvh] bg-black">
           <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full z-[50] backdrop-blur-2xl border-b">
             <SiteLogo/>
-            <nav className="ml-auto flex gap-4 sm:gap-6">
-              <Link className="text-sm font-bold hover:underline underline-offset-4" to={"/blogs"}>
+            <nav className="ml-auto gap-4 sm:gap-6">
+              <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"/blogs"}>
                 Blogs
               </Link>
-              <Link className="text-sm font-bold hover:underline underline-offset-4" to={"/linktree/nebalus"}>
+              <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"/linktree/nebalus"}>
                 Linktree
               </Link>
-              <Link className="text-sm font-bold hover:underline underline-offset-4" to={"https://status.nebalus.dev"}>
+              <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"https://status.nebalus.dev"}>
                 Status
               </Link>
-              <Link className="text-sm font-bold hover:underline underline-offset-4" to={"/login"}>
+              <Link className={"text-sm font-bold mx-3 " + buttonVariants({ variant: "outline" })} to={"/login"}>
                 Login
               </Link>
             </nav>
           </header>
           <main className="flex-1 z-10">
-            <section className="w-full mt-20">
+            <section className="w-full mt-40">
               <div className="container px-4 md:px-6">
                 <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_700px]">
                   <div className="flex flex-col justify-center space-y-4">

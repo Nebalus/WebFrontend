@@ -107,6 +107,16 @@ export const appRouter = createBrowserRouter([
         element: <WorkInProgress />
     },
     {
+        path: "blogs",
+        element: <WorkInProgress />,
+        children: [
+            {        
+                path: ":blog_id",
+                element: <WorkInProgress />
+            }
+        ]
+    },
+    {
         path: "login",
         action: loginAction,
         loader: authenticatedLoader,

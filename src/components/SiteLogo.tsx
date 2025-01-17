@@ -13,7 +13,7 @@ export default function SiteLogo({className}: SiteLogoProps) {
     return (
         <>
             <Link to={isAuthenticated() ? APP_DASHBOARD_PATH : "/"} className={className}>
-                <div className={"flex items-center"}>
+                <div className="flex items-center">
                     <SquareTerminal className="h-8 w-8"/>
                     <span className="ml-2 text-2xl font-bold">nebalus.dev</span>
                 </div>
