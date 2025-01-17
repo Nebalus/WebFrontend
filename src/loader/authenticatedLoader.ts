@@ -1,4 +1,4 @@
-import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
+import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import {redirect} from "react-router-dom";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";

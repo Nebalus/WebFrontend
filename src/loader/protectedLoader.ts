@@ -1,4 +1,4 @@
-import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
+import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import {redirect} from "react-router-dom";
 
 export default function protectedLoader() {
@@ -8,5 +8,7 @@ export default function protectedLoader() {
         return null;
     }
 
-    return redirect('/login');
+    const params = new URLSearchParams();
+    params.set("from", location.pathname)
+    return redirect('/login?' + params.toString());
 }

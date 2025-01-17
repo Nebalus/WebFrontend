@@ -1,26 +1,25 @@
-import {User} from "@/schemas/schemas.ts";
+import {User} from "@/schemas/UserSchemas.ts";
 import {create} from "zustand";
 import {createJSONStorage, persist} from "zustand/middleware";
 import {STORAGE_PREFIX} from "@/constants.ts";
 import {jwtDecode} from "jwt-decode";
 
 type AuthenticatedUserState = {
-    jwt: string | undefined,
-    user: User | undefined
+    jwt: string | null,
+    user: User | null
 }
 
 type AuthenticatedUserAction = {
     setJwt: (jwt: string) => void;
+    setUser: (user: User) => void;
     isJwtValid: (jwt: string) => boolean;
     isAuthenticated: () => boolean;
-    isUserAnAdmin: () => boolean;
-    setUser: (user: User) => void;
     reset: () => void;
 };
 
 const initialState: AuthenticatedUserState = {
-    jwt: undefined,
-    user: undefined,
+    jwt: null,
+    user: null,
 }
 
 export const useAuthenticatedUserStore = create<AuthenticatedUserState & AuthenticatedUserAction>()(
@@ -40,17 +39,13 @@ export const useAuthenticatedUserStore = create<AuthenticatedUserState & Authent
                 const { jwt, isJwtValid } = get();
                 return (jwt && isJwtValid(jwt)) === true;
             },
-            isUserAnAdmin: () => {
-                const { user } = get();
-                return user?.is_admin === true;
-            },
             setUser: (user: User) => {
                 set({ user });
             },
             reset: () => set(initialState),
         }),
         {
-            name: STORAGE_PREFIX + 'USERSTORE',
+            name: STORAGE_PREFIX + 'auth_user_store',
             storage: createJSONStorage(() => localStorage)
         }
     ),

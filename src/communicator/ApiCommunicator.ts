@@ -1,33 +1,47 @@
 import {APP_BACKEND_API_DOMAIN, APP_BACKEND_API_PORT, APP_BACKEND_API_PROTOCOL} from "@/constants.ts";
-import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
-import {SuccessfulLoginResponse} from "@/schemas/ApiResponseSchemas.ts";
+import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
+import {SuccessfulLoginResponse, SuccessfulRegisterResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
+import {UserLoginRequest, UserRegisterRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
+
+export const server_url = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
 
 class ApiCommunicator {
-    server = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
 
-    async login(username: string, password: string): Promise<any> {
-        const { setUser, setJwt } = useAuthenticatedUserStore.getState();
-        const formdata = new FormData();
-        formdata.append('username', username);
-        formdata.append('password', password);
-
+    async register(userRegisterRequest: UserRegisterRequest): Promise<boolean> {
         try {
-            const response = await fetch(`${this.server}/auth`, {
-                method: 'POST',
-                body: formdata,
+            const response = await fetch(`${server_url}/ui/register`, {
+                method: "POST",
+                body: JSON.stringify(userRegisterRequest),
             });
-            if (response.ok) {
-                const loginResponse = SuccessfulLoginResponse.parse(await response.json());
-                if (loginResponse.success) {
-                    setUser(loginResponse.user);
-                    setJwt(loginResponse.jwt);
-                }
-                return loginResponse;
+            if(response.ok) {
+                const registerResponse = SuccessfulRegisterResponse.parse(await response.json());
+                return registerResponse.success;
             }
         } catch (e) {
-            /* empty */
+            console.error(e);
         }
-        return { success: false, error_message: 'Authentication failed. Please try again.' };
+        return false;
+    }
+
+    async login(userLoginRequest: UserLoginRequest): Promise<boolean> {
+        const { setUser, setJwt } = useAuthenticatedUserStore.getState();
+
+        try {
+            const response = await fetch(`${server_url}/ui/auth`, {
+                method: 'POST',
+                body: JSON.stringify(userLoginRequest),
+            });
+
+            if (response.ok) {
+                const loginResponse = SuccessfulLoginResponse.parse(await response.json());
+                setUser(loginResponse.payload.user);
+                setJwt(loginResponse.payload.jwt);
+                return true;
+            }
+        } catch (e) {
+           console.error(e);
+        }
+        return false;
     }
 
     logout() {
@@ -35,12 +49,12 @@ class ApiCommunicator {
     }
 
     async apiFetch({ context = {}, route }: { context: RequestInit; route: `/${string}` }): Promise<Response> {
-        const url = `${this.server}${route}`;
+        const url = `${server_url}${route}`;
         const { jwt } = useAuthenticatedUserStore.getState();
 
         context.headers = new Headers({
             ...context.headers,
-            Authorization: `${jwt}`,
+            Authorization: `${jwt}`
         });
 
         return fetch(url, context);

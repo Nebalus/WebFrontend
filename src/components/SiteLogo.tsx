@@ -1,6 +1,6 @@
 import {SquareTerminal} from "lucide-react";
 import {Link} from "react-router-dom";
-import {useAuthenticatedUserStore} from "@/stores/authenticatedUserStore.ts";
+import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 
 interface SiteLogoProps {

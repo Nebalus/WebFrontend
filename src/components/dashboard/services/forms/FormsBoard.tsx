@@ -1,6 +1,6 @@
 import WorkInProgress from "@/components/WorkInProgress.tsx";
 
-export default function ReferralsBoard() {
+export default function FormsBoard() {
     return (
         <>
             <WorkInProgress />
