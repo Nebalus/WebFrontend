@@ -9,6 +9,6 @@ export default function protectedLoader() {
     }
 
     const params = new URLSearchParams();
-    params.set("from", location.pathname)
+    params.set("next", location.pathname)
     return redirect('/login?' + params.toString());
 }

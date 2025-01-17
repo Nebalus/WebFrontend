@@ -32,6 +32,10 @@
   },
   "include": [
     "src/",
-    "assets/"
-, "snippets/app-sidebar.tsx", "snippets/nav-main.tsx", "snippets/nav-projects.tsx", "snippets/team-switcher.tsx"  ]
+    "assets/",
+    "snippets/app-sidebar.tsx",
+    "snippets/nav-main.tsx",
+    "snippets/nav-projects.tsx",
+    "snippets/team-switcher.tsx"
+  ]
 }

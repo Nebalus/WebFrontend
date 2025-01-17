@@ -86,7 +86,7 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: APP_DASHBOARD_PATH + "settings",
-        // loader: protectedLoader,
+        loader: protectedLoader,
         children: [
             {
                 path: "account",

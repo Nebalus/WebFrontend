@@ -22,6 +22,12 @@ export default function LandingPage() {
           <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full z-[50] backdrop-blur-2xl border-b">
             <SiteLogo/>
             <nav className="ml-auto flex gap-4 sm:gap-6">
+              <Link className="text-sm font-bold hover:underline underline-offset-4" to={"/blogs"}>
+                Blogs
+              </Link>
+              <Link className="text-sm font-bold hover:underline underline-offset-4" to={"/linktree/nebalus"}>
+                Linktree
+              </Link>
               <Link className="text-sm font-bold hover:underline underline-offset-4" to={"https://status.nebalus.dev"}>
                 Status
               </Link>
