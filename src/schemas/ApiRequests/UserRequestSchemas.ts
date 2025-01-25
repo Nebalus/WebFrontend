@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {EmailSchema, InvitationTokenSchema, PasswordSchema, UsernameSchema} from "@/schemas/UserSchemas.ts";
+import {EmailSchema, InvitationTokenSchema, PasswordSchema, UsernameSchema} from "@/schemas/UserSchema.ts";
 
 export const UserRegisterRequest = z.object({
     "invitation_token": InvitationTokenSchema,

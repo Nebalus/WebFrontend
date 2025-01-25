@@ -1,37 +1,112 @@
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@assets/components/shadcnui/table"
-import {useReferralStore} from "@/stores/ReferralStore.ts";
-import TableSkeleton from "@/components/TableSkeleton.tsx";
+import {Button} from "@assets/components/shadcnui/button"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@assets/components/shadcnui/card"
+import {Input} from "@assets/components/shadcnui/input"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from "@assets/components/shadcnui/dialog"
+import {Plus, RefreshCcw} from "lucide-react"
+import {Label} from "@assets/components/shadcnui/label"
+import ReferralsTable from "@/components/dashboard/services/referral/ReferralsTable.tsx";
 
-export default function ReferralsTable() {
-    const {referrals, isLoaded} = useReferralStore();
-
+export default function ReferralsCard() {
     return (
-        <Table>
-            <TableHeader>
-                <TableRow>
-                    <TableHead className="w-[100px]">Code</TableHead>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Pointer</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {
-                    isLoaded() ? (
-                        referrals.map((referral) => (
-                            <TableRow key={"REFERRAL" + referral.code}>
-                                <TableCell className="font-medium">{referral.code}</TableCell>
-                                <TableCell>{referral.name}</TableCell>
-                                <TableCell>{referral.pointer}</TableCell>
-                            </TableRow>
-                        ))
-                    ) : (
-                        <TableSkeleton rows={6} columns={3}/>
-                    )
-                }
-            </TableBody>
-        </Table>
+        <Card>
+            <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
+                <div className="grid flex-1 gap-1 text-center sm:text-left">
+                    <CardTitle>Referrals</CardTitle>
+                    <CardDescription>
+                        Here are the referrals you own
+                    </CardDescription>
+                </div>
+                <div className="flex-row flex-1 gap-1">
+                    <Button variant="outline">
+                        <RefreshCcw/>
+                    </Button>
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button variant="outline">
+                                <Plus/>
+                            </Button>
+                        </ DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                            <DialogHeader>
+                                <DialogTitle>Create referral</DialogTitle>
+                                <DialogDescription>
+                                    Bla Bla Bla Bla Bla Bla
+                                </DialogDescription>
+                            </DialogHeader>
+                            <div className="grid gap-4 py-4">
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="name" className="text-right">
+                                        Name
+                                    </Label>
+                                    <Input id="name" placeholder="Insert your referral name" className="col-span-3"/>
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="username" className="text-right">
+                                        URL
+                                    </Label>
+                                    <Input id="url" placeholder="Insert your URL" type="url" className="col-span-3"/>
+                                </div>
+                            </div>
+                            <DialogFooter>
+                                <Button type="submit" className="bg-green-600">Create</Button>
+                            </DialogFooter>
+                        </DialogContent>
+                    </Dialog>
+                </div>
+            </CardHeader>
+            <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
+                <ReferralsTable></ReferralsTable>
+            </CardContent>
+        </Card>
     )
 }
+
+/*
+<TableFooter className="">
+                <div className="mx-auto flex w-full justify-center">
+                  <Pagination className="">
+                    <PaginationContent className="">
+                      <PaginationItem>
+                        <PaginationPrevious href="#" />
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">1</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#" isActive>
+                          2
+                        </PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">3</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationEllipsis />
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationNext href="#" />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </div>
+              </TableFooter>
+
+
+
 
 /*
 import * as React from "react"

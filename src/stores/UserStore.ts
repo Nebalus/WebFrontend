@@ -1,4 +1,4 @@
-import {User} from "@/schemas/UserSchemas.ts";
+import {User} from "@/schemas/UserSchema.ts";
 import {create} from "zustand";
 import {createJSONStorage, persist} from "zustand/middleware";
 import {STORAGE_PREFIX} from "@/constants.ts";

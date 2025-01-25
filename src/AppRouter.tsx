@@ -10,7 +10,7 @@ import HomeBoard from "@/components/dashboard/HomeBoard";
 import ReferralsBoard from "@/components/dashboard/services/referral/ReferralsBoard";
 import LinktreeBoard from "@/components/dashboard/services/linktree/LinktreeBoard";
 import TodosBoard from "@/components/dashboard/services/todos/TodosBoard";
-import ReferralPage from "@/components/dashboard/services/referral/ReferralPage";
+import ReferralPage from "@/pages/ReferralPage.tsx";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
@@ -23,6 +23,7 @@ import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
 import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoard";
 import GamesIRLBoard from "@/components/dashboard/services/gamesirl/GamesIRLBoard.tsx";
 import BlogBoard from "@/components/dashboard/services/blog/BlogBoard.tsx";
+import ReferralsDetailsBoard from "@/components/dashboard/services/referral/ReferralDetailsBoard.tsx";
 
 export const appRouter = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ export const appRouter = createBrowserRouter([
                         element: <ReferralsBoard />,
                     }
                 ]
+            },
+            {
+                path: "referrals/:referral_code",
+                element: <ReferralsDetailsBoard />
             },
             {
                 path: "linktree",

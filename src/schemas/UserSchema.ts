@@ -13,15 +13,15 @@ export const PasswordSchema = z.string();
 
 export type Password = z.infer<typeof PasswordSchema>;
 
-export const UserSchemas = z.object({
+export const UserSchema = z.object({
     user_id: IdSchema,
     username: UsernameSchema,
     email: EmailSchema,
     disabled: z.boolean(),
-    created_at_timestamp: z.number().min(0),
+    created_at: z.string().datetime({ offset: true }),
 });
 
-export type User = z.infer<typeof UserSchemas>;
+export type User = z.infer<typeof UserSchema>;
 
 export const InvitationTokenSchema = z.object({
     field_1: z.number().min(0).max(9999),

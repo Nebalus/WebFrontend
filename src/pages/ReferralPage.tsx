@@ -3,7 +3,7 @@ import {trefoil} from 'ldrs';
 import {server_url} from "@/communicator/ApiCommunicator.ts";
 import {useEffect} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {ReferralClickSuccessResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
+import {ReferralClickResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import SiteLogo from "@/components/SiteLogo.tsx";
 import wait from "waait";
 
@@ -18,7 +18,7 @@ export default function ReferralPage() {
             });
 
             if (response.ok) {
-                const referralResponse = ReferralClickSuccessResponse.parse(await response.json());
+                const referralResponse = ReferralClickResponse.parse(await response.json());
                 await wait(1000);
                 window.location.href = referralResponse.payload.pointer;
                 return null;
