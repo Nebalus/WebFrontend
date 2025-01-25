@@ -10,7 +10,7 @@ import {
 import { Fragment } from "react";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 
-export function DynamicBreadcrumb() {
+export function DashboardDynamicBreadcrumb() {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x && x !== Array.from(APP_DASHBOARD_PATH).filter(char => char !== "/").join(''));
 

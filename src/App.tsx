@@ -1,7 +1,7 @@
 import {ThemeProvider} from "../assets/providers/ThemeProvider.tsx";
 import {RouterProvider} from "react-router-dom";
 import {appRouter} from '@/AppRouter.tsx';
-import ErrorPage from "@/components/ErrorPage.tsx";
+import ErrorPage from "@/pages/ErrorPage.tsx";
 
 function App() {
     return (

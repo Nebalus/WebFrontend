@@ -3,7 +3,7 @@ import DashboardSideBar from "@/components/dashboard/rootlayout/DashboardSideBar
 import {Separator} from "@assets/components/shadcnui/separator"
 import {Outlet} from "react-router-dom";
 import {Toaster} from "sonner";
-import {DynamicBreadcrumb} from "@/components/dashboard/rootlayout/DynamicBreadcrumb.tsx";
+import {DashboardDynamicBreadcrumb} from "@/components/dashboard/rootlayout/DashboardDynamicBreadcrumb.tsx";
 import {CommandMenu} from "@/components/dashboard/CommandMenu.tsx";
 
 export default function DashboardRootLayout() {
@@ -16,7 +16,7 @@ export default function DashboardRootLayout() {
             <div className="flex items-center gap-2 px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="mr-2 h-4" />
-              <DynamicBreadcrumb />
+              <DashboardDynamicBreadcrumb />
             </div>
           </header>
           <main className="mt-16">

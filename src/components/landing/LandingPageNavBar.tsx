@@ -1,0 +1,25 @@
+import SiteLogo from "@/components/SiteLogo.tsx";
+import {Link} from "react-router-dom";
+import {buttonVariants} from "@assets/components/shadcnui/button.tsx";
+
+export default function LandingPageNavBar() {
+    return (
+        <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full z-[50] backdrop-blur-2xl border-b">
+            <SiteLogo/>
+            <nav className="ml-auto gap-4 sm:gap-6">
+                <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"/blogs"}>
+                    Blogs
+                </Link>
+                <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"/linktree/nebalus"}>
+                    Linktree
+                </Link>
+                <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"https://status.nebalus.dev"}>
+                    Status
+                </Link>
+                <Link className={"text-sm font-bold mx-3 " + buttonVariants({ variant: "outline" })} to={"/login"}>
+                    Login
+                </Link>
+            </nav>
+        </header>
+    )
+}

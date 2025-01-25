@@ -12,7 +12,6 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Plus, RefreshCcw } from "lucide-react"
 import { Label } from "@assets/components/shadcnui/label"
 
-
 export default function ReferralsCard() {
 
   const referrals = [

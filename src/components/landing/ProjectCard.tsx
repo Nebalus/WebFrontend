@@ -33,7 +33,9 @@ export default function ProjectCard({ pic_link, pic_alt, title, description, git
                             </Link>
                         )}
 
-                        {work_and_progress && <Pickaxe />}
+                        {work_and_progress && <p className="flex flex-row ">
+                            <Pickaxe /> WIP
+                        </p>}
                     </div>
                 </div>
             </div>

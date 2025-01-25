@@ -1,11 +1,9 @@
 // import { Input } from "@assets/components/ui/input.tsx"
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
-import {Link, Outlet} from "react-router-dom";
 import StarBackground from "@/components/StarBackground.tsx";
-import SiteLogo from "@/components/SiteLogo.tsx";
-import ProjectCard from "./ProjectCard";
-import { buttonVariants } from "@assets/components/shadcnui/button";
+import ProjectCard from "../components/landing/ProjectCard.tsx";
+import LandingPageNavBar from "@/components/landing/LandingPageNavBar.tsx";
 
 export default function LandingPage() {
 
@@ -17,26 +15,9 @@ export default function LandingPage() {
 
   return (
       <>
-        <Outlet/>
         <StarBackground/>
         <div className="flex flex-col min-h-[100dvh] bg-black">
-          <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full z-[50] backdrop-blur-2xl border-b">
-            <SiteLogo/>
-            <nav className="ml-auto gap-4 sm:gap-6">
-              <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"/blogs"}>
-                Blogs
-              </Link>
-              <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"/linktree/nebalus"}>
-                Linktree
-              </Link>
-              <Link className="text-sm font-bold hover:underline underline-offset-4 mx-3" to={"https://status.nebalus.dev"}>
-                Status
-              </Link>
-              <Link className={"text-sm font-bold mx-3 " + buttonVariants({ variant: "outline" })} to={"/login"}>
-                Login
-              </Link>
-            </nav>
-          </header>
+          <LandingPageNavBar />
           <main className="flex-1 z-10">
             <section className="w-full mt-40">
               <div className="container px-4 md:px-6">
@@ -95,27 +76,27 @@ export default function LandingPage() {
                       github_link="https://github.com/Nebalus/GamesIRLMobile"
                       work_and_progress={true}
                   />
-                  <ProjectCard
-                      pic_link="/static/icons/placeholder.svg"
-                      pic_alt="Melodybot Icon"
-                      title="Melody"
-                      description="An open-source Discord music bot in Java!"
-                      work_and_progress={true}
-                  />
-                  <ProjectCard
-                      pic_link="/static/icons/placeholder.svg"
-                      pic_alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"
-                      title="Cosmoventure"
-                      description="This is a 2D jump n run, story game made with my house own game engine."
-                      work_and_progress={true}
-                  />
-                  <ProjectCard
-                      pic_link="/static/icons/placeholder.svg"
-                      pic_alt="Picture of an mandelbrot fractal"
-                      title="GalaxyFrameWork"
-                      description="Simplifies Java app development by streamlining file organization, logging, GUI rendering, and source code optimization."
-                      work_and_progress={true}
-                  />
+                  {/*<ProjectCard*/}
+                  {/*    pic_link="/static/icons/placeholder.svg"*/}
+                  {/*    pic_alt="Melodybot Icon"*/}
+                  {/*    title="Melody"*/}
+                  {/*    description="An open-source Discord music bot in Java!"*/}
+                  {/*    work_and_progress={true}*/}
+                  {/*/>*/}
+                  {/*<ProjectCard*/}
+                  {/*    pic_link="/static/icons/placeholder.svg"*/}
+                  {/*    pic_alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"*/}
+                  {/*    title="Cosmoventure"*/}
+                  {/*    description="This is a 2D jump n run, story game made with my house own game engine."*/}
+                  {/*    work_and_progress={true}*/}
+                  {/*/>*/}
+                  {/*<ProjectCard*/}
+                  {/*    pic_link="/static/icons/placeholder.svg"*/}
+                  {/*    pic_alt="Picture of an mandelbrot fractal"*/}
+                  {/*    title="GalaxyFrameWork"*/}
+                  {/*    description="Simplifies Java app development by streamlining file organization, logging, GUI rendering, and source code optimization."*/}
+                  {/*    work_and_progress={true}*/}
+                  {/*/>*/}
                 </div>
               </div>
             </section>

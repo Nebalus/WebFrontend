@@ -13,24 +13,22 @@ export default function ReferralPage() {
 
     useEffect(() => {
         (async () => {
-            try {
-                const response = await fetch(`${server_url}/services/referral/` + referralCode, {
-                    method: 'GET',
-                });
+            const response = await fetch(`${server_url}/services/referral/` + referralCode, {
+                method: 'GET',
+            });
 
-                if (response.ok) {
-                    const referralResponse = ReferralClickSuccessResponse.parse(await response.json());
-                    await wait(1000);
-                    window.location.href = referralResponse.payload.pointer;
-                    return null;
-                } else {
-                    navigate('/');
-                }
-            } catch (e) {
+            if (response.ok) {
+                const referralResponse = ReferralClickSuccessResponse.parse(await response.json());
+                await wait(1000);
+                window.location.href = referralResponse.payload.pointer;
+                return null;
+            } else {
                 navigate('/');
             }
-        })();
-    }, []);
+        })().catch(
+            () => navigate('/')
+        );
+    }, [navigate, referralCode]);
 
     trefoil.register();
 

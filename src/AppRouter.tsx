@@ -1,6 +1,6 @@
 import {createBrowserRouter, redirect} from "react-router-dom";
-import LandingPage from "@/components/landingpage/LandingPage";
-import ErrorPage from "@/components/ErrorPage.tsx";
+import LandingPage from "@/pages/LandingPage.tsx";
+import ErrorPage from "@/pages/ErrorPage.tsx";
 import LoginPage from "@/components/authentication/LoginPage.tsx";
 import RegisterPage from "@/components/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
@@ -17,7 +17,7 @@ import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkInProgress from "@/components/WorkInProgress.tsx";
 import TimeCapsuleBoard from "@/components/dashboard/services/timecapsule/TimeCapsuleBoard";
-import {AccountSettings} from "@/components/settings/AccountSettings";
+import {AccountSettings} from "@/components/dashboard/settings/AccountSettings";
 import FormsBoard from "./components/dashboard/services/forms/FormsBoard";
 import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
 import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoard";
