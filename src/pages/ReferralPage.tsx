@@ -13,13 +13,13 @@ export default function ReferralPage() {
 
     useEffect(() => {
         (async () => {
+            await wait(1500);
             const response = await fetch(`${server_url}/services/referral/` + referralCode, {
                 method: 'GET',
             });
 
             if (response.ok) {
                 const referralResponse = ReferralClickResponse.parse(await response.json());
-                await wait(1000);
                 window.location.href = referralResponse.payload.pointer;
                 return null;
             } else {
