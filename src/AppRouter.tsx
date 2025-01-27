@@ -1,8 +1,8 @@
 import {createBrowserRouter, redirect} from "react-router-dom";
 import LandingPage from "@/pages/LandingPage.tsx";
 import ErrorPage from "@/pages/ErrorPage.tsx";
-import LoginPage from "@/components/authentication/LoginPage.tsx";
-import RegisterPage from "@/components/authentication/RegisterPage.tsx";
+import LoginPage from "@/pages/authentication/LoginPage.tsx";
+import RegisterPage from "@/pages/authentication/RegisterPage.tsx";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
@@ -48,12 +48,6 @@ export const appRouter = createBrowserRouter([
             {
                 path: "referrals",
                 element: <ReferralsBoard />,
-                children: [
-                    {
-                        path: "create",
-                        element: <ReferralsBoard />,
-                    }
-                ]
             },
             {
                 path: "referrals/:referral_code",
