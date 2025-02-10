@@ -1,9 +1,14 @@
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@assets/components/shadcnui/table"
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import TableSkeleton from "@/components/TableSkeleton.tsx";
+import {useEffect} from "react";
 
 export default function ReferralsTable() {
     const {referrals, isLoaded} = useReferralStore();
+
+    useEffect(() => {
+
+    }, []);
 
     return (
         <Table>
