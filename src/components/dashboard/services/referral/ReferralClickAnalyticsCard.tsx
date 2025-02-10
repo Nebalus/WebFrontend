@@ -61,7 +61,7 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
             color: "hsl(var(--chart-1))",
         },
         unique_visitors: {
-            label: "Unique Visitors",
+            label: "Unique Visitors ", // U+2003 EM SPACE don't remove
             color: "hsl(var(--chart-2))",
         }
     } satisfies ChartConfig
