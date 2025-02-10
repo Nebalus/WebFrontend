@@ -53,12 +53,16 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                 setChartData(parsedResponse.data.payload.history);
             }
         })();
-    }, []);
+    }, [referralCode, timeRange]);
 
     const chartConfig = {
         count: {
             label: "Referral",
             color: "hsl(var(--chart-1))",
+        },
+        unique_visitors: {
+            label: "Unique Visitors",
+            color: "hsl(var(--chart-2))",
         }
     } satisfies ChartConfig
 
@@ -98,7 +102,7 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                 >
                     <AreaChart data={chartData}>
                         <defs>
-                            <linearGradient id="fillReferral" x1="0" y1="0" x2="0" y2="1">
+                            <linearGradient id="fillClicks" x1="0" y1="0" x2="0" y2="1">
                                 <stop
                                     offset="5%"
                                     stopColor="var(--color-count)"
@@ -107,6 +111,20 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                                 <stop
                                     offset="95%"
                                     stopColor="var(--color-count)"
+                                    stopOpacity={0.0}
+                                />
+                            </linearGradient>
+                        </defs>
+                        <defs>
+                            <linearGradient id="fillUniqueVisitors" x1="0" y1="0" x2="0" y2="1">
+                                <stop
+                                    offset="5%"
+                                    stopColor="var(--color-unique_visitors)"
+                                    stopOpacity={0.8}
+                                />
+                                <stop
+                                    offset="95%"
+                                    stopColor="var(--color-unique_visitors)"
                                     stopOpacity={0.0}
                                 />
                             </linearGradient>
@@ -143,9 +161,16 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                         <Area
                             dataKey="count"
                             type="bump"
-                            fill="url(#fillReferral)"
+                            fill="url(#fillClicks)"
                             stroke="var(--color-count)"
                             stackId=";)"
+                        />
+                        <Area
+                            dataKey="unique_visitors"
+                            type="bump"
+                            fill="url(#fillUniqueVisitors)"
+                            stroke="var(--color-unique_visitors)"
+                            stackId="c;)"
                         />
                         <ChartLegend content={<ChartLegendContent/>}/>
                     </AreaChart>

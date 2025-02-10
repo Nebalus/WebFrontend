@@ -7,7 +7,8 @@ export type ReferralCode = z.infer<typeof ReferralCodeSchema>;
 
 export const ReferralClickHistoryDataPointSchema = z.object({
     date: z.string().date(),
-    count: z.number().int().nonnegative()
+    count: z.number().int().nonnegative(),
+    unique_visitors: z.number().int().nonnegative(),
 });
 
 export type ReferralClickHistoryDataPoint = z.infer<typeof ReferralClickHistoryDataPointSchema>;
