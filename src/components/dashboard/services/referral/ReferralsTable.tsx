@@ -2,13 +2,18 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@as
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import TableSkeleton from "@/components/TableSkeleton.tsx";
 import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function ReferralsTable() {
-    const {referrals, isLoaded} = useReferralStore();
+    const {referrals, isHydrated, hydrateReferrals} = useReferralStore();
+    const navigate = useNavigate();
 
     useEffect(() => {
-
-    }, []);
+        if (isHydrated()) {
+            return;
+        }
+        hydrateReferrals();
+    }, [hydrateReferrals, isHydrated, referrals]);
 
     return (
         <Table>
@@ -21,9 +26,9 @@ export default function ReferralsTable() {
             </TableHeader>
             <TableBody>
                 {
-                    isLoaded() ? (
+                    isHydrated() ? (
                         referrals.map((referral) => (
-                            <TableRow key={"REFERRAL" + referral.code}>
+                            <TableRow key={"REFERRAL" + referral.code} onClick={() => {navigate(`./${referral.code}`)}}>
                                 <TableCell className="font-medium">{referral.code}</TableCell>
                                 <TableCell>{referral.name}</TableCell>
                                 <TableCell>{referral.pointer}</TableCell>

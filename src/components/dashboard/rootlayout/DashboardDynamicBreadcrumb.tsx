@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -12,6 +12,7 @@ import {APP_DASHBOARD_PATH} from "@/constants.ts";
 
 export function DashboardDynamicBreadcrumb() {
     const location = useLocation();
+    const navigate = useNavigate();
     const pathnames = location.pathname.split("/").filter((x) => x && x !== Array.from(APP_DASHBOARD_PATH).filter(char => char !== "/").join(''));
 
     const format = (s: string) => {
@@ -22,7 +23,7 @@ export function DashboardDynamicBreadcrumb() {
         <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href={APP_DASHBOARD_PATH}>
+                    <BreadcrumbLink onClick={() => {navigate(APP_DASHBOARD_PATH)}}>
                         Dashboard
                     </BreadcrumbLink>
                 </BreadcrumbItem>
@@ -37,7 +38,7 @@ export function DashboardDynamicBreadcrumb() {
                                 {isLast ? (
                                     <BreadcrumbPage>{format(name)}</BreadcrumbPage>
                                 ) : (
-                                    <BreadcrumbLink href={routeTo}>
+                                    <BreadcrumbLink onClick={() => {navigate(routeTo)}}>
                                         {format(name)}
                                     </BreadcrumbLink>
                                 )}

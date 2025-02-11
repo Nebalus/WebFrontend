@@ -17,7 +17,7 @@ export const ReferralSchema = z.object({
     referral_id: IdSchema,
     code: ReferralCodeSchema,
     pointer: z.string().url(),
-    name: z.string().max(32).regex(/^[a-zA-Z0-9 !@#$%^&*]*$/),
+    name: z.string().max(32).regex(/^[a-zA-Z0-9 !@#$%^&*]*$/).nullable(),
     disabled: z.boolean(),
     created_at: z.string().datetime({ offset: true }),
     updated_at: z.string().datetime({ offset: true }),

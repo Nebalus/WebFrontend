@@ -7,7 +7,6 @@ import {
   ListTree,
   LucideIcon,
   MoreHorizontal,
-  Plus,
   Telescope,
   FileText, Earth, TextQuote
 } from "lucide-react"
@@ -74,13 +73,7 @@ const navigation: Navigation = {
       title: "Referrals",
       url: "referrals",
       icon: Link,
-      dropdown: [
-        {
-          title: "Create Referral",
-          url: APP_DASHBOARD_PATH,
-          icon: Plus,
-        }
-      ]
+      dropdown: []
     },
     {
       title: "Linktree",
@@ -178,7 +171,7 @@ export default function DashboardSideBar() {
               {
                 navigation.navMain.map((navItem) => (
                   <SidebarMenuItem key={navItem.title}>
-                    <SidebarMenuButton isActive={currentPage === APP_DASHBOARD_PATH + navItem.url} asChild>
+                    <SidebarMenuButton isActive={currentPage.startsWith(APP_DASHBOARD_PATH + navItem.url)} asChild>
                       <NavLink to={navItem.url}>
                         <navItem.icon/>
                         <span>{navItem.title}</span>

@@ -19,6 +19,7 @@ import {
 import {Plus, RefreshCcw} from "lucide-react"
 import {Label} from "@assets/components/shadcnui/label"
 import ReferralsTable from "@/components/dashboard/services/referral/ReferralsTable.tsx";
+import {Form} from "@assets/components/shadcnui/form.tsx";
 
 export default function ReferralsCard() {
     return (
@@ -31,7 +32,9 @@ export default function ReferralsCard() {
                     </CardDescription>
                 </div>
                 <div className="flex-row flex-1 gap-1">
-                    <Button variant="outline">
+                    <Button variant="outline" onClick={() => {
+                        window.location.reload();
+                    }}>
                         <RefreshCcw/>
                     </Button>
                     <Dialog>
@@ -44,9 +47,13 @@ export default function ReferralsCard() {
                             <DialogHeader>
                                 <DialogTitle>Create referral</DialogTitle>
                                 <DialogDescription>
-                                    Bla Bla Bla Bla Bla Bla
+                                    Here you can create a new referral
                                 </DialogDescription>
                             </DialogHeader>
+                            <Form>
+
+
+                            </Form>
                             <div className="grid gap-4 py-4">
                                 <div className="grid grid-cols-4 items-center gap-4">
                                     <Label htmlFor="name" className="text-right">
