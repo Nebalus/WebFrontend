@@ -89,7 +89,7 @@ const navigation: Navigation = {
     },
     {
       title: "Time Capsules",
-      url: "timecapsule",
+      url: "time_capsule",
       icon: Hourglass,
       dropdown: []
     },

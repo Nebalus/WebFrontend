@@ -64,7 +64,7 @@ export const appRouter = createBrowserRouter([
                 element: <TodosBoard />
             },
             {
-                path: "timecapsule",
+                path: "time_capsule",
                 element: <TimeCapsuleBoard />
             },
             {
