@@ -9,7 +9,7 @@ export default async function registerAction({request}: { request: Request}) {
     const email = formData.get('email')?.toString()?.toString() ?? '';
     const username = (formData.get('username')?.toString() ?? '').trim().replace(/\s/g, "");
     const password = (formData.get('password')?.toString() ?? '').trim();
-    const passwordConfirm = (formData.get('password-confirm')?.toString() ?? '').trim();
+    const passwordConfirm = (formData.get('password_confirm')?.toString() ?? '').trim();
 
     if (username === '' || password === '') {
         return {

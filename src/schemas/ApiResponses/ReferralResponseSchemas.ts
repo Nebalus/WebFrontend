@@ -1,10 +1,10 @@
 import {GenericSuccessResponse} from "@/schemas/ApiResponses/GenericResponseSchemas.ts";
 import {z} from "zod";
-import {ReferralClickHistoryDataPointSchema, ReferralCodeSchema, ReferralSchema} from "@/schemas/ReferralSchemas.ts";
+import {ReferralClickHistoryDataPointSchema, ReferralCodeSchema, ReferralPointerSchema, ReferralSchema} from "@/schemas/ReferralSchemas.ts";
 
 export const ReferralClickResponse = GenericSuccessResponse.extend({
     payload: z.object({
-        pointer: z.string().url()
+        pointer: ReferralPointerSchema
     })
 })
 

@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {IdSchema} from "@/schemas/GenericSchemas.ts";
+import {IdSchema, TimestampSchema} from "@/schemas/GenericSchemas.ts";
 
 export const UsernameSchema = z.string().min(3).max(32).transform(username => username.trim().toLowerCase().replace(/\s/g, ""));
 
@@ -18,7 +18,7 @@ export const UserSchema = z.object({
     username: UsernameSchema,
     email: EmailSchema,
     disabled: z.boolean(),
-    created_at: z.string().datetime({ offset: true }),
+    created_at: TimestampSchema,
 });
 
 export type User = z.infer<typeof UserSchema>;

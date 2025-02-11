@@ -23,7 +23,7 @@ export function DashboardDynamicBreadcrumb() {
         <Breadcrumb>
             <BreadcrumbList>
                 <BreadcrumbItem>
-                    <BreadcrumbLink onClick={() => {navigate(APP_DASHBOARD_PATH)}}>
+                    <BreadcrumbLink className="cursor-pointer" onClick={() => {navigate(APP_DASHBOARD_PATH)}}>
                         Dashboard
                     </BreadcrumbLink>
                 </BreadcrumbItem>
@@ -38,7 +38,7 @@ export function DashboardDynamicBreadcrumb() {
                                 {isLast ? (
                                     <BreadcrumbPage>{format(name)}</BreadcrumbPage>
                                 ) : (
-                                    <BreadcrumbLink onClick={() => {navigate(routeTo)}}>
+                                    <BreadcrumbLink className="cursor-pointer" onClick={() => {navigate(routeTo)}}>
                                         {format(name)}
                                     </BreadcrumbLink>
                                 )}

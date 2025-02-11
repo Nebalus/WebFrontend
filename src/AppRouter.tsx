@@ -1,8 +1,8 @@
 import {createBrowserRouter, redirect} from "react-router-dom";
 import LandingPage from "@/pages/LandingPage.tsx";
 import ErrorPage from "@/pages/ErrorPage.tsx";
-import LoginPage from "@/pages/authentication/LoginPage.tsx";
-import RegisterPage from "@/pages/authentication/RegisterPage.tsx";
+import LoginPage from "@/pages/user/LoginPage";
+import RegisterPage from "@/pages/user/RegisterPage";
 import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
@@ -35,7 +35,7 @@ export const appRouter = createBrowserRouter([
     {
         path: APP_DASHBOARD_PATH,
         element: <DashboardRootLayout />,
-        loader: protectedLoader,
+       // loader: protectedLoader,
         children: [
             {
                 path: "",
