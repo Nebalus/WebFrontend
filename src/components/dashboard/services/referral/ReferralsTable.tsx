@@ -9,7 +9,6 @@ export default function ReferralsTable() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("test");
         if (isHydrated()) {
             return;
         }

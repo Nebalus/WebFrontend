@@ -4,7 +4,7 @@ import {buttonVariants} from "@assets/components/shadcnui/button.tsx";
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import ExternalLink from "@/components/ExternalLink.tsx";
 
-export default function LandingPageNavBar() {
+export default function LandingNavBar() {
     const { isAuthenticated } = useAuthenticatedUserStore();
 
     return (

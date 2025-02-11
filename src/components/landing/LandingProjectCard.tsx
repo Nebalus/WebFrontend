@@ -11,7 +11,7 @@ export interface ProjectCardProps {
   work_and_progress: boolean;
 }
 
-export default function ProjectCard({ pic_link, pic_alt, title, description, github_link, work_and_progress}: ProjectCardProps) {
+export default function LandingProjectCard({ pic_link, pic_alt, title, description, github_link, work_and_progress}: ProjectCardProps) {
     return (
         <div className="rounded-2xl bg-gray-900 shadow-2xl shadow-gray-700 border-solid border-2 border-gray-950 group hover:shadow-violet-950 transition-all duration-300">
             <div className="flex flex-col h-full">

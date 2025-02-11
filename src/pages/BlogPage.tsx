@@ -1,4 +1,4 @@
-import LandingPageNavBar from "@/components/landing/LandingPageNavBar";
+import LandingNavBar from "@/components/landing/LandingNavBar.tsx";
 import WorkInProgress from "@/components/WorkInProgress";
 //import { useParams } from "react-router-dom";
 
@@ -7,7 +7,7 @@ export default function BlogPage() {
 
   return (
       <>
-        <LandingPageNavBar />
+        <LandingNavBar />
         <WorkInProgress />
       </>
   )

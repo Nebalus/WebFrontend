@@ -2,8 +2,8 @@
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
 import StarBackground from "@/components/StarBackground.tsx";
-import ProjectCard from "../components/landing/ProjectCard.tsx";
-import LandingPageNavBar from "@/components/landing/LandingPageNavBar.tsx";
+import LandingProjectCard from "../components/landing/LandingProjectCard.tsx";
+import LandingNavBar from "@/components/landing/LandingNavBar.tsx";
 
 export default function LandingPage() {
 
@@ -17,7 +17,7 @@ export default function LandingPage() {
       <>
         <StarBackground/>
         <div className="flex flex-col min-h-[100dvh] bg-black">
-          <LandingPageNavBar />
+          <LandingNavBar />
           <main className="flex-1 z-10">
             <section className="w-full mt-40">
               <div className="container px-4 md:px-6">
@@ -60,7 +60,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="mx-auto grid max-w-8xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-                  <ProjectCard
+                  <LandingProjectCard
                       pic_link="/static/media/images/mandelbrot.jpg"
                       pic_alt="Picture of an mandelbrot fractal"
                       title="Mandelbrot"
@@ -68,7 +68,7 @@ export default function LandingPage() {
                       github_link="https://github.com/Nebalus/Mandelbrot-Fractal"
                       work_and_progress={false}
                   />
-                  <ProjectCard
+                  <LandingProjectCard
                       pic_link="/static/media/images/gamesirl.png"
                       pic_alt="Games IRL Icon"
                       title="Games IRL Mobile App"
@@ -76,21 +76,21 @@ export default function LandingPage() {
                       github_link="https://github.com/Nebalus/GamesIRLMobile"
                       work_and_progress={true}
                   />
-                  {/*<ProjectCard*/}
+                  {/*<LandingProjectCard*/}
                   {/*    pic_link="/static/icons/placeholder.svg"*/}
                   {/*    pic_alt="Melodybot Icon"*/}
                   {/*    title="Melody"*/}
                   {/*    description="An open-source Discord music bot in Java!"*/}
                   {/*    work_and_progress={true}*/}
                   {/*/>*/}
-                  {/*<ProjectCard*/}
+                  {/*<LandingProjectCard*/}
                   {/*    pic_link="/static/icons/placeholder.svg"*/}
                   {/*    pic_alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"*/}
                   {/*    title="Cosmoventure"*/}
                   {/*    description="This is a 2D jump n run, story game made with my house own game engine."*/}
                   {/*    work_and_progress={true}*/}
                   {/*/>*/}
-                  {/*<ProjectCard*/}
+                  {/*<LandingProjectCard*/}
                   {/*    pic_link="/static/icons/placeholder.svg"*/}
                   {/*    pic_alt="Picture of an mandelbrot fractal"*/}
                   {/*    title="GalaxyFrameWork"*/}

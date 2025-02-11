@@ -1,4 +1,4 @@
-import ReferralClickAnalyticsCard from "@/components/dashboard/services/referral/ReferralClickAnalyticsCard.tsx";
+import ReferralClickAnalyticsCard from "@/components/dashboard/services/referral/details/ReferralClickAnalyticsCard.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 import {ReferralCodeSchema} from "@/schemas/ReferralSchemas.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";

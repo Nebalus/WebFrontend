@@ -25,7 +25,7 @@ import {
   useSidebar,
 } from "@assets/components/shadcnui/sidebar"
 import SiteLogo from "@/components/SiteLogo"
-import {NavUser} from "@/components/dashboard/rootlayout/DashboardSidebarUser"
+import {NavUser} from "@/components/dashboard/layout/DashboardSidebarUser"
 import {NavLink, useLocation} from "react-router-dom"
 import {useEffect, useState} from "react";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
@@ -222,7 +222,7 @@ import {
   useSidebar,
 } from "@assets/components/shadcnui/sidebar"
 import SiteLogo from "@/components/SiteLogo"
-import {NavUser} from "@/components/dashboard/rootlayout/DashboardSideBarUser"
+import {NavUser} from "@/components/dashboard/layout/DashboardSideBarUser"
 import {NavLink, useLocation} from "react-router-dom"
 import {useEffect, useState} from "react";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";

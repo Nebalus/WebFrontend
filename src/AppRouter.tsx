@@ -3,11 +3,11 @@ import LandingPage from "@/pages/LandingPage.tsx";
 import ErrorPage from "@/pages/ErrorPage.tsx";
 import LoginPage from "@/pages/user/LoginPage";
 import RegisterPage from "@/pages/user/RegisterPage";
-import DashboardRootLayout from "@/components/dashboard/rootlayout/DashboardRootLayout.tsx";
+import DashboardLayout from "@/components/dashboard/layout/DashboardLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
 import HomeBoard from "@/components/dashboard/HomeBoard";
-import ReferralsBoard from "@/components/dashboard/services/referral/ReferralsBoard";
+import ReferralsPanel from "@/components/dashboard/services/referral/ReferralsPanel.tsx";
 import LinktreeBoard from "@/components/dashboard/services/linktree/LinktreeBoard";
 import TodosBoard from "@/components/dashboard/services/todos/TodosBoard";
 import ReferralPage from "@/pages/ReferralPage.tsx";
@@ -23,7 +23,7 @@ import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
 import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoard";
 import GamesIRLBoard from "@/components/dashboard/services/gamesirl/GamesIRLBoard.tsx";
 import BlogBoard from "@/components/dashboard/services/blog/BlogBoard.tsx";
-import ReferralsDetailsBoard from "@/components/dashboard/services/referral/ReferralDetailsBoard.tsx";
+import ReferralsDetailsBoard from "@/components/dashboard/services/referral/details/ReferralDetailsPanel.tsx";
 import LinktreePage from "./pages/LinktreePage";
 import BlogPage from "./pages/BlogPage";
 
@@ -36,7 +36,7 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: APP_DASHBOARD_PATH,
-        element: <DashboardRootLayout />,
+        element: <DashboardLayout />,
         loader: protectedLoader,
         children: [
             {
@@ -49,7 +49,7 @@ export const appRouter = createBrowserRouter([
             },
             {
                 path: "referrals",
-                element: <ReferralsBoard />,
+                element: <ReferralsPanel />,
             },
             {
                 path: "referrals/:referral_code",

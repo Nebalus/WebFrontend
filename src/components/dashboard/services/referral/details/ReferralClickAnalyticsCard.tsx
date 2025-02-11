@@ -7,7 +7,7 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@assets/components/shadcnui/card"
+} from "@assets/components/shadcnui/card.tsx"
 
 import {
     ChartConfig,
@@ -16,7 +16,7 @@ import {
     ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
-} from "@assets/components/shadcnui/chart"
+} from "@assets/components/shadcnui/chart.tsx"
 
 import {
     Select,
@@ -24,11 +24,12 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@assets/components/shadcnui/select"
+} from "@assets/components/shadcnui/select.tsx"
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {ReferralClickHistoryDataPoint, ReferralCode} from "@/schemas/ReferralSchemas.ts";
-import {handleAuthError} from "@/utils/authUtils.ts";
-import {ReferralClickHistoryResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
+import {
+    ReferralClickHistoryResponse
+} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import {useEffect} from "react";
 
 export default function ReferralClickAnalyticsCard({ referralCode }: { referralCode: ReferralCode }) {
@@ -42,15 +43,10 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                     method: 'GET'
                 },
                 route: `/ui/user/services/referrals/${referralCode}/click_history?range=${timeRange}`
-            }).catch();
+            }).catch().then(response => response.json()).then(data => ReferralClickHistoryResponse.safeParseAsync(data));
 
-            handleAuthError(response);
-
-            const responseAsJson = await response.json();
-            const parsedResponse = await ReferralClickHistoryResponse.safeParseAsync(responseAsJson);
-
-            if(parsedResponse.success) {
-                setChartData(parsedResponse.data.payload.history);
+            if(response.success) {
+                setChartData(response.data.payload.history);
             }
         })();
     }, [referralCode, timeRange]);

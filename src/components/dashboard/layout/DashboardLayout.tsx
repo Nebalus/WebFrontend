@@ -1,12 +1,12 @@
 import {SidebarInset, SidebarProvider, SidebarTrigger} from "@assets/components/shadcnui/sidebar"
-import DashboardSideBar from "@/components/dashboard/rootlayout/DashboardSideBar"
+import DashboardSideBar from "@/components/dashboard/layout/DashboardSideBar"
 import {Separator} from "@assets/components/shadcnui/separator"
 import {Outlet} from "react-router-dom";
 import {Toaster} from "sonner";
-import {DashboardDynamicBreadcrumb} from "@/components/dashboard/rootlayout/DashboardDynamicBreadcrumb.tsx";
+import {DashboardDynamicBreadcrumb} from "@/components/dashboard/layout/DashboardDynamicBreadcrumb.tsx";
 import {CommandMenu} from "@/components/dashboard/CommandMenu.tsx";
 
-export default function DashboardRootLayout() {
+export default function DashboardLayout() {
   return (
     <>
       <SidebarProvider defaultOpen={true}>
