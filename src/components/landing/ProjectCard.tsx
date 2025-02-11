@@ -28,7 +28,7 @@ export default function ProjectCard({ pic_link, pic_alt, title, description, git
                     <p className="text-muted-foreground">{description}</p>
                     <div className="flex flex-row last mt-auto">
                         {github_link && (
-                            <Link to={github_link}>
+                            <Link to={github_link} target="_blank" rel="noopener noreferrer">
                                 <Github />
                             </Link>
                         )}

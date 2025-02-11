@@ -1,5 +1,5 @@
 import {create} from "zustand";
-import {Referral} from "@/schemas/ReferralSchemas.ts";
+import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {handleAuthError} from "@/utils/authUtils.ts";
 import {ReferralListAllOwnedResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
@@ -13,6 +13,7 @@ type ReferralState = {
 type ReferralAction = {
     isHydrated: () => boolean;
     hydrateReferrals: () => void;
+    //getReferralByCode: (referral_code: ReferralCode) => Referral | undefined;
     reset: () => void;
 };
 

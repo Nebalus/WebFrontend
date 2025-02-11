@@ -18,6 +18,7 @@ export default function ReferralPage() {
 
             if (response.ok) {
                 const referralResponse = ReferralClickResponse.parse(await response.json());
+                
                 window.location.href = referralResponse.payload.pointer;
                 return null;
             } else {

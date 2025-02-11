@@ -1,5 +1,6 @@
 export const VERSION = '0.0.2';
-export const STORAGE_PREFIX = 'frontend_';
+export const STORAGE_PREFIX = 'dev_';
+export const OWNER_USERNAME = 'nebalus';
 
 export const APP_BACKEND_TOP_LEVEL_DOMAIN = import.meta.env.APP_BACKEND_TOP_LEVEL_DOMAIN;
 

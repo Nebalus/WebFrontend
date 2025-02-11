@@ -24,6 +24,8 @@ import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoar
 import GamesIRLBoard from "@/components/dashboard/services/gamesirl/GamesIRLBoard.tsx";
 import BlogBoard from "@/components/dashboard/services/blog/BlogBoard.tsx";
 import ReferralsDetailsBoard from "@/components/dashboard/services/referral/ReferralDetailsBoard.tsx";
+import LinktreePage from "./pages/LinktreePage";
+import BlogPage from "./pages/BlogPage";
 
 export const appRouter = createBrowserRouter([
     {
@@ -98,8 +100,8 @@ export const appRouter = createBrowserRouter([
         element: <ReferralPage />
     },
     {
-        path: "linktree/:linktree_id",
-        element: <WorkInProgress />
+        path: "linktree/:username",
+        element: <LinktreePage />
     },
     {
         path: "form/:form_id",
@@ -107,7 +109,7 @@ export const appRouter = createBrowserRouter([
     },
     {
         path: "blogs",
-        element: <WorkInProgress />,
+        element: <BlogPage />,
         children: [
             {        
                 path: ":blog_id",
