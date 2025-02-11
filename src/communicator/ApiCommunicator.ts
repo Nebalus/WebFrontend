@@ -2,6 +2,7 @@ import {APP_BACKEND_API_DOMAIN, APP_BACKEND_API_PORT, APP_BACKEND_API_PROTOCOL} 
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import {SuccessfulLoginResponse, SuccessfulRegisterResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
 import {UserLoginRequest, UserRegisterRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
+import {handleAuthError} from "@/utils/authUtils.ts";
 
 export const server_url = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
 
@@ -57,7 +58,10 @@ class ApiCommunicator {
             Authorization: `${jwt}`
         });
 
-        return fetch(url, context);
+        const response = await fetch(url, context);
+        handleAuthError(response);
+
+        return response;
     }
 }
 

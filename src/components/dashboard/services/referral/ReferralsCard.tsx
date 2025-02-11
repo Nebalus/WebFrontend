@@ -47,8 +47,7 @@ export default function ReferralsCard() {
    
     function onSubmit(data: CreateReferralForm) {
       console.log("TEST");
-    
-      
+
       toast({
         title: "You submitted the following values:",
         description: (
@@ -84,7 +83,7 @@ export default function ReferralsCard() {
                             </DialogHeader>
                             <Form>
                               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                            
+
                                 <DialogFooter>
                                   <Button type="submit" className="bg-green-600">Create</Button>
                                 </DialogFooter>

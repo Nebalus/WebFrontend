@@ -1,7 +1,6 @@
 import {create} from "zustand";
-import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
+import {Referral} from "@/schemas/ReferralSchemas.ts";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-import {handleAuthError} from "@/utils/authUtils.ts";
 import {ReferralListAllOwnedResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 
 type ReferralState = {
@@ -28,17 +27,12 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
     isHydrated: () => get().hydrated,
     hydrateReferrals: () => {
         (async () => {
-            const response = await ApiCommunicator.apiFetch({
+            const parsedResponse = await ApiCommunicator.apiFetch({
                 context: {
                     method: 'GET'
                 },
                 route: `/ui/user/services/referrals/all`
-            }).catch();
-
-            handleAuthError(response);
-
-            const responseAsJson = await response.json();
-            const parsedResponse = await ReferralListAllOwnedResponse.safeParseAsync(responseAsJson);
+            }).catch().then(response => response.json()).then(data => ReferralListAllOwnedResponse.safeParseAsync(data));
 
             if(parsedResponse.success) {
                 set({referrals: parsedResponse.data.payload, hydrated: true});

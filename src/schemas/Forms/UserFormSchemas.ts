@@ -13,7 +13,7 @@ export type RegisterUserForm = z.infer<typeof RegisterUserFormSchema>;
 
 export const LoginUserFromSchema = z.object({
     username: UsernameSchema,
-    PasswordSchema: PasswordSchema
+    password: PasswordSchema
 });
 
 export type LoginUserFrom = z.infer<typeof LoginUserFromSchema>;
