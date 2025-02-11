@@ -1,8 +1,11 @@
 import SiteLogo from "@/components/SiteLogo.tsx";
 import {Link} from "react-router-dom";
 import {buttonVariants} from "@assets/components/shadcnui/button.tsx";
+import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 
 export default function LandingPageNavBar() {
+    const { isAuthenticated } = useAuthenticatedUserStore();
+
     return (
         <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full z-[50] backdrop-blur-2xl border-b">
             <SiteLogo/>
@@ -17,7 +20,7 @@ export default function LandingPageNavBar() {
                     Status
                 </Link>
                 <Link className={"text-sm font-bold mx-3 " + buttonVariants({ variant: "outline" })} to={"/login"}>
-                    Login
+                    {isAuthenticated() ? "Dashboard" : "Login"}
                 </Link>
             </nav>
         </header>
