@@ -107,11 +107,11 @@ export default function RegisterPage() {
                     Invitation token
                   </label>
                   
-                  <div className="text-sm">
-                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      What is this?
-                    </a>
-                  </div>
+                  {/*<div className="text-sm">*/}
+                  {/*  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">*/}
+                  {/*    What is this?*/}
+                  {/*  </a>*/}
+                  {/*</div>*/}
                 </div>
                 <div className="mt-2">
                   <input
