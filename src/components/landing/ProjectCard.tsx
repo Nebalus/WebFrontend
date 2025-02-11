@@ -1,6 +1,6 @@
 import { AspectRatio } from "@assets/components/shadcnui/aspect-ratio";
 import { Github, Pickaxe } from "lucide-react";
-import { Link } from "react-router-dom";
+import ExternalLink from "@/components/ExternalLink.tsx";
 
 export interface ProjectCardProps {
   pic_link: string;
@@ -28,9 +28,9 @@ export default function ProjectCard({ pic_link, pic_alt, title, description, git
                     <p className="text-muted-foreground">{description}</p>
                     <div className="flex flex-row last mt-auto">
                         {github_link && (
-                            <Link to={github_link} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink to={github_link}>
                                 <Github />
-                            </Link>
+                            </ExternalLink>
                         )}
 
                         {work_and_progress && <p className="flex flex-row ">

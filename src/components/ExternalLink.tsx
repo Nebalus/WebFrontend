@@ -1,15 +1,15 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import React from "react";
 
-// DOES NOT WORK
-export default function ExternalLink(link) => {
+export default function ExternalLink({ to, children, className }: { to: string, children: React.ReactNode, className: string }) {
   return (
-    <Link 
-      to={link} 
-      target="_blank" 
-      rel="noopener noreferrer"
-    >
-      GitHub Repository
-    </Link>
+      <Link
+          to={to}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={className}
+      >
+        {children}
+      </Link>
   );
-};
+}
