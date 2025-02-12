@@ -26,6 +26,7 @@ import BlogBoard from "@/components/dashboard/services/blog/BlogBoard.tsx";
 import ReferralsDetailsBoard from "@/components/dashboard/services/referral/details/ReferralDetailsPanel.tsx";
 import LinktreePage from "./pages/LinktreePage";
 import BlogPage from "./pages/BlogPage";
+import PrivacyPage from "./pages/PrivacyPage";
 
 export const appRouter = createBrowserRouter([
     {
@@ -135,5 +136,9 @@ export const appRouter = createBrowserRouter([
             ApiCommunicator.logout();
             return redirect('/login');
         }
+    },
+    {
+        path: "privacy",
+        element: <PrivacyPage />
     },
 ]);
