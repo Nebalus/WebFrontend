@@ -26,6 +26,7 @@ import ReferralsTable from "@/components/dashboard/services/referral/ReferralsTa
 import {Input} from "@assets/components/shadcnui/input.tsx";
 import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
 import {toast} from "sonner";
+import {DialogClose} from "@radix-ui/react-dialog";
 
 export default function ReferralsPanel() {
     const {hydrateReferrals} = useReferralStore();
@@ -93,7 +94,7 @@ export default function ReferralsPanel() {
                                         name="pointer"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Username</FormLabel>
+                                                <FormLabel>Pointer</FormLabel>
                                                 <FormControl>
                                                     <Input placeholder="shadcn" {...field} value={field.value ?? ""}/>
                                                 </FormControl>
@@ -109,21 +110,19 @@ export default function ReferralsPanel() {
                                         name="disabled"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Username</FormLabel>
+                                                <FormLabel>Disabled</FormLabel>
                                                 <FormControl>
                                                     <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                                                 </FormControl>
-                                                <FormDescription>
-                                                    Is this referral disabled?
-                                                </FormDescription>
                                                 <FormMessage />
                                             </FormItem>
                                         )}
                                     />
                                     <DialogFooter>
-                                        <Button type="submit" className="bg-green-600">Create</Button>
+                                        <DialogClose asChild>
+                                            <Button type="submit" className="bg-green-600">Create</Button>
+                                        </DialogClose>
                                     </DialogFooter>
-                                    <Button type="submit" className="bg-green-600">Create</Button>
                                 </form>
                             </Form>
                         </DialogContent>
