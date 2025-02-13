@@ -2,7 +2,6 @@ import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {useForm} from "react-hook-form";
 import {CreateReferralForm, CreateReferralFormSchema} from "@/schemas/Forms/ReferralFormSchemas.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {toast} from "@assets/hooks/use-toast.ts";
 import {Card, CardContent, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {Plus, RefreshCcw} from "lucide-react";
@@ -14,11 +13,23 @@ import {
     DialogTitle,
     DialogTrigger
 } from "@assets/components/shadcnui/dialog.tsx";
-import {Form} from "@assets/components/shadcnui/form.tsx";
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
+} from "@assets/components/shadcnui/form.tsx";
 import ReferralsTable from "@/components/dashboard/services/referral/ReferralsTable.tsx";
+import {Input} from "@assets/components/shadcnui/input.tsx";
+import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
+import {toast} from "sonner";
 
 export default function ReferralsPanel() {
     const {hydrateReferrals} = useReferralStore();
+
 
     const form = useForm<CreateReferralForm>({
         resolver: zodResolver(CreateReferralFormSchema),
@@ -30,15 +41,9 @@ export default function ReferralsPanel() {
     })
 
     function onSubmit(data: CreateReferralForm) {
-        console.log("TEST");
-
-        toast({
-            title: "You submitted the following values:",
-            description: (
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-            <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-          </pre>
-            ),
+        console.log(data);
+        toast("Referral created", {
+            description: "The referral has been created successfully"
         })
     }
 
@@ -54,7 +59,7 @@ export default function ReferralsPanel() {
                     </Button>
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Button className="bg-green-600 hover:bg-green-500" variant="outline">
+                            <Button className="bg-green-600 hover:bg-green-500" variant="outline" >
                                 <Plus/>
                             </Button>
                         </ DialogTrigger>
@@ -65,12 +70,60 @@ export default function ReferralsPanel() {
                                     Here you can create a new referral
                                 </DialogDescription>
                             </DialogHeader>
-                            <Form>
+                            <Form {...form}>
                                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-
+                                    <FormField
+                                        control={form.control}
+                                        name="name"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Username</FormLabel>
+                                                <FormControl>
+                                                    <Input placeholder="shadcn" {...field} value={field.value ?? ""}/>
+                                                </FormControl>
+                                                <FormDescription>
+                                                    This is your public display name.
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="pointer"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Username</FormLabel>
+                                                <FormControl>
+                                                    <Input placeholder="shadcn" {...field} value={field.value ?? ""}/>
+                                                </FormControl>
+                                                <FormDescription>
+                                                    This is your public display name.
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="disabled"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Username</FormLabel>
+                                                <FormControl>
+                                                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                                </FormControl>
+                                                <FormDescription>
+                                                    Is this referral disabled?
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
                                     <DialogFooter>
                                         <Button type="submit" className="bg-green-600">Create</Button>
                                     </DialogFooter>
+                                    <Button type="submit" className="bg-green-600">Create</Button>
                                 </form>
                             </Form>
                         </DialogContent>
