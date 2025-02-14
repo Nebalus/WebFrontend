@@ -49,6 +49,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
         if(parsedResponse.success) {
             set({referrals: [...get().referrals, parsedResponse.data.payload]});
         }
+        return parsedResponse.success;
     },
     reset: () => set(initialState),
 }));

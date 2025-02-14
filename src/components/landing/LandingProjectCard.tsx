@@ -14,7 +14,7 @@ export interface ProjectCardProps {
 export default function LandingProjectCard({ pic_link, pic_alt, title, description, github_link, work_and_progress}: ProjectCardProps) {
     return (
         <div className="rounded-2xl bg-gray-900 shadow-2xl shadow-gray-700 border-solid border-2 border-gray-950 group hover:shadow-violet-950 transition-all duration-300">
-            <ExternalLink to={github_link} >
+            <ExternalLink to={github_link ?? "./"} >
                 <div className="flex flex-col h-full">
                     <AspectRatio ratio={16 / 9} className="overflow-hidden">
                         <img

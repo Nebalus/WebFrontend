@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from "react";
 
-export default function ExternalLink({ to, children, className }: { to: string, children: React.ReactNode, className: string }) {
+export default function ExternalLink({ to, children, className }: { to: string, children?: React.ReactNode, className?: string }) {
   return (
       <Link
           to={to}
