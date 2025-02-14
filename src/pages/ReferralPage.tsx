@@ -1,11 +1,11 @@
 import StarBackground from "@/components/StarBackground.tsx";
 import {trefoil} from 'ldrs';
-import {server_url} from "@/communicator/ApiCommunicator.ts";
 import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {ReferralClickResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import SiteLogo from "@/components/SiteLogo.tsx";
 import wait from "waait";
+import {APP_BACKEND_API_URL} from "@/constants.ts";
 
 export default function ReferralPage() {
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ export default function ReferralPage() {
     useEffect(() => {
         (async () => {
             try {
-                const response = await fetch(`${server_url}/services/referral/` + referralCode, {
+                const response = await fetch(`${APP_BACKEND_API_URL}/services/referral/` + referralCode, {
                     method: 'GET',
                 }).then(response => response.json()).then(data => ReferralClickResponse.safeParseAsync(data));
 

@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const from = params.get('from') || APP_DASHBOARD_PATH;
+  const next = params.get('next') || APP_DASHBOARD_PATH;
 
   return (
       <>
@@ -90,14 +90,14 @@ export default function LoginPage() {
                 >
                   {isSigningIn ? 'Signing in' : 'Sign in'}
                 </Button>
-                <Input type="hidden" name="redirectTo" value={from} />
+                <Input type="hidden" name="redirectTo" value={next} />
               </div>
             </Form>
 
             <p className="mt-10 text-center text-sm text-gray-500 z-10">
               Dont have an account?{' '}
               <Link
-                  to={"/register"}
+                  to="/register"
                   className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
               >
                 Register

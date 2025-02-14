@@ -4,7 +4,7 @@ import TableSkeleton from "@/components/TableSkeleton.tsx";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
-export default function ReferralsTable() {
+export default function ReferralsDataTable() {
     const {referrals, isHydrated, hydrateReferrals} = useReferralStore();
     const navigate = useNavigate();
 

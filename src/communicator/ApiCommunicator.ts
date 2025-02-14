@@ -1,22 +1,20 @@
-import {APP_BACKEND_API_DOMAIN, APP_BACKEND_API_PORT, APP_BACKEND_API_PROTOCOL} from "@/constants.ts";
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
-import {SuccessfulLoginResponse, SuccessfulRegisterResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
+import {SuccessfulLoginResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
 import {UserLoginRequest, UserRegisterRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
 import {handleAuthError} from "@/utils/authUtils.ts";
-
-export const server_url = `${APP_BACKEND_API_PROTOCOL}://${APP_BACKEND_API_DOMAIN}:${APP_BACKEND_API_PORT}`;
+import {APP_BACKEND_API_URL} from "@/constants.ts";
 
 class ApiCommunicator {
 
     async register(userRegisterRequest: UserRegisterRequest): Promise<boolean> {
         try {
-            const response = await fetch(`${server_url}/ui/register`, {
+            const response = await fetch(`${APP_BACKEND_API_URL}/ui/register`, {
                 method: "POST",
                 body: JSON.stringify(userRegisterRequest),
-            });
-            if(response.ok) {
-                const registerResponse = SuccessfulRegisterResponse.parse(await response.json());
-                return registerResponse.success;
+            }).then(response => response.json()).then(data => SuccessfulLoginResponse.safeParseAsync(data));
+
+            if (response.success) {
+                return response.data.success;
             }
         } catch (e) {
             console.error(e);
@@ -28,15 +26,14 @@ class ApiCommunicator {
         const { setUser, setJwt } = useAuthenticatedUserStore.getState();
 
         try {
-            const response = await fetch(`${server_url}/ui/auth`, {
+            const response = await fetch(`${APP_BACKEND_API_URL}/ui/auth`, {
                 method: 'POST',
                 body: JSON.stringify(userLoginRequest),
-            });
+            }).then(response => response.json()).then(data => SuccessfulLoginResponse.safeParseAsync(data));
 
-            if (response.ok) {
-                const loginResponse = SuccessfulLoginResponse.parse(await response.json());
-                setUser(loginResponse.payload.user);
-                setJwt(loginResponse.payload.jwt);
+            if (response.success) {
+                setUser(response.data.payload.user);
+                setJwt(response.data.payload.jwt);
                 return true;
             }
         } catch (e) {
@@ -50,7 +47,7 @@ class ApiCommunicator {
     }
 
     async apiFetch({ context = {}, route }: { context: RequestInit; route: `/${string}` }): Promise<Response> {
-        const url = `${server_url}${route}`;
+        const url = `${APP_BACKEND_API_URL}${route}`;
         const { jwt } = useAuthenticatedUserStore.getState();
 
         context.headers = new Headers({

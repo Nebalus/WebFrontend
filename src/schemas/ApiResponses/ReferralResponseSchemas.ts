@@ -18,3 +18,7 @@ export const ReferralClickHistoryResponse = GenericSuccessResponse.extend({
 export const ReferralListAllOwnedResponse = GenericSuccessResponse.extend({
     payload: z.array(ReferralSchema)
 })
+
+export const ReferralCreateResponse = GenericSuccessResponse.extend({
+    payload: ReferralSchema
+})

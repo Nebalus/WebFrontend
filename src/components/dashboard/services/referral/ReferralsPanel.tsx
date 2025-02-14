@@ -16,13 +16,12 @@ import {
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
     FormMessage
 } from "@assets/components/shadcnui/form.tsx";
-import ReferralsTable from "@/components/dashboard/services/referral/ReferralsTable.tsx";
+import ReferralsDataTable from "@/components/dashboard/services/referral/ReferralsDataTable.tsx";
 import {Input} from "@assets/components/shadcnui/input.tsx";
 import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
 import {toast} from "sonner";
@@ -30,8 +29,7 @@ import {DialogClose} from "@radix-ui/react-dialog";
 import { APP_FRONTEND_FULL_PATH } from "@/constants";
 
 export default function ReferralsPanel() {
-    const {hydrateReferrals} = useReferralStore();
-
+    const {hydrateReferrals, createReferral} = useReferralStore();
 
     const form = useForm<CreateReferralForm>({
         resolver: zodResolver(CreateReferralFormSchema),
@@ -43,6 +41,7 @@ export default function ReferralsPanel() {
     })
 
     function onSubmit(data: CreateReferralForm) {
+        createReferral(data);
         toast("Referral created", {
             description: "The referral has been created successfully"
         })
@@ -80,7 +79,7 @@ export default function ReferralsPanel() {
                                             <FormItem>
                                                 <FormLabel>Referral Name</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Example Referral" {...field} value={field.value ?? ""}/>
+                                                    <Input placeholder="Example Referral" {...field} value={field.value ?? ""} type="text"/>
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -93,7 +92,7 @@ export default function ReferralsPanel() {
                                             <FormItem>
                                                 <FormLabel>Pointer</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder={APP_FRONTEND_FULL_PATH} {...field} value={field.value ?? ""}/>
+                                                    <Input placeholder={APP_FRONTEND_FULL_PATH} {...field} value={field.value ?? ""} type="url"/>
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -124,7 +123,7 @@ export default function ReferralsPanel() {
                 </div>
             </CardHeader>
             <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
-                <ReferralsTable></ReferralsTable>
+                <ReferralsDataTable></ReferralsDataTable>
             </CardContent>
         </Card>
     )

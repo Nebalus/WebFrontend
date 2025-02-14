@@ -7,6 +7,8 @@ export const APP_BACKEND_TOP_LEVEL_DOMAIN = import.meta.env.APP_BACKEND_TOP_LEVE
 export const APP_BACKEND_API_DOMAIN = import.meta.env.APP_BACKEND_API_DOMAIN;
 export const APP_BACKEND_API_PROTOCOL = import.meta.env.APP_BACKEND_API_PROTOCOL;
 export const APP_BACKEND_API_PORT = import.meta.env.APP_BACKEND_API_PORT;
+export const APP_BACKEND_API_URL = APP_BACKEND_API_PROTOCOL + "://" + APP_BACKEND_API_DOMAIN + ":" + APP_BACKEND_API_PORT;
+
 
 export const APP_FRONTEND_DOMAIN = import.meta.env.APP_FRONTEND_DOMAIN;
 export const APP_FRONTEND_PROTOCOL = import.meta.env.APP_FRONTEND_PROTOCOL;
