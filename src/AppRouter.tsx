@@ -38,7 +38,7 @@ export const appRouter = createBrowserRouter([
     {
         path: APP_DASHBOARD_PATH,
         element: <DashboardLayout />,
-      //  loader: protectedLoader,
+        loader: protectedLoader,
         children: [
             {
                 path: "",
