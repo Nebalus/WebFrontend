@@ -76,8 +76,16 @@ export default function LandingPage() {
                       pic_link="/static/media/images/gamesirl.png"
                       pic_alt="Games IRL Icon"
                       title="Games IRL Mobile App"
-                      description='"Games IRL" is a mobile app that is used to participate in real life games and events hosted in a city, country, continent or even the whole world.'
+                      description='An mobile app that is used to participate in real life games and events such as Tag, Hide and Seek, Zombie and Capture the Flag hosted in a city, country, continent or even the whole world.'
                       github_link="https://github.com/Nebalus/GamesIRLMobile"
+                      work_and_progress={true}
+                  />
+                  <LandingProjectCard
+                      pic_link="/static/media/images/sanitizr.jpg"
+                      pic_alt="Sanitizr Icon"
+                      title="Sanitizr PHP Libary"
+                      description='A Zod inspired validation and filter framework'
+                      github_link="https://github.com/Nebalus/Sanitizr"
                       work_and_progress={true}
                   />
                   {/*<LandingProjectCard*/}
@@ -147,7 +155,7 @@ export default function LandingPage() {
               <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
                   <div className="space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Contact</h2>
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h2>
                     <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     </p>
                   </div>
