@@ -25,11 +25,12 @@ import ReferralsDataTable from "@/components/dashboard/services/referral/Referra
 import {Input} from "@assets/components/shadcnui/input.tsx";
 import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
 import {toast} from "sonner";
-import {DialogClose} from "@radix-ui/react-dialog";
 import { APP_FRONTEND_FULL_PATH } from "@/constants";
+import {useState} from "react";
 
 export default function ReferralsPanel() {
     const {hydrateReferrals, createReferral} = useReferralStore();
+    const [createReferralModalOpen, setCreateReferralModalOpen] = useState(false);
 
     const form = useForm<CreateReferralForm>({
         resolver: zodResolver(CreateReferralFormSchema),
@@ -41,8 +42,11 @@ export default function ReferralsPanel() {
     })
 
     function onSubmit(data: CreateReferralForm) {
+        form.reset();
+        setCreateReferralModalOpen(false);
         createReferral(data);
         toast("Referral created", {
+            className: "bg-green-300",
             description: "The referral has been created successfully"
         })
     }
@@ -57,7 +61,7 @@ export default function ReferralsPanel() {
                     <Button className="mr-1" variant="outline" onClick={() => hydrateReferrals()}>
                         <RefreshCcw/>
                     </Button>
-                    <Dialog>
+                    <Dialog open={createReferralModalOpen} onOpenChange={setCreateReferralModalOpen}>
                         <DialogTrigger asChild>
                             <Button className="bg-green-600 hover:bg-green-500" variant="outline" >
                                 <Plus/>
@@ -112,9 +116,7 @@ export default function ReferralsPanel() {
                                         )}
                                     />
                                     <DialogFooter>
-                                        <DialogClose asChild>
-                                            <Button type="submit" className="bg-green-600">Create</Button>
-                                        </DialogClose>
+                                        <Button type="submit" className="bg-green-600">Create</Button>
                                     </DialogFooter>
                                 </form>
                             </Form>
