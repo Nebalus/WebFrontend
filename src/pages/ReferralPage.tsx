@@ -1,32 +1,36 @@
 import StarBackground from "@/components/StarBackground.tsx";
 import {trefoil} from 'ldrs';
 import {server_url} from "@/communicator/ApiCommunicator.ts";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {ReferralClickResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import SiteLogo from "@/components/SiteLogo.tsx";
+import wait from "waait";
 
 export default function ReferralPage() {
     const navigate = useNavigate();
     const referralCode = useParams<'referral_code'>().referral_code;
+    const [error, setError] = useState<boolean>(false);
 
     useEffect(() => {
         (async () => {
-            const response = await fetch(`${server_url}/services/referral/` + referralCode, {
-                method: 'GET',
-            });
+            try {
+                const response = await fetch(`${server_url}/services/referral/` + referralCode, {
+                    method: 'GET',
+                }).then(response => response.json()).then(data => ReferralClickResponse.safeParseAsync(data));
 
-            if (response.ok) {
-                const referralResponse = ReferralClickResponse.parse(await response.json());
-                
-                window.location.replace(referralResponse.payload.pointer);
-                return null;
-            } else {
+                if (response.success) {
+                    window.location.replace(response.data.payload.pointer);
+                } else {
+                    navigate('/');
+                }
+            } catch (e) {
+                console.error(e);
+                setError(true);
+                await wait(4000);
                 navigate('/');
             }
-        })().catch(
-            () => navigate('/')
-        );
+        })();
     }, [navigate, referralCode]);
 
     trefoil.register();
@@ -38,8 +42,11 @@ export default function ReferralPage() {
                 <div className="grid w-72 h-96 bg-gray-900 rounded-3xl p-4 overflow-clip">
                     <div className="w-auto h-24 flex mt-10 items-center justify-center flex-col">
                         <SiteLogo className="mt-2"/>
-                        <h1 className="mt-10 font-bold text-2xl">Redirecting</h1>
-                        <p className="mt-5 text-center">Please permit this site to redirect to other sites</p>
+                        <h1 className="mt-14 font-bold text-2xl">Redirecting</h1>
+                        {error ? (<>
+                            <p className="text-red-500">An error occurred while redirecting</p>
+                            <p className="text-red-500">Redirecting to Landing Page instead</p>
+                        </>) : null}
                     </div>
                     <div className="w-auto h-max flex items-center justify-center">
                         <l-trefoil
