@@ -36,7 +36,7 @@ export default function ReferralsPanel() {
         resolver: zodResolver(CreateReferralFormSchema),
         defaultValues: {
             name: "",
-            pointer: "",
+            url: "",
             disabled: false
         },
     })
@@ -91,7 +91,7 @@ export default function ReferralsPanel() {
                                     />
                                     <FormField
                                         control={form.control}
-                                        name="pointer"
+                                        name="url"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Pointer</FormLabel>

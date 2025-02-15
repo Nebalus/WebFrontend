@@ -31,7 +31,7 @@ export default function ReferralsDataTable() {
                             <TableRow key={"REFERRAL" + referral.code} onClick={() => {navigate(`./${referral.code}`)}}>
                                 <TableCell className="font-medium">{referral.code}</TableCell>
                                 <TableCell>{referral.name}</TableCell>
-                                <TableCell>{referral.pointer}</TableCell>
+                                <TableCell>{referral.url}</TableCell>
                             </TableRow>
                         ))
                     ) : (

@@ -1,9 +1,10 @@
 import { z } from "zod";
-import { ReferralNameSchema, ReferralPointerSchema } from "../ReferralSchemas";
+import { ReferralNameSchema } from "../ReferralSchemas";
+import {UrlSchema} from "@/schemas/GenericSchemas.ts";
 
 export const CreateReferralFormSchema = z.object({
     name: ReferralNameSchema,
-    pointer: ReferralPointerSchema,
+    url: UrlSchema,
     disabled: z.boolean().default(false)
 })
 
