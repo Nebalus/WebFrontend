@@ -94,7 +94,7 @@ export default function ReferralsPanel() {
                                         name="url"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Pointer</FormLabel>
+                                                <FormLabel>Url</FormLabel>
                                                 <FormControl>
                                                     <Input placeholder={APP_FRONTEND_FULL_PATH} {...field} value={field.value ?? ""} type="url"/>
                                                 </FormControl>
