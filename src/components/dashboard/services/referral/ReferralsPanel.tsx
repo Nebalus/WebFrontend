@@ -41,10 +41,10 @@ export default function ReferralsPanel() {
         },
     })
 
-    function onSubmit(data: CreateReferralForm) {
+    async function onSubmit(data: CreateReferralForm) {
         form.reset();
         setCreateReferralModalOpen(false);
-        createReferral(data);
+        await createReferral(data);
         toast("Referral created", {
             className: "bg-green-300",
             description: "The referral has been created successfully"

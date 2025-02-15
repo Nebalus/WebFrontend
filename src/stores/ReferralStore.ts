@@ -1,7 +1,11 @@
 import {create} from "zustand";
-import {Referral} from "@/schemas/ReferralSchemas.ts";
+import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-import {ReferralCreateResponse, ReferralListAllOwnedResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
+import {
+    ReferralCreateResponse,
+    ReferralDeleteResponse, ReferralGetResponse,
+    ReferralListAllOwnedResponse
+} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import {CreateReferralForm} from "@/schemas/Forms/ReferralFormSchemas.ts";
 
 type ReferralState = {
@@ -12,8 +16,9 @@ type ReferralState = {
 type ReferralAction = {
     isHydrated: () => boolean;
     hydrateReferrals: () => void;
-    createReferral: (createReferralForm: CreateReferralForm) => void;
-    //getReferralByCode: (referral_code: ReferralCode) => Referral | undefined;
+    createReferral: (createReferralForm: CreateReferralForm) => Promise<Referral | undefined>;
+    deleteReferral: (referralCode: ReferralCode) => void;
+    getReferralByCode: (referralCode: ReferralCode) => Promise<Referral | undefined>;
     reset: () => void;
 };
 
@@ -37,7 +42,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
             set({referrals: parsedResponse.data.payload, hydrated: true});
         }
     },
-    createReferral: async (createReferralForm: CreateReferralForm) => {
+    createReferral: async (createReferralForm: CreateReferralForm): Promise<Referral | undefined> => {
         const parsedResponse = await ApiCommunicator.apiFetch({
             context: {
                 method: 'POST',
@@ -48,8 +53,44 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
 
         if(parsedResponse.success) {
             set({referrals: [...get().referrals, parsedResponse.data.payload]});
+            return parsedResponse.data.payload;
+        }
+
+        return undefined;
+    },
+    deleteReferral: async (referralCode: ReferralCode) => {
+        const parsedResponse = await ApiCommunicator.apiFetch({
+            context: {
+                method: 'DELETE',
+            },
+            route: `/ui/user/services/referrals/${referralCode.toString()}`
+        }).then(response => response.json()).then(data => ReferralDeleteResponse.safeParseAsync(data));
+
+        if(parsedResponse.success) {
+            set({ referrals: get().referrals.filter(ref => ref.code !== referralCode) });
         }
         return parsedResponse.success;
+    },
+    getReferralByCode: async (referralCode: ReferralCode): Promise<Referral | undefined> => {
+        const referral = get().referrals.find(ref => ref.code === referralCode) || undefined;
+
+        if(referral) {
+            return referral;
+        }
+
+        const parsedResponse = await ApiCommunicator.apiFetch({
+            context: {
+                method: 'GET',
+            },
+            route: `/ui/user/services/referrals/${referralCode.toString()}`
+        }).then(response => response.json()).then(data => ReferralGetResponse.safeParseAsync(data));
+
+        if(parsedResponse.success) {
+            set({referrals: [...get().referrals, parsedResponse.data.payload]});
+            return parsedResponse.data.payload;
+        }
+
+        return undefined;
     },
     reset: () => set(initialState),
 }));

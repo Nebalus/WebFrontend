@@ -3,6 +3,10 @@ import {useReferralStore} from "@/stores/ReferralStore.ts";
 import TableSkeleton from "@/components/TableSkeleton.tsx";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import {Badge} from "@assets/components/shadcnui/badge.tsx";
+import {Copy} from "lucide-react";
+import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
+import {toast} from "sonner";
 
 export default function ReferralsDataTable() {
     const {referrals, isHydrated, hydrateReferrals} = useReferralStore();
@@ -19,19 +23,43 @@ export default function ReferralsDataTable() {
         <Table>
             <TableHeader>
                 <TableRow>
+                    <TableHead className="w-[50px]"></TableHead>
                     <TableHead className="w-[100px]">Code</TableHead>
                     <TableHead>Name</TableHead>
-                    <TableHead>Pointer</TableHead>
+                    <TableHead>Url</TableHead>
+                    <TableHead>Status</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {
                     isHydrated() ? (
                         referrals.map((referral) => (
-                            <TableRow key={"REFERRAL" + referral.code} onClick={() => {navigate(`./${referral.code}`)}}>
+                            <TableRow className="cursor-pointer" key={"REFERRAL" + referral.code} onClick={() => {navigate(`./${referral.code}`)}}>
+                                <TableCell
+                                    onClick={async (event) => {
+                                        event.stopPropagation();
+
+                                        try {
+                                            await navigator.clipboard.writeText(APP_FRONTEND_FULL_PATH + "/ref/" + referral.code);
+
+                                            toast("Referral copied",{
+                                                description: "The referral link has been copied to your clipboard",
+                                            });
+
+                                        } catch {
+                                            toast("Hmm something went wrong",{
+                                                description: "Could not copy referral link",
+                                                className: "bg-red-900"
+                                            });
+                                        }
+                                    }}
+                                >
+                                    <Copy className="w-6 h-6" />
+                                </TableCell>
                                 <TableCell className="font-medium">{referral.code}</TableCell>
                                 <TableCell>{referral.name}</TableCell>
                                 <TableCell>{referral.url}</TableCell>
+                                <TableCell><Badge variant="secondary">{referral.disabled ? "Disabled" : "Enabled"}</Badge></TableCell>
                             </TableRow>
                         ))
                     ) : (

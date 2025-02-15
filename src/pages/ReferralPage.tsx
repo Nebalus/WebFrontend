@@ -20,7 +20,7 @@ export default function ReferralPage() {
                 }).then(response => response.json()).then(data => ReferralClickResponse.safeParseAsync(data));
 
                 if (response.success) {
-                    window.location.replace(response.data.payload.pointer);
+                    window.location.replace(response.data.payload.url);
                 } else {
                     navigate('/');
                 }

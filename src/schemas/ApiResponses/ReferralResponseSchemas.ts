@@ -23,3 +23,9 @@ export const ReferralListAllOwnedResponse = GenericSuccessResponse.extend({
 export const ReferralCreateResponse = GenericSuccessResponse.extend({
     payload: ReferralSchema
 })
+
+export const ReferralDeleteResponse = GenericSuccessResponse.extend({})
+
+export const ReferralGetResponse = GenericSuccessResponse.extend({
+    payload: ReferralSchema
+});

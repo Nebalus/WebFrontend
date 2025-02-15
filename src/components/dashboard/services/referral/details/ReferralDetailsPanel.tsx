@@ -6,11 +6,14 @@ import {useEffect} from "react";
 
 export default function ReferralsDetailsBoard() {
     const navigate = useNavigate();
-    const referralCode = ReferralCodeSchema.safeParse(useParams<{ referral_code: string }>().referral_code);
+    const params = useParams<{ referral_code: string }>();
+    const referralCode = ReferralCodeSchema.safeParse(params.referral_code);
+
 
     useEffect(() => {
         if (!referralCode.success) {
             navigate(APP_DASHBOARD_PATH + 'referrals');
+            return;
         }
     }, [referralCode, navigate]);
 
