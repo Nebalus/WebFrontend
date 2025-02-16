@@ -84,7 +84,7 @@ export default function LandingPage() {
                       pic_link="/static/media/images/sanitizr.jpg"
                       pic_alt="Sanitizr Icon"
                       title="Sanitizr PHP Libary"
-                      description='A Zod inspired validation and filter framework'
+                      description='A Zod inspired validation and filter framework written in PHP'
                       github_link="https://github.com/Nebalus/Sanitizr"
                       work_and_progress={true}
                   />
