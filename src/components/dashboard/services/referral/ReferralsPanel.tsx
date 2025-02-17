@@ -27,6 +27,7 @@ import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
 import {toast} from "sonner";
 import { APP_FRONTEND_FULL_PATH } from "@/constants";
 import {useState} from "react";
+import { ReferralStoreActionResponse } from "@/schemas/ZustandSchemas";
 
 export default function ReferralsPanel() {
     const {hydrateReferrals, createReferral} = useReferralStore();
@@ -42,13 +43,23 @@ export default function ReferralsPanel() {
     })
 
     async function onSubmit(data: CreateReferralForm) {
-        form.reset();
-        setCreateReferralModalOpen(false);
-        await createReferral(data);
-        toast("Referral created", {
-            className: "bg-green-300",
-            description: "The referral has been created successfully"
-        })
+        await createReferral(data)
+        .then((test: ReferralStoreActionResponse) => {
+            if(test.success) {
+                form.reset();
+                setCreateReferralModalOpen(false);
+                toast("Referral created", {
+                    className: "",
+                    description: ""
+                })
+                return;
+            }
+
+             toast("An Error Oucured while create an Referral", {
+                className: "bg-red-500",
+                description: test.error_message
+            })
+        });
     }
 
     return (

@@ -63,7 +63,7 @@ export default function ReferralsDataTable() {
                             </TableRow>
                         ))
                     ) : (
-                        <TableSkeleton rows={12} columns={3}/>
+                        <TableSkeleton rows={12} columns={5}/>
                     )
                 }
             </TableBody>

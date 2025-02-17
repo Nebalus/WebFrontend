@@ -53,7 +53,7 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
 
     const chartConfig = {
         count: {
-            label: "Referral",
+            label: "Clicks",
             color: "hsl(var(--chart-1))",
         },
         unique_visitors: {
