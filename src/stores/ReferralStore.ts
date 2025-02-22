@@ -16,7 +16,7 @@ type ReferralState = {
 
 type ReferralAction = {
     isHydrated: () => boolean;
-    hydrateReferrals: () => void;
+    hydrateReferrals: () => Promise<ReferralStoreActionResponse>;
     createReferral: (createReferralForm: CreateReferralForm) => Promise<ReferralStoreActionResponse>;
     deleteReferral: (referralCode: ReferralCode) => void;
     getReferralByCode: (referralCode: ReferralCode) => Promise<Referral | undefined>;
@@ -31,7 +31,7 @@ const initialState: ReferralState = {
 export const useReferralStore = create<ReferralState & ReferralAction>()((set, get) => ({
     ...initialState,
     isHydrated: () => get().hydrated,
-    hydrateReferrals: async () => {
+    hydrateReferrals: async (): Promise<ReferralStoreActionResponse> => {
         const parsedResponse = await ApiCommunicator.apiFetch({
             context: {
                 method: 'GET'

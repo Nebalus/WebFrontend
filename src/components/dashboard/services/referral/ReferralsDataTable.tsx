@@ -16,6 +16,7 @@ export default function ReferralsDataTable() {
         if (isHydrated()) {
             return;
         }
+        
         hydrateReferrals();
     }, [hydrateReferrals, isHydrated, referrals]);
 

@@ -32,6 +32,8 @@ import { ReferralStoreActionResponse } from "@/schemas/ZustandSchemas";
 export default function ReferralsPanel() {
     const {hydrateReferrals, createReferral} = useReferralStore();
     const [createReferralModalOpen, setCreateReferralModalOpen] = useState(false);
+    const [isCreating, setIsCreating] = useState(false);
+
 
     const form = useForm<CreateReferralForm>({
         resolver: zodResolver(CreateReferralFormSchema),
@@ -43,8 +45,10 @@ export default function ReferralsPanel() {
     })
 
     async function onSubmit(data: CreateReferralForm) {
+        setIsCreating(true);
         await createReferral(data)
         .then((test: ReferralStoreActionResponse) => {
+            setIsCreating(false);
             if(test.success) {
                 form.reset();
                 setCreateReferralModalOpen(false);
@@ -127,7 +131,7 @@ export default function ReferralsPanel() {
                                         )}
                                     />
                                     <DialogFooter>
-                                        <Button type="submit" className="bg-green-600">Create</Button>
+                                        <Button type="submit" className="bg-green-600" disabled={isCreating}> {isCreating ? "Creating" : "Create"} </Button>
                                     </DialogFooter>
                                 </form>
                             </Form>
