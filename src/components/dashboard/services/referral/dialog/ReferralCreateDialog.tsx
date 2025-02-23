@@ -20,7 +20,7 @@ import {toast} from "sonner";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 
 export interface ReferralCreateDialogProps {
-    children: ReactElement;
+    children: ReactElement| string;
 }
 
 export default function ReferralCreateDialog({ children }: ReferralCreateDialogProps) {
