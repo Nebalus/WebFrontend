@@ -23,7 +23,7 @@ import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
 import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoard";
 import GamesIRLBoard from "@/components/dashboard/services/gamesirl/GamesIRLBoard.tsx";
 import BlogBoard from "@/components/dashboard/services/blog/BlogBoard.tsx";
-import ReferralsDetailsBoard from "@/components/dashboard/services/referral/details/ReferralDetailsPanel.tsx";
+import ReferralsDetailsBoard from "@/components/dashboard/services/referral/detail/ReferralDetailsPanel.tsx";
 import LinktreePage from "./pages/LinktreePage";
 import BlogPage from "./pages/BlogPage";
 import PrivacyPage from "./pages/PrivacyPage";

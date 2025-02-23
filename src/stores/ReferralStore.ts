@@ -18,7 +18,7 @@ type ReferralAction = {
     isHydrated: () => boolean;
     hydrateReferrals: () => Promise<ReferralStoreActionResponse>;
     createReferral: (createReferralForm: CreateReferralForm) => Promise<ReferralStoreActionResponse>;
-    deleteReferral: (referralCode: ReferralCode) => void;
+    deleteReferral: (referralCode: ReferralCode) => Promise<boolean>;
     getReferralByCode: (referralCode: ReferralCode) => Promise<Referral | undefined>;
     reset: () => void;
 };
@@ -32,16 +32,35 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
     ...initialState,
     isHydrated: () => get().hydrated,
     hydrateReferrals: async (): Promise<ReferralStoreActionResponse> => {
-        const parsedResponse = await ApiCommunicator.apiFetch({
-            context: {
-                method: 'GET'
-            },
-            route: `/ui/user/services/referrals/all`
-        }).then(response => response.json()).then(data => ReferralListAllOwnedResponse.safeParseAsync(data));
+        try {
+            const parsedResponse = await ApiCommunicator.apiFetch({
+                context: {
+                    method: 'GET'
+                },
+                route: `/ui/user/services/referrals/all`
+            }).then(response => response.json()).then(data => ReferralListAllOwnedResponse.safeParseAsync(data));
 
-        if(parsedResponse.success) {
-            set({referrals: parsedResponse.data.payload, hydrated: true});
+            if (parsedResponse.success) {
+                set({referrals: parsedResponse.data.payload, hydrated: true});
+                return ReferralStoreActionResponseSchema.parse({
+                    success: true,
+                    error_message: null,
+                    referral: parsedResponse.data.payload
+                });
+            }
+        } catch (e) {
+            return ReferralStoreActionResponseSchema.parse({
+                success: false,
+                error_message:  e instanceof Error ? e.message : "Unknown Error",
+                referral: undefined
+            });
         }
+
+        return ReferralStoreActionResponseSchema.parse({
+            success: false,
+            error_message: "Unknown Error",
+            referral: undefined
+        });
     },
     createReferral: async (createReferralForm: CreateReferralForm): Promise<ReferralStoreActionResponse> => {
         try {
@@ -75,18 +94,22 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
             referral: undefined           
         });
     },
-    deleteReferral: async (referralCode: ReferralCode) => {
-        const parsedResponse = await ApiCommunicator.apiFetch({
-            context: {
-                method: 'DELETE',
-            },
-            route: `/ui/user/services/referrals/${referralCode.toString()}`
-        }).then(response => response.json()).then(data => ReferralDeleteResponse.safeParseAsync(data));
+    deleteReferral: async (referralCode: ReferralCode): Promise<boolean> => {
+        try {
+            const parsedResponse = await ApiCommunicator.apiFetch({
+                context: {
+                    method: 'DELETE',
+                },
+                route: `/ui/user/services/referrals/${referralCode.toString()}`
+            }).then(response => response.json()).then(data => ReferralDeleteResponse.safeParseAsync(data));
 
-        if(parsedResponse.success) {
-            set({ referrals: get().referrals.filter(ref => ref.code !== referralCode) });
+            if(parsedResponse.success) {
+                set({ referrals: get().referrals.filter(ref => ref.code !== referralCode) });
+            }
+            return parsedResponse.success;
+        } catch {
+            return false;
         }
-        return parsedResponse.success;
     },
     getReferralByCode: async (referralCode: ReferralCode): Promise<Referral | undefined> => {
         const referral = get().referrals.find(ref => ref.code === referralCode) || undefined;

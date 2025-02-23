@@ -7,6 +7,8 @@ import {Badge} from "@assets/components/shadcnui/badge.tsx";
 import {Copy, Trash2} from "lucide-react";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
 import {toast} from "sonner";
+import ReferralDeleteConfirmationDialog
+    from "@/components/dashboard/services/referral/dialog/ReferralDeleteConfirmationDialog.tsx";
 
 export default function ReferralsDataTable() {
     const {referrals, isHydrated, hydrateReferrals} = useReferralStore();
@@ -62,20 +64,40 @@ export default function ReferralsDataTable() {
                                 <TableCell>{referral.name}</TableCell>
                                 <TableCell>{referral.url}</TableCell>
                                 <TableCell><Badge variant="secondary">{referral.disabled ? "Disabled" : "Enabled"}</Badge></TableCell>
-                                <TableCell>
-                                    <Trash2 className="hover:text-red-500 transition-all duration-150" />
-                                </TableCell>
+                                <ReferralDeleteConfirmationDialog referral={referral}>
+                                    <TableCell
+                                        className="group"
+                                    >
+                                        <Trash2 className="group-hover:text-red-500 transition-all duration-150" />
+                                    </TableCell>
+                                </ReferralDeleteConfirmationDialog>
                             </TableRow>
                         ))
                     ) : (
-                        <TableSkeleton rows={12} columns={5}/>
+                        <TableSkeleton rows={12} columns={6}/>
                     )
                 }
             </TableBody>
         </Table>
     )
 }
-
+// onClick={async (event) => {
+//     event.stopPropagation();
+//
+//     try {
+//         deleteReferral(referral.code);
+//
+//         toast("Referral deleted",{
+//             description: "The referral has been deleted",
+//         });
+//
+//     } catch {
+//         toast("Hmm something went wrong",{
+//             description: "Could not delete referral",
+//             className: "bg-red-900"
+//         });
+//     }
+// }}
 /*
 import * as React from "react"
 import {
@@ -236,7 +258,7 @@ export const columns: ColumnDef<Payment>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>View payment detail</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
