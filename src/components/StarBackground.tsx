@@ -29,7 +29,7 @@ export default function StarBackground(): JSX.Element {
 
     return (
         <>
-            <div className="stars -z-[0]" id="stars"></div>
+            <div className="stars -z-0" id="stars"></div>
         </>
     )
 }
