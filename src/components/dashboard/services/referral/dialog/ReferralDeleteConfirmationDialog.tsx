@@ -23,12 +23,12 @@ export default function ReferralDeleteConfirmationDialog({ children, referral }:
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div onClick={(event) => event.stopPropagation()}>
+        <span onClick={(event) => event.stopPropagation()}>
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild onClick={() => setIsOpen(true)}>
                     {children}
                 </ DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px]" onClick={(event) => event.stopPropagation()}>
                     <DialogHeader>
                         <DialogTitle>Delete a referral</DialogTitle>
                         <DialogDescription>
@@ -57,6 +57,6 @@ export default function ReferralDeleteConfirmationDialog({ children, referral }:
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-        </div>
+        </span>
     );
 }

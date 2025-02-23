@@ -60,7 +60,7 @@ export default function ReferralCreateDialog({ children }: ReferralCreateDialogP
     }
 
     return (
-        <div onClick={(event) => event.stopPropagation()}>
+        <span onClick={(event) => event.stopPropagation()}>
             <Dialog open={createReferralModalOpen} onOpenChange={setCreateReferralModalOpen}>
                 <DialogTrigger asChild>
                     {children}
@@ -123,6 +123,6 @@ export default function ReferralCreateDialog({ children }: ReferralCreateDialogP
                     </Form>
                 </DialogContent>
             </Dialog>
-        </div>
+        </span>
     );
 }
