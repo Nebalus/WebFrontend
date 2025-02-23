@@ -54,7 +54,7 @@ export default function LoginPage() {
                       placeholder=""
                       type="text"
                       required
-                      className="block w-full rounded-md border-0 py-1.5 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text sm:leading-6 p-2 text-l"
+                      className="block w-full rounded-md border-0 py-1.5 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text sm:leading-6 p-2 text-l"
                   />
                 </div>
               </div>
@@ -77,7 +77,7 @@ export default function LoginPage() {
                       type="password"
                       required
                       autoComplete="current-password"
-                      className="block w-full rounded-md border-0 py-1.5 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6 p-2 text-l"
+                      className="block w-full rounded-md border-0 py-1.5 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:leading-6 p-2 text-l"
                   />
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function LoginPage() {
                 <Button
                     type="submit"
                     disabled={isSigningIn}
-                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-xs hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-xs hover:bg-indigo-500"
                 >
                   {isSigningIn ? 'Signing in' : 'Sign in'}
                 </Button>
