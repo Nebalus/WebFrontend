@@ -13,7 +13,7 @@
   "aliases": {
     "components": "@assets/components",
     "utils": "@assets/lib/utils",
-    "ui": "@assets/components/ui",
+    "ui": "@assets/components/shadcnui",
     "lib": "@assets/lib",
     "hooks": "@assets/hooks"
   }

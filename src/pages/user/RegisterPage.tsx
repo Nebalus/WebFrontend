@@ -11,7 +11,7 @@ export default function RegisterPage() {
   const actionData = useActionData() as { has_error: boolean, error_title: string, error_message: string } | undefined;
 
   return (
-      <>
+      <div className="bg-black">
         <StarBackground/>
         <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 z-50">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm z-10">
@@ -147,6 +147,6 @@ export default function RegisterPage() {
             </p>
           </div>
         </div>
-      </>
+      </div>
   )
 }

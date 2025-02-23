@@ -17,7 +17,7 @@ export default function LoginPage() {
   const next = params.get('next') || APP_DASHBOARD_PATH;
 
   return (
-      <>
+      <div className="bg-black">
         <StarBackground />
         <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 z-50">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm z-10">
@@ -105,6 +105,6 @@ export default function LoginPage() {
             </p>
           </div>
         </div>
-      </>
+      </div>
   )
 }
