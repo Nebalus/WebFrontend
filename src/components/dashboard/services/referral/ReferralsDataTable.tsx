@@ -4,7 +4,7 @@ import TableSkeleton from "@/components/TableSkeleton.tsx";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {Badge} from "@assets/components/shadcnui/badge.tsx";
-import {Copy} from "lucide-react";
+import {Copy, Trash2} from "lucide-react";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
 import {toast} from "sonner";
 
@@ -28,7 +28,8 @@ export default function ReferralsDataTable() {
                     <TableHead className="w-[100px]">Code</TableHead>
                     <TableHead>Name</TableHead>
                     <TableHead>Url</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead className="w-[100px]">Status</TableHead>
+                    <TableHead className="w-[50px]"></TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -61,6 +62,9 @@ export default function ReferralsDataTable() {
                                 <TableCell>{referral.name}</TableCell>
                                 <TableCell>{referral.url}</TableCell>
                                 <TableCell><Badge variant="secondary">{referral.disabled ? "Disabled" : "Enabled"}</Badge></TableCell>
+                                <TableCell>
+                                    <Trash2 className="hover:text-red-500 transition-all duration-150" />
+                                </TableCell>
                             </TableRow>
                         ))
                     ) : (
