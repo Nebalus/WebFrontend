@@ -22,6 +22,8 @@ export default function ReferralPage() {
                 if (response.success) {
                     window.location.replace(response.data.payload.url);
                 } else {
+                    setError(true);
+                    await wait(4000);
                     navigate('/');
                 }
             } catch (e) {
@@ -49,14 +51,14 @@ export default function ReferralPage() {
                         </>) : null}
                     </div>
                     <div className="w-auto h-max flex items-center justify-center">
-                        <l-trefoil
-                            size="60"
-                            stroke="6"
-                            stroke-length="0.30"
-                            bg-opacity="0.1"
-                            speed="1.4"
-                            color="white"
-                        ></l-trefoil>
+                        {/*<l-trefoil*/}
+                        {/*    size="60"*/}
+                        {/*    stroke="6"*/}
+                        {/*    stroke-length="0.30"*/}
+                        {/*    bg-opacity="0.1"*/}
+                        {/*    speed="1.4"*/}
+                        {/*    color="white"*/}
+                        {/*></l-trefoil>*/}
                     </div>
                 </div>
             </div>

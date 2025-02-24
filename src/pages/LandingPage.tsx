@@ -32,7 +32,7 @@ export default function LandingPage() {
                         Hey there, I'm Nebalus {getWavingHandColor()}
                       </h1>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
-                        I'm a <strong>Fullstack</strong> Computer Engineer trainee based in Germany.
+                        I'm a <strong>Fullstack</strong> Computer Engineer trainee.
                       </p>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
                         I spend my days coding on some hobby projects, diving into games, and enjoying life’s

@@ -29,7 +29,7 @@ export function NavUser() {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 {user && <AvatarImage src="" alt={user.username} />}
-                <AvatarFallback className="rounded-lg"><strong>?</strong></AvatarFallback>
+                <AvatarFallback className="rounded-lg"><strong>??</strong></AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 {user && (
