@@ -4,7 +4,7 @@ import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {
     ReferralCreateResponse,
     ReferralDeleteResponse, ReferralGetResponse,
-    ReferralListAllOwnedResponse
+    ReferralListAllOwnedResponse, ReferralUpdateResponse
 } from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import {CreateReferralForm, UpdateReferralForm} from "@/schemas/Forms/ReferralFormSchemas.ts";
 import { ReferralStoreActionResponse, ReferralStoreActionResponseSchema } from "@/schemas/ZustandSchemas";
@@ -101,7 +101,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
                     body: JSON.stringify(updateReferralForm),
                 },
                 route: `/ui/user/services/referrals/${referralCode.toString()}`
-            }).then(response => response.json()).then(data => ReferralCreateResponse.safeParseAsync(data));
+            }).then(response => response.json()).then(data => ReferralUpdateResponse.safeParseAsync(data));
 
             if(parsedResponse.success) {
                 set({

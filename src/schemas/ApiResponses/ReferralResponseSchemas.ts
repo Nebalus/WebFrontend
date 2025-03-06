@@ -29,3 +29,7 @@ export const ReferralDeleteResponse = GenericSuccessResponse.extend({})
 export const ReferralGetResponse = GenericSuccessResponse.extend({
     payload: ReferralSchema
 });
+
+export const ReferralUpdateResponse = GenericSuccessResponse.extend({
+    payload: ReferralSchema
+})

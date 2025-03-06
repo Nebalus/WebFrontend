@@ -57,7 +57,7 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                     return;
                 }
 
-                toast("An Error occurred while create an Referral", {
+                toast("An Error occurred while edit an Referral", {
                     className: "bg-red-500",
                     description: response.message
                 })
