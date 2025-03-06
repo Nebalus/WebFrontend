@@ -10,7 +10,7 @@ import {Input} from "@assets/components/shadcnui/input.tsx";
 export default function LoginPage() {
   const navigation = useNavigation();
   const isSigningIn = navigation.state === 'submitting';
-  const actionData = useActionData() as { has_error: boolean, error_title: string ,error_message: string } | undefined;
+  const actionData = useActionData() as { has_error: boolean, error_title: string, error_message: string } | undefined;
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);

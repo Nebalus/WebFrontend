@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {IdSchema, TimestampSchema, UrlSchema} from "@/schemas/GenericSchemas.ts";
+import {TimestampSchema, UrlSchema} from "@/schemas/GenericSchemas.ts";
 
 export const ReferralCodeSchema = z.string().length(8).regex(/^[a-zA-Z0-9]+$/);
 
@@ -16,7 +16,6 @@ export type ReferralClickHistoryDataPoint = z.infer<typeof ReferralClickHistoryD
 export const ReferralNameSchema = z.string().max(32).regex(/^[a-zA-Z0-9 !@#$%^&*]*$/).nullable()
 
 export const ReferralSchema = z.object({
-    referral_id: IdSchema,
     code: ReferralCodeSchema,
     url: UrlSchema,
     name: ReferralNameSchema,
