@@ -40,9 +40,9 @@ export default function ReferralCreateDialog({ children }: ReferralCreateDialogP
     async function onSubmit(data: CreateReferralForm) {
         setIsCreating(true);
         await createReferral(data)
-            .then((test: ReferralStoreActionResponse) => {
+            .then((response: ReferralStoreActionResponse) => {
                 setIsCreating(false);
-                if(test.success) {
+                if(response.success) {
                     form.reset();
                     setCreateReferralModalOpen(false);
                     toast("Referral created", {
@@ -54,7 +54,7 @@ export default function ReferralCreateDialog({ children }: ReferralCreateDialogP
 
                 toast("An Error occurred while create an Referral", {
                     className: "bg-red-500",
-                    description: test.error_message
+                    description: response.message
                 })
             });
     }

@@ -9,7 +9,9 @@ export const GenericStoreActionResponseSchema = z.object({
 export type StoreActionResponse = z.infer<typeof GenericStoreActionResponseSchema>;
 
 export const ReferralStoreActionResponseSchema = GenericStoreActionResponseSchema.extend({
-    referral: ReferralSchema.optional()
+    referral: ReferralSchema.optional(),
+    message: z.string().default("Something went wrong!").nullable(),
+    success: z.boolean().default(false)
 })
 
 export type ReferralStoreActionResponse = z.infer<typeof ReferralStoreActionResponseSchema>;

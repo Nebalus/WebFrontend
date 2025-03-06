@@ -1,5 +1,5 @@
 import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
-import {Card, CardContent, CardFooter, CardHeader} from "@assets/components/shadcnui/card.tsx";
+import {Card, CardContent, CardHeader} from "@assets/components/shadcnui/card.tsx";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {useEffect, useState} from "react";
 import {Button} from "@assets/components/shadcnui/button.tsx";
@@ -7,21 +7,24 @@ import ReferralDeleteConfirmationDialog
     from "@/components/dashboard/services/referral/dialog/ReferralDeleteConfirmationDialog.tsx";
 import {useForm} from "react-hook-form";
 import {
-    EditReferralForm,
-    EditReferralFormSchema
+    UpdateReferralForm,
+    UpdateReferralFormSchema
 } from "@/schemas/Forms/ReferralFormSchemas.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@assets/components/shadcnui/form.tsx";
 import {Input} from "@assets/components/shadcnui/input.tsx";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
 import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
+import {ReferralStoreActionResponse} from "@/schemas/ZustandSchemas.ts";
+import {toast} from "sonner";
 
 export default function ReferralDetailsCard({ referralCode }: { referralCode: ReferralCode }) {
-    const {referrals, getReferralByCode} = useReferralStore();
+    const {referrals, getReferralByCode, updateReferral} = useReferralStore();
     const [referral, setReferral] = useState<Referral>();
+    const [isSaving, setIsSaving] = useState(false);
 
-    const form = useForm<EditReferralForm>({
-        resolver: zodResolver(EditReferralFormSchema),
+    const form = useForm<UpdateReferralForm>({
+        resolver: zodResolver(UpdateReferralFormSchema),
         values: referral,
         defaultValues: {
             name: "",
@@ -40,18 +43,38 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
         })();
     }, [getReferralByCode, referralCode, referrals, setReferral]);
 
+    async function onSubmit(data: UpdateReferralForm) {
+        setIsSaving(true);
+        await updateReferral(data, referralCode)
+            .then((response: ReferralStoreActionResponse) => {
+                setIsSaving(false);
+
+                if(response.success) {
+                    toast("Referral Updated", {
+                        className: "",
+                        description: ""
+                    })
+                    return;
+                }
+
+                toast("An Error occurred while create an Referral", {
+                    className: "bg-red-500",
+                    description: response.message
+                })
+            });
+    }
+
     return <>
         {referral != undefined ?
             <Card className="rounded-none">
                 <CardHeader></CardHeader>
                 <CardContent>
-                    <p>ID: {referral.referral_id}</p>
                     <p>Code: {referral.code}</p>
                     <p>Created at: {referral.created_at}</p>
                     <p>Updated at: {referral.updated_at}</p>
                     <br/>
                     <Form {...form}>
-                        <form className="space-y-8">
+                        <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
                             <FormField
                                 control={form.control}
                                 name="name"
@@ -93,15 +116,15 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                                     </FormItem>
                                 )}
                             />
+                            <div className="flex gap-2 w-full justify-end">
+                                <ReferralDeleteConfirmationDialog referral={referral}>
+                                    <Button variant="destructive" className="cursor-pointer">Delete</Button>
+                                </ReferralDeleteConfirmationDialog>
+                                <Button variant="default" className="cursor-pointer" disabled={isSaving}>{isSaving ? "Saving" : "Save"}</Button>
+                            </div>
                         </form>
                     </Form>
                 </CardContent>
-                <CardFooter className="ml-auto gap-3">
-                    <ReferralDeleteConfirmationDialog referral={referral}>
-                        <Button variant="destructive">Delete</Button>
-                    </ReferralDeleteConfirmationDialog>
-                    <Button variant="default">Save</Button>
-                </CardFooter>
             </Card>
         : null}
     </>
