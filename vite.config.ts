@@ -14,9 +14,14 @@ export default defineConfig(({ command, mode }) => {
         react()
     ],
     define: {
+        'import.meta.env.APP_BACKEND_TOP_LEVEL_DOMAIN': JSON.stringify(env.APP_BACKEND_TOP_LEVEL_DOMAIN),
         'import.meta.env.APP_BACKEND_API_DOMAIN': JSON.stringify(env.APP_BACKEND_API_DOMAIN),
         'import.meta.env.APP_BACKEND_API_PROTOCOL': JSON.stringify(env.APP_BACKEND_API_PROTOCOL),
         'import.meta.env.APP_BACKEND_API_PORT': JSON.stringify(env.APP_BACKEND_API_PORT),
+
+        'import.meta.env.APP_FRONTEND_DOMAIN': JSON.stringify(env.APP_FRONTEND_DOMAIN),
+        'import.meta.env.APP_FRONTEND_PROTOCOL': JSON.stringify(env.APP_FRONTEND_PROTOCOL),
+        'import.meta.env.APP_FRONTEND_PORT': JSON.stringify(env.APP_FRONTEND_PORT),
     },
     resolve: {
         alias: {

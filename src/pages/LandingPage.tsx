@@ -2,8 +2,12 @@
 // import { Textarea } from "@assets/components/ui/textarea.tsx"
 // import { Button } from "@assets/components/ui/button.tsx"
 import StarBackground from "@/components/StarBackground.tsx";
-import ProjectCard from "../components/landing/ProjectCard.tsx";
-import LandingPageNavBar from "@/components/landing/LandingPageNavBar.tsx";
+import LandingProjectCard from "../components/landing/LandingProjectCard.tsx";
+import LandingNavBar from "@/components/landing/LandingNavBar.tsx";
+import { Input } from "@assets/components/shadcnui/input.tsx";
+import { Textarea } from "@assets/components/shadcnui/textarea.tsx";
+import { Button } from "@assets/components/shadcnui/button.tsx";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
 
@@ -17,7 +21,7 @@ export default function LandingPage() {
       <>
         <StarBackground/>
         <div className="flex flex-col min-h-[100dvh] bg-black">
-          <LandingPageNavBar />
+          <LandingNavBar />
           <main className="flex-1 z-10">
             <section className="w-full mt-40">
               <div className="container px-4 md:px-6">
@@ -28,7 +32,7 @@ export default function LandingPage() {
                         Hey there, I'm Nebalus {getWavingHandColor()}
                       </h1>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
-                        I'm a <strong>Fullstack</strong> Computer Engineer trainee based in Germany.
+                        I'm a <strong>Fullstack</strong> Computer Engineer trainee.
                       </p>
                       <p className="max-w-[600px] text-muted-foreground bg-black md:text-xl">
                         I spend my days coding on some hobby projects, diving into games, and enjoying life’s
@@ -60,7 +64,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="mx-auto grid max-w-8xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-                  <ProjectCard
+                  <LandingProjectCard
                       pic_link="/static/media/images/mandelbrot.jpg"
                       pic_alt="Picture of an mandelbrot fractal"
                       title="Mandelbrot"
@@ -68,29 +72,37 @@ export default function LandingPage() {
                       github_link="https://github.com/Nebalus/Mandelbrot-Fractal"
                       work_and_progress={false}
                   />
-                  <ProjectCard
+                  <LandingProjectCard
                       pic_link="/static/media/images/gamesirl.png"
                       pic_alt="Games IRL Icon"
                       title="Games IRL Mobile App"
-                      description='"Games IRL" is a mobile app that is used to participate in real life games and events hosted in a city, country, continent or even the whole world.'
+                      description='An mobile app that is used to participate in real life games and events such as Tag, Hide and Seek, Zombie and Capture the Flag hosted in a city, country, continent or even the whole world.'
                       github_link="https://github.com/Nebalus/GamesIRLMobile"
                       work_and_progress={true}
                   />
-                  {/*<ProjectCard*/}
+                  <LandingProjectCard
+                      pic_link="/static/media/images/sanitizr.jpg"
+                      pic_alt="Sanitizr Icon"
+                      title="Sanitizr PHP Libary"
+                      description='A Zod inspired validation and filter framework written in PHP'
+                      github_link="https://github.com/Nebalus/Sanitizr"
+                      work_and_progress={true}
+                  />
+                  {/*<LandingProjectCard*/}
                   {/*    pic_link="/static/icons/placeholder.svg"*/}
                   {/*    pic_alt="Melodybot Icon"*/}
                   {/*    title="Melody"*/}
                   {/*    description="An open-source Discord music bot in Java!"*/}
                   {/*    work_and_progress={true}*/}
                   {/*/>*/}
-                  {/*<ProjectCard*/}
+                  {/*<LandingProjectCard*/}
                   {/*    pic_link="/static/icons/placeholder.svg"*/}
                   {/*    pic_alt="Picture wuth stars in the background while the Text 'Cosmoventure' is highlited in the foreground"*/}
                   {/*    title="Cosmoventure"*/}
                   {/*    description="This is a 2D jump n run, story game made with my house own game engine."*/}
                   {/*    work_and_progress={true}*/}
                   {/*/>*/}
-                  {/*<ProjectCard*/}
+                  {/*<LandingProjectCard*/}
                   {/*    pic_link="/static/icons/placeholder.svg"*/}
                   {/*    pic_alt="Picture of an mandelbrot fractal"*/}
                   {/*    title="GalaxyFrameWork"*/}
@@ -139,36 +151,34 @@ export default function LandingPage() {
             {/*    </div>*/}
             {/*  </div>*/}
             {/*</section>*/}
-            {/*<section className="w-full py-12 md:py-24 lg:py-32 bg-muted">*/}
-            {/*  <div className="container px-4 md:px-6">*/}
-            {/*    <div className="flex flex-col items-center justify-center space-y-4 text-center">*/}
-            {/*      <div className="space-y-2">*/}
-            {/*        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Kontakt</h2>*/}
-            {/*        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">*/}
-            {/*          Fühlen Sie sich frei, mich über das Kontaktformular zu erreichen.*/}
-            {/*        </p>*/}
-            {/*      </div>*/}
-            {/*      <div className="mx-auto w-full max-w-sm space-y-2">*/}
-            {/*        <form className="flex flex-col gap-4">*/}
-            {/*          <Input type="text" placeholder="Name" className="max-w-lg flex-1" />*/}
-            {/*          <Input type="email" placeholder="E-Mail" className="max-w-lg flex-1" />*/}
-            {/*          <Textarea placeholder="Nachricht" className="max-w-lg flex-1" />*/}
-            {/*          <Button type="submit">Senden</Button>*/}
-            {/*        </form>*/}
-            {/*      </div>*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*</section>*/}
+            <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-950">
+              <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                  <div className="space-y-2">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h2>
+                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    </p>
+                  </div>
+                  <div className="mx-auto w-full max-w-sm space-y-2">
+                    <form className="flex flex-col gap-4">
+                      <Input type="text" placeholder="Name" className="max-w-lg flex-1" />
+                      <Textarea placeholder="Nachricht" className="max-w-lg flex-1" />
+                      <Button type="submit">Send</Button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </section>
           </main>
           <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-gray-950 z-10">
-            <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-              <p>Made with ♥️ by Nebalus</p>
-              {/*<Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>*/}
-              {/*  Datenschutz*/}
-              {/*</Link>*/}
+            <nav className="sm:ml-auto flex gap-4 sm:gap-4">
+              <Link to="./privacy" className="hover:underline underline-offset-4">
+              Privacy
+              </Link>
               {/*<Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>*/}
               {/*  Impressum*/}
               {/*</Link>*/}
+              <p>Made with ♥️ by Nebalus</p>
             </nav>
           </footer>
         </div>
