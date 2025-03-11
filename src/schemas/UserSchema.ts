@@ -23,19 +23,14 @@ export const UserSchema = z.object({
 
 export type User = z.infer<typeof UserSchema>;
 
-export const InvitationTokenSchema = z.object({
-    field_1: z.number().min(0).max(9999),
-    field_2: z.number().min(0).max(9999),
-    field_3: z.number().min(0).max(9999),
-    field_4: z.number().min(0).max(9999),
-    checksum: z.number().min(0).max(9999),
-}).refine((data) => {
-    const count = data.field_1 + data.field_2 + data.field_3 + data.field_4;
-    const checksum = Math.floor( count / 4 );
-    return checksum === data.checksum;
-}, {
-    message: "The invitation token is invalid",
-    path: ["field_1", "field_2", "field_3", "field_4"],
-});
+export const InvitationTokenSchema = z.string()
+    .regex(/^(([0-9]{4})-){4}([0-9]{4})$/)
+    .refine((data) => {
+        const [field_1, field_2, field_3, field_4, checksum] = data.split('-').map(Number);
+        const count = field_1 + field_2 + field_3 + field_4;
+        const calculatedChecksum = Math.floor( count / 4 );
+        return checksum === calculatedChecksum;
+    }
+);
 
 export type InvitationToken = z.infer<typeof InvitationTokenSchema>;

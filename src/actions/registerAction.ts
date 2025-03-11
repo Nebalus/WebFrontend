@@ -35,16 +35,8 @@ export default async function registerAction({request}: { request: Request}) {
         }
     }
 
-    const invitationTokenFields = invitationTokenAsString.split("-").map(Number);
-
     const userRegisterRequest = UserRegisterRequest.safeParse({
-        "invitation_token": {
-            "field_1": invitationTokenFields[0],
-            "field_2": invitationTokenFields[1],
-            "field_3": invitationTokenFields[2],
-            "field_4": invitationTokenFields[3],
-            "checksum": invitationTokenFields[4],
-        },
+        "invitation_token": invitationTokenAsString,
         "email": email,
         "username": username,
         "password": password,
