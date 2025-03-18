@@ -69,7 +69,7 @@ export default function LandingPage() {
                       pic_alt="Picture of an mandelbrot fractal"
                       title="Mandelbrot"
                       description="An user interface written in Java to explore the wonders of the Mandelbrot-set fractal."
-                      github_link="https://github.com/Nebalus/Mandelbrot-Fractal"
+                      github_link="https://nebalus.dev/ref/1tHraCGg"
                       work_and_progress={false}
                   />
                   <LandingProjectCard
@@ -77,7 +77,7 @@ export default function LandingPage() {
                       pic_alt="Games IRL Icon"
                       title="Games IRL Mobile App"
                       description='An mobile app that is used to participate in real life games and events such as Tag, Hide and Seek, Zombie and Capture the Flag hosted in a city, country, continent or even the whole world.'
-                      github_link="https://github.com/Nebalus/GamesIRLMobile"
+                      github_link="https://nebalus.dev/ref/BfocUNKq"
                       work_and_progress={true}
                   />
                   <LandingProjectCard
@@ -85,7 +85,7 @@ export default function LandingPage() {
                       pic_alt="Sanitizr Icon"
                       title="Sanitizr PHP Libary"
                       description='A Zod inspired validation and filter framework written in PHP'
-                      github_link="https://github.com/Nebalus/Sanitizr"
+                      github_link="https://nebalus.dev/ref/Bqi7APL3"
                       work_and_progress={true}
                   />
                   {/*<LandingProjectCard*/}
