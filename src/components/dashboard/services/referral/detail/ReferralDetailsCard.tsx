@@ -27,7 +27,7 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
         resolver: zodResolver(UpdateReferralFormSchema),
         values: referral,
         defaultValues: {
-            name: "",
+            label: "",
             url: "",
             disabled: false
         },
@@ -77,10 +77,10 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                         <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
                             <FormField
                                 control={form.control}
-                                name="name"
+                                name="label"
                                 render={({field}) => (
                                     <FormItem>
-                                        <FormLabel>Referral Name</FormLabel>
+                                        <FormLabel>Referral Label</FormLabel>
                                         <FormControl>
                                             <Input placeholder="Example Referral" {...field} value={field.value ?? ""}
                                                    type="text"/>

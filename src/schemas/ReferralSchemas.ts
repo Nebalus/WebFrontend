@@ -13,12 +13,12 @@ export const ReferralClickHistoryDataPointSchema = z.object({
 
 export type ReferralClickHistoryDataPoint = z.infer<typeof ReferralClickHistoryDataPointSchema>;
 
-export const ReferralNameSchema = z.string().max(32).regex(/^[a-zA-Z0-9 !@#$%^&*]*$/).nullable()
+export const ReferralLabelSchema = z.string().max(32).regex(/^[a-zA-Z0-9 !@#$%^&*]*$/).nullable()
 
 export const ReferralSchema = z.object({
     code: ReferralCodeSchema,
     url: UrlSchema,
-    name: ReferralNameSchema,
+    label: ReferralLabelSchema,
     disabled: z.boolean(),
     created_at: TimestampSchema,
     updated_at: TimestampSchema,

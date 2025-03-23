@@ -31,7 +31,7 @@ export default function ReferralCreateDialog({ children }: ReferralCreateDialogP
     const form = useForm<CreateReferralForm>({
         resolver: zodResolver(CreateReferralFormSchema),
         defaultValues: {
-            name: "",
+            label: "",
             url: "",
             disabled: false
         },
@@ -76,10 +76,10 @@ export default function ReferralCreateDialog({ children }: ReferralCreateDialogP
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
                                 control={form.control}
-                                name="name"
+                                name="label"
                                 render={({field}) => (
                                     <FormItem>
-                                        <FormLabel>Referral Name</FormLabel>
+                                        <FormLabel>Referral Label</FormLabel>
                                         <FormControl>
                                             <Input placeholder="Example Referral" {...field} value={field.value ?? ""}
                                                    type="text"/>
