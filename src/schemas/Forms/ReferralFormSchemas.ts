@@ -1,9 +1,9 @@
 import { z } from "zod";
-import { ReferralNameSchema } from "../ReferralSchemas";
+import { ReferralLabelSchema } from "../ReferralSchemas";
 import {UrlSchema} from "@/schemas/GenericSchemas.ts";
 
 export const CreateReferralFormSchema = z.object({
-    name: ReferralNameSchema,
+    label: ReferralLabelSchema,
     url: UrlSchema,
     disabled: z.boolean().default(false)
 })
@@ -11,7 +11,7 @@ export const CreateReferralFormSchema = z.object({
 export type CreateReferralForm = z.infer<typeof CreateReferralFormSchema>;
 
 export const UpdateReferralFormSchema = z.object({
-    name: ReferralNameSchema,
+    label: ReferralLabelSchema,
     url: UrlSchema,
     disabled: z.boolean().default(false)
 })

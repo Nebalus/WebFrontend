@@ -30,9 +30,9 @@ export default function ReferralDeleteConfirmationDialog({ children, referral }:
                 </ DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]" onClick={(event) => event.stopPropagation()}>
                     <DialogHeader>
-                        <DialogTitle>Delete {referral.name ? referral.name : "a referral"}</DialogTitle>
+                        <DialogTitle>Delete {referral.label ? referral.label : "a referral"}</DialogTitle>
                         <DialogDescription>
-                            Please confirm that you want to delete {referral.name ? referral.name : "this referral"}
+                            Please confirm that you want to delete {referral.label ? referral.label : "this referral"}
                         </DialogDescription>
                     </DialogHeader>
                     <DialogFooter>

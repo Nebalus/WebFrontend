@@ -28,7 +28,7 @@ export default function ReferralsDataTable() {
                 <TableRow>
                     <TableHead className="w-[50px]"></TableHead>
                     <TableHead className="w-[100px]">Code</TableHead>
-                    <TableHead>Name</TableHead>
+                    <TableHead>Label</TableHead>
                     <TableHead>Url</TableHead>
                     <TableHead className="w-[100px]">Status</TableHead>
                     <TableHead className="w-[50px]"></TableHead>
@@ -61,7 +61,7 @@ export default function ReferralsDataTable() {
                                     <Copy className="w-6 h-6" />
                                 </TableCell>
                                 <TableCell className="font-medium">{referral.code}</TableCell>
-                                <TableCell>{referral.name}</TableCell>
+                                <TableCell>{referral.label}</TableCell>
                                 <TableCell>{referral.url}</TableCell>
                                 <TableCell><Badge variant="secondary">{referral.disabled ? "Disabled" : "Enabled"}</Badge></TableCell>
                                 <ReferralDeleteConfirmationDialog referral={referral}>
