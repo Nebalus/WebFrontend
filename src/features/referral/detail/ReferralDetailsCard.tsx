@@ -75,8 +75,8 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                     <QRCodeCanvas value={APP_FRONTEND_FULL_PATH + "/ref/" + referral.code} />
                     <br/>
                     <p>Code: {referral.code}</p>
-                    <p>Created: <ReactTimeAgo date={referral.created_at} locale="en-US"/> </p>
-                    <p>Updated: <ReactTimeAgo date={referral.updated_at} locale="en-US"/></p>
+                    <p>Created: <ReactTimeAgo date={new Date(referral.created_at)} locale="en-US"/> </p>
+                    <p>Updated: <ReactTimeAgo date={new Date(referral.updated_at)} locale="en-US"/></p>
                     <br/>
                     <Form {...form}>
                         <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>

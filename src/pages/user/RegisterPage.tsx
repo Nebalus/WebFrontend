@@ -1,14 +1,19 @@
 import SiteLogo from "@/components/SiteLogo.tsx";
 import StarBackground from "@/components/StarBackground.tsx";
-import {Form, Link, useActionData, useNavigation} from "react-router-dom";
+import {Form, Link, useActionData, useLocation, useNavigation} from "react-router-dom";
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {CircleAlert} from "lucide-react";
 import {Alert, AlertDescription, AlertTitle} from "@assets/components/shadcnui/alert.tsx";
+import {InvitationTokenSchema} from "@/schemas/UserSchema.ts";
 
 export default function RegisterPage() {
   const navigation = useNavigation();
   const isRegistering = navigation.state === 'submitting';
   const actionData = useActionData() as { has_error: boolean, error_title: string, error_message: string } | undefined;
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const token = InvitationTokenSchema.safeParse(params.get('token')).data ?? '';
 
   return (
       <div className="bg-black">
@@ -118,6 +123,7 @@ export default function RegisterPage() {
                       id="invitationtoken"
                       name="invitationtoken"
                       placeholder="0000-0000-0000-0000-0000"
+                      defaultValue={token}
                       type="text"
                       className="block w-full rounded-md border-0 py-1.55 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text sm:leading-6 p-2 text-l"
                       required
