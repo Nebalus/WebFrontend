@@ -1,35 +1,90 @@
-import {JSX, useEffect} from "react";
+import {JSX, useEffect, useState} from "react";
 import '@/style/StarBackground.css';
+import { motion } from "framer-motion";
+
+interface Star {
+    id: number;
+    x: string;
+    y: string;
+    size: number;
+    delay: number;
+    isBig: boolean;
+}
 
 export default function StarBackground(): JSX.Element {
+    const numStars = 100;
+    const [stars, setStars] = useState<Star[]>([]);
+
     useEffect(() => {
-        const starsContainer = document.getElementById('stars');
-        const numStars = 60;
-
-        for (let i = 0; i < numStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-
-            const size = Math.random() * 3 + 1;
-            const left = Math.random() * 100;
-            const delay = Math.random() * 10;
-            const duration = Math.random() * 5 + 7;
-
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.left = `${left}vw`;
-            star.style.animationDuration = `${duration}s`;
-            star.style.animationDelay = `${delay}s`;
-
-            if (starsContainer !== null) {
-                starsContainer.appendChild(star);
-            }
-        }
+        const generateStars = () => {
+            const newStars: Star[] = Array.from({ length: numStars }, (_, i) => {
+                const isBigStar = Math.random() > 0.90;
+                return {
+                    id: i,
+                    x: `${Math.random() * 100}vw`,
+                    y: `${Math.random() * 100}vh`,
+                    size: isBigStar ? 8 : Math.random() * 4 + 1,
+                    delay: Math.random() * 3,
+                    isBig: isBigStar,
+                };
+            });
+            setStars(newStars);
+        };
+        generateStars();
     }, []);
 
     return (
-        <>
-            <div className="stars -z-0" id="stars"></div>
-        </>
-    )
+        <div className="overflow-hidden inset-0 fixed pointer-events-none">
+            {stars.map((star) => (
+                star.isBig ? (
+                    <div
+                        key={star.id}
+                        className="absolute"
+                        style={{ top: star.y, left: star.x }}
+                    >
+                        <motion.div
+                            className="bg-white"
+                            style={{ width: star.size, height: star.size }}
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatType: "reverse",
+                                delay: star.delay,
+                            }}
+                        />
+                        <motion.div
+                            className="bg-white"
+                            style={{ width: star.size / 2, height: star.size / 2, position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                repeatType: "reverse",
+                                delay: star.delay + 0.2,
+                            }}
+                        />
+                    </div>
+                ) : (
+                    <motion.div
+                        key={star.id}
+                        className="absolute bg-white"
+                        style={{
+                            width: star.size,
+                            height: star.size,
+                            top: star.y,
+                            left: star.x,
+                        }}
+                        animate={{ opacity: [0, 1, 0] }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            delay: star.delay,
+                        }}
+                    />
+                )
+            ))}
+        </div>
+    );
 }
