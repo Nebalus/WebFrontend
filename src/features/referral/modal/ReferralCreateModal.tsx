@@ -1,31 +1,35 @@
-import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
-import {Card, CardContent, CardHeader} from "@assets/components/shadcnui/card.tsx";
-import {useReferralStore} from "@/stores/ReferralStore.ts";
-import {useEffect, useState} from "react";
-import {Button} from "@assets/components/shadcnui/button.tsx";
-import ReferralDeleteConfirmationDialog
-    from "@/components/dashboard/services/referral/dialog/ReferralDeleteConfirmationDialog.tsx";
-import {useForm} from "react-hook-form";
+import {ReactElement, useState} from "react";
 import {
-    UpdateReferralForm,
-    UpdateReferralFormSchema
-} from "@/schemas/Forms/ReferralFormSchemas.ts";
-import {zodResolver} from "@hookform/resolvers/zod";
+    Dialog,
+    DialogContent,
+    DialogDescription, DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from "@assets/components/shadcnui/dialog.tsx";
+import {Button} from "@assets/components/shadcnui/button.tsx";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@assets/components/shadcnui/form.tsx";
 import {Input} from "@assets/components/shadcnui/input.tsx";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
 import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
+import {useForm} from "react-hook-form";
+import {CreateReferralForm, CreateReferralFormSchema} from "@/schemas/Forms/ReferralFormSchemas.ts";
+import {zodResolver} from "@hookform/resolvers/zod";
 import {ReferralStoreActionResponse} from "@/schemas/ZustandSchemas.ts";
 import {toast} from "sonner";
+import {useReferralStore} from "@/stores/ReferralStore.ts";
 
-export default function ReferralDetailsCard({ referralCode }: { referralCode: ReferralCode }) {
-    const {referrals, getReferralByCode, updateReferral} = useReferralStore();
-    const [referral, setReferral] = useState<Referral>();
-    const [isSaving, setIsSaving] = useState(false);
+export interface ReferralCreateDialogProps {
+    children: ReactElement| string;
+}
 
-    const form = useForm<UpdateReferralForm>({
-        resolver: zodResolver(UpdateReferralFormSchema),
-        values: referral,
+export default function ReferralCreateModal({ children }: ReferralCreateDialogProps) {
+    const {createReferral} = useReferralStore();
+    const [createReferralModalOpen, setCreateReferralModalOpen] = useState(false);
+    const [isCreating, setIsCreating] = useState(false);
+
+    const form = useForm<CreateReferralForm>({
+        resolver: zodResolver(CreateReferralFormSchema),
         defaultValues: {
             label: "",
             url: "",
@@ -33,48 +37,43 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
         },
     })
 
-    useEffect(() => {
-        (async () => {
-            const referral = await getReferralByCode(referralCode);
-            if(referral) {
-                setReferral(referral);
-                return;
-            }
-        })();
-    }, [getReferralByCode, referralCode, referrals, setReferral]);
-
-    async function onSubmit(data: UpdateReferralForm) {
-        setIsSaving(true);
-        await updateReferral(data, referralCode)
+    async function onSubmit(data: CreateReferralForm) {
+        setIsCreating(true);
+        await createReferral(data)
             .then((response: ReferralStoreActionResponse) => {
-                setIsSaving(false);
-
+                setIsCreating(false);
                 if(response.success) {
-                    toast("Referral Updated", {
+                    form.reset();
+                    setCreateReferralModalOpen(false);
+                    toast("Referral created", {
                         className: "",
                         description: ""
                     })
                     return;
                 }
 
-                toast("An Error occurred while edit an Referral", {
+                toast("An Error occurred while create an Referral", {
                     className: "bg-red-500",
                     description: response.message
                 })
             });
     }
 
-    return <>
-        {referral != undefined ?
-            <Card className="rounded-none">
-                <CardHeader></CardHeader>
-                <CardContent>
-                    <p>Code: {referral.code}</p>
-                    <p>Created at: {referral.created_at}</p>
-                    <p>Updated at: {referral.updated_at}</p>
-                    <br/>
+    return (
+        <span onClick={(event) => event.stopPropagation()}>
+            <Dialog open={createReferralModalOpen} onOpenChange={setCreateReferralModalOpen}>
+                <DialogTrigger asChild>
+                    {children}
+                </ DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Create a referral</DialogTitle>
+                        <DialogDescription>
+                            Here you can create a new referral
+                        </DialogDescription>
+                    </DialogHeader>
                     <Form {...form}>
-                        <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
                                 control={form.control}
                                 name="label"
@@ -116,16 +115,14 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                                     </FormItem>
                                 )}
                             />
-                            <div className="flex gap-2 w-full justify-end">
-                                <ReferralDeleteConfirmationDialog referral={referral}>
-                                    <Button variant="destructive" className="cursor-pointer">Delete</Button>
-                                </ReferralDeleteConfirmationDialog>
-                                <Button variant="default" className="cursor-pointer" disabled={isSaving}>{isSaving ? "Saving" : "Save"}</Button>
-                            </div>
+                            <DialogFooter>
+                                <Button type="submit" className="bg-green-600"
+                                        disabled={isCreating}> {isCreating ? "Creating" : "Create"} </Button>
+                            </DialogFooter>
                         </form>
                     </Form>
-                </CardContent>
-            </Card>
-        : null}
-    </>
+                </DialogContent>
+            </Dialog>
+        </span>
+    );
 }

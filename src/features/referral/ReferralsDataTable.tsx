@@ -1,4 +1,4 @@
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@assets/components/shadcnui/table"
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@assets/components/shadcnui/table.tsx"
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import TableSkeleton from "@/components/TableSkeleton.tsx";
 import {useEffect} from "react";
@@ -7,8 +7,8 @@ import {Badge} from "@assets/components/shadcnui/badge.tsx";
 import {Copy, Trash2} from "lucide-react";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
 import {toast} from "sonner";
-import ReferralDeleteConfirmationDialog
-    from "@/components/dashboard/services/referral/dialog/ReferralDeleteConfirmationDialog.tsx";
+import ReferralDeleteConfirmationModal
+    from "@/features/referral/modal/ReferralDeleteConfirmationModal.tsx";
 
 export default function ReferralsDataTable() {
     const {referrals, isHydrated, hydrateReferrals} = useReferralStore();
@@ -64,13 +64,13 @@ export default function ReferralsDataTable() {
                                 <TableCell>{referral.label}</TableCell>
                                 <TableCell>{referral.url}</TableCell>
                                 <TableCell><Badge variant="secondary">{referral.disabled ? "Disabled" : "Enabled"}</Badge></TableCell>
-                                <ReferralDeleteConfirmationDialog referral={referral}>
+                                <ReferralDeleteConfirmationModal referral={referral}>
                                     <TableCell
                                         className="group"
                                     >
                                         <Trash2 className="group-hover:text-red-500 transition-all duration-150" />
                                     </TableCell>
-                                </ReferralDeleteConfirmationDialog>
+                                </ReferralDeleteConfirmationModal>
                             </TableRow>
                         ))
                     ) : (

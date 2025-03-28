@@ -17,7 +17,7 @@ export interface ReferralDeleteConfirmationDialogProps {
     referral: Referral;
 }
 
-export default function ReferralDeleteConfirmationDialog({ children, referral }: ReferralDeleteConfirmationDialogProps) {
+export default function ReferralDeleteConfirmationModal({ children, referral }: ReferralDeleteConfirmationDialogProps) {
     const {deleteReferral} = useReferralStore();
     const [isDeleting, setIsDeleting] = useState(false);
     const [isOpen, setIsOpen] = useState(false);

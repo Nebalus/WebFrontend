@@ -59,6 +59,6 @@ export default async function registerAction({request}: { request: Request}) {
     return {
         has_error: true,
         error_title: 'Registration Failed',
-        error_message: 'The registration services are currently unavailable'
+        error_message: 'The registration features are currently unavailable'
     }
 }

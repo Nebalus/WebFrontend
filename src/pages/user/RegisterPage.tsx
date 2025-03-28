@@ -14,14 +14,14 @@ export default function RegisterPage() {
       <div className="bg-black">
         <StarBackground/>
         <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 z-50">
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm z-10">
+          <div className="mx-auto w-full max-w-sm z-10">
             <SiteLogo className="mx-auto h-3 w-auto flex justify-center items-center"/>
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-300 bg-black">
               Register your account
             </h2>
           </div>
 
-          <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
+          <div className="mt-5 mx-auto w-full max-w-sm z-10 bg-black">
             {actionData && 'has_error' in actionData ? (
                 <Alert className="min-h-[50px] bg-red-800 mb-4">
                   <CircleAlert className="h-8 w-8"/>

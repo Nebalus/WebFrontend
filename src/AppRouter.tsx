@@ -6,24 +6,24 @@ import RegisterPage from "@/pages/user/RegisterPage";
 import DashboardLayout from "@/components/dashboard/layout/DashboardLayout.tsx";
 import loginAction from "@/actions/loginAction.ts";
 import registerAction from "@/actions/registerAction.ts";
-import HomeBoard from "@/components/dashboard/HomeBoard";
-import ReferralsPanel from "@/components/dashboard/services/referral/ReferralsPanel.tsx";
-import LinktreeBoard from "@/components/dashboard/services/linktree/LinktreeBoard";
-import TodosBoard from "@/components/dashboard/services/todos/TodosBoard";
+import HomeBoard from "@/pages/dashboard/HomeBoard.tsx";
+import ReferralsPage from "@/pages/dashboard/referral/ReferralsPage.tsx";
+import LinktreeBoard from "@/pages/dashboard/LinktreeBoard.tsx";
+import TodosBoard from "@/features/todos/TodosBoard";
 import ReferralPage from "@/pages/ReferralPage.tsx";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import WorkInProgress from "@/components/WorkInProgress.tsx";
-import TimeCapsuleBoard from "@/components/dashboard/services/timecapsule/TimeCapsuleBoard";
-import {AccountSettings} from "@/components/dashboard/settings/AccountSettings";
-import FormsBoard from "./components/dashboard/services/forms/FormsBoard";
-import ApodBoard from "./components/dashboard/services/apod/ApodBoard";
-import PasteBinBoard from "./components/dashboard/services/pastebin/PasteBinBoard";
-import GamesIRLBoard from "@/components/dashboard/services/gamesirl/GamesIRLBoard.tsx";
-import BlogBoard from "@/components/dashboard/services/blog/BlogBoard.tsx";
-import ReferralsDetailsBoard from "@/components/dashboard/services/referral/detail/ReferralDetailsPanel.tsx";
+import TimeCapsuleBoard from "@/features/timecapsule/TimeCapsuleBoard";
+import {AccountSettingsPage} from "@/pages/user/settings/AccountSettingsPage.tsx";
+import FormsBoard from "./pages/dashboard/FormsBoard.tsx";
+import ApodBoard from "./pages/dashboard/ApodBoard.tsx";
+import PasteBinBoard from "./pages/dashboard/PasteBinBoard.tsx";
+import GamesIRLBoard from "@/pages/dashboard/GamesIRLBoard.tsx";
+import BlogBoard from "@/pages/dashboard/BlogBoard.tsx";
+import ReferralsDetailsBoard from "@/pages/dashboard/referral/ReferralDetailsPage.tsx";
 import LinktreePage from "./pages/LinktreePage";
 import BlogPage from "./pages/BlogPage";
 import PrivacyPage from "./pages/PrivacyPage";
@@ -50,7 +50,7 @@ export const appRouter = createBrowserRouter([
             },
             {
                 path: "referrals",
-                element: <ReferralsPanel />,
+                element: <ReferralsPage />,
             },
             {
                 path: "referrals/:referral_code",
@@ -92,7 +92,7 @@ export const appRouter = createBrowserRouter([
         children: [
             {
                 path: "account",
-                element: <AccountSettings />,
+                element: <AccountSettingsPage />,
             },
         ]
     },

@@ -1,9 +1,9 @@
-import ReferralClickAnalyticsCard from "@/components/dashboard/services/referral/detail/ReferralClickAnalyticsCard.tsx";
+import ReferralClickAnalyticsCard from "@/features/referral/detail/ReferralClickAnalyticsCard.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 import {ReferralCodeSchema} from "@/schemas/ReferralSchemas.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import {useEffect} from "react";
-import ReferralDetailsCard from "@/components/dashboard/services/referral/detail/ReferralDetailsCard.tsx";
+import ReferralDetailsCard from "@/features/referral/detail/ReferralDetailsCard.tsx";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 
 export default function ReferralsDetailsBoard() {
@@ -32,8 +32,8 @@ export default function ReferralsDetailsBoard() {
 
     return (
         <>
-            <ReferralClickAnalyticsCard referralCode={referralCode.data}/>
             <ReferralDetailsCard referralCode={referralCode.data}/>
+            <ReferralClickAnalyticsCard referralCode={referralCode.data}/>
         </>
     );
 }

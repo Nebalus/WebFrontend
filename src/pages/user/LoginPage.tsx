@@ -27,7 +27,7 @@ export default function LoginPage() {
             </h2>
           </div>
 
-          <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
+          <div className="mt-5 mx-auto w-full max-w-sm z-10 bg-black">
             {actionData && 'has_error' in actionData ? (
                 <Alert className="min-h-[50px] bg-red-800 mb-4">
                   <CircleAlert className="h-8 w-8"/>

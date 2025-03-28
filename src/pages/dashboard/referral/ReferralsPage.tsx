@@ -2,10 +2,10 @@ import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {Card, CardContent, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {Plus, RefreshCcw} from "lucide-react";
-import ReferralsDataTable from "@/components/dashboard/services/referral/ReferralsDataTable.tsx";
-import ReferralCreateDialog from "@/components/dashboard/services/referral/dialog/ReferralCreateDialog.tsx";
+import ReferralsDataTable from "@/features/referral/ReferralsDataTable.tsx";
+import ReferralCreateModal from "@/features/referral/modal/ReferralCreateModal.tsx";
 
-export default function ReferralsPanel() {
+export default function ReferralsPage() {
     const {hydrateReferrals} = useReferralStore();
 
     return (
@@ -18,11 +18,11 @@ export default function ReferralsPanel() {
                     <Button className="mr-1" variant="outline" onClick={() => hydrateReferrals()}>
                         <RefreshCcw/>
                     </Button>
-                    <ReferralCreateDialog>
+                    <ReferralCreateModal>
                         <Button className="bg-green-600 hover:bg-green-500" variant="outline" >
                             <Plus/>
                         </Button>
-                    </ReferralCreateDialog>
+                    </ReferralCreateModal>
                 </div>
             </CardHeader>
             <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
