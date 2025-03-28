@@ -22,8 +22,8 @@ export default function ErrorPage() {
   return (
       <>
         <StarBackground />
-        <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-black px-4 py-12 sm:px-6 lg:px-8 z-20">
-          <div className="mx-auto max-w-md text-center">
+        <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-black px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-md text-center z-20 bg-black">
             <h1 className="text-9xl font-bold tracking-tight text-primary">404</h1>
             <p className="mt-4 text-2xl font-semibold tracking-tight text-foreground">
               Oops, the page you were looking for does not exist.

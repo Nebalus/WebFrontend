@@ -1,11 +1,12 @@
 import StarBackground from "@/components/StarBackground.tsx";
-import {trefoil} from 'ldrs';
 import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {ReferralClickResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import SiteLogo from "@/components/SiteLogo.tsx";
 import wait from "waait";
 import {APP_BACKEND_API_URL} from "@/constants.ts";
+import 'ldrs/react/Quantum.css';
+import {Quantum} from "ldrs/react";
 
 export default function ReferralPage() {
     const navigate = useNavigate();
@@ -23,19 +24,17 @@ export default function ReferralPage() {
                     window.location.replace(response.data.payload.url);
                 } else {
                     setError(true);
-                    await wait(4000);
+                    await wait(5000);
                     navigate('/');
                 }
             } catch (e) {
                 console.error(e);
                 setError(true);
-                await wait(4000);
+                await wait(5000);
                 navigate('/');
             }
         })();
     }, [navigate, referralCode]);
-
-    trefoil.register();
 
     return (
         <>
@@ -43,22 +42,22 @@ export default function ReferralPage() {
             <div className="flex items-center justify-center fixed w-screen h-screen z-40">
                 <div className="grid w-72 h-96 bg-gray-900 rounded-3xl p-4 overflow-clip">
                     <div className="w-auto h-24 flex mt-10 items-center justify-center flex-col">
-                        <SiteLogo className="mt-2"/>
-                        <h1 className="mt-14 font-bold text-2xl">Redirecting</h1>
-                        {error ? (<>
-                            <p className="text-red-500">An error occurred while redirecting</p>
-                            <p className="text-red-500">Redirecting to Landing Page instead</p>
-                        </>) : null}
-                    </div>
-                    <div className="w-auto h-max flex items-center justify-center">
-                        {/*<l-trefoil*/}
-                        {/*    size="60"*/}
-                        {/*    stroke="6"*/}
-                        {/*    stroke-length="0.30"*/}
-                        {/*    bg-opacity="0.1"*/}
-                        {/*    speed="1.4"*/}
-                        {/*    color="white"*/}
-                        {/*></l-trefoil>*/}
+                        <SiteLogo className="mt-28"/>
+                        <h1 className="mt-10 mb-10 font-bold text-2xl">Redirecting</h1>
+                        {error ? (
+                            <div className="text-red-600 text-center">
+                                <p>An error occurred while redirecting</p>
+                                <p>Redirecting to Landing Page instead</p>
+                            </div>
+                            ) : (
+                            <div className="w-auto flex items-center justify-center">
+                                <Quantum
+                                    size="45"
+                                    speed="1.75"
+                                    color="white"
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

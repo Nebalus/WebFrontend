@@ -12,13 +12,13 @@ interface Star {
 }
 
 export default function StarBackground(): JSX.Element {
-    const numStars = 100;
+    const numStars = 60;
     const [stars, setStars] = useState<Star[]>([]);
 
     useEffect(() => {
         const generateStars = () => {
             const newStars: Star[] = Array.from({ length: numStars }, (_, i) => {
-                const isBigStar = Math.random() > 0.90;
+                const isBigStar = Math.random() > 0.85;
                 return {
                     id: i,
                     x: `${Math.random() * 100}vw`,
@@ -34,7 +34,7 @@ export default function StarBackground(): JSX.Element {
     }, []);
 
     return (
-        <div className="overflow-hidden inset-0 fixed pointer-events-none">
+        <div className="overflow-hidden inset-0 fixed pointer-events-none z-0">
             {stars.map((star) => (
                 star.isBig ? (
                     <div
