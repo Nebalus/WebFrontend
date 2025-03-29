@@ -26,7 +26,8 @@ export function ReferralQrCodeCard({ referralCode, className }: { referralCode: 
                             width: 60,
                             excavate: true,
                         }}
-                        size={250}
+                        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                        size={256}
                         level="Q"/>
                 </div>
             </CardContent>
