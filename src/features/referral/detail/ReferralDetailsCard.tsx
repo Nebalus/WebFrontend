@@ -1,5 +1,5 @@
 import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
-import {Card, CardContent, CardHeader} from "@assets/components/shadcnui/card.tsx";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {useEffect, useState} from "react";
 import {Button} from "@assets/components/shadcnui/button.tsx";
@@ -17,10 +17,8 @@ import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
 import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
 import {ReferralStoreActionResponse} from "@/schemas/ZustandSchemas.ts";
 import {toast} from "sonner";
-import {QRCodeCanvas} from "qrcode.react";
-import ReactTimeAgo from "react-time-ago";
 
-export default function ReferralDetailsCard({ referralCode }: { referralCode: ReferralCode }) {
+export default function ReferralDetailsCard({ referralCode, className }: { referralCode: ReferralCode, className?: string }) {
     const {referrals, getReferralByCode, updateReferral} = useReferralStore();
     const [referral, setReferral] = useState<Referral>();
     const [isSaving, setIsSaving] = useState(false);
@@ -69,15 +67,18 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
 
     return <>
         {referral != undefined ?
-            <Card className="rounded-none">
-                <CardHeader></CardHeader>
+            <Card className={className}>
+                <CardHeader>
+                    <div className="grid gap-1 text-center sm:text-left">
+                        <CardTitle>
+                            Details
+                        </CardTitle>
+                        <CardDescription>
+                            Shows and edits the details of the referral
+                        </CardDescription>
+                    </div>
+                </CardHeader>
                 <CardContent>
-                    <QRCodeCanvas value={APP_FRONTEND_FULL_PATH + "/ref/" + referral.code} />
-                    <br/>
-                    <p>Code: {referral.code}</p>
-                    <p>Created: <ReactTimeAgo date={new Date(referral.created_at)} locale="en-US"/> </p>
-                    <p>Updated: <ReactTimeAgo date={new Date(referral.updated_at)} locale="en-US"/></p>
-                    <br/>
                     <Form {...form}>
                         <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
                             <FormField
@@ -87,8 +88,12 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                                     <FormItem>
                                         <FormLabel>Referral Label</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Example Referral" {...field} value={field.value ?? ""}
-                                                   type="text"/>
+                                            <Input
+                                                placeholder="Example Referral"
+                                                {...field}
+                                                value={field.value ?? ""}
+                                                type="text"
+                                            />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
@@ -101,8 +106,12 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                                     <FormItem>
                                         <FormLabel>Url</FormLabel>
                                         <FormControl>
-                                            <Input placeholder={APP_FRONTEND_FULL_PATH} {...field}
-                                                   value={field.value ?? ""} type="url"/>
+                                            <Input
+                                                placeholder={APP_FRONTEND_FULL_PATH}
+                                                {...field}
+                                                value={field.value ?? ""}
+                                                type="url"
+                                            />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>

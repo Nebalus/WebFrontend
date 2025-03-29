@@ -61,11 +61,16 @@ export default function ReferralCreateModal({ children }: ReferralCreateDialogPr
 
     return (
         <span onClick={(event) => event.stopPropagation()}>
-            <Dialog open={createReferralModalOpen} onOpenChange={setCreateReferralModalOpen}>
+            <Dialog
+                open={createReferralModalOpen}
+                onOpenChange={setCreateReferralModalOpen}
+            >
                 <DialogTrigger asChild>
                     {children}
                 </ DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent
+                    className="sm:max-w-[425px]"
+                >
                     <DialogHeader>
                         <DialogTitle>Create a referral</DialogTitle>
                         <DialogDescription>
@@ -73,7 +78,10 @@ export default function ReferralCreateModal({ children }: ReferralCreateDialogPr
                         </DialogDescription>
                     </DialogHeader>
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                        <form
+                            onSubmit={form.handleSubmit(onSubmit)}
+                            className="space-y-8"
+                        >
                             <FormField
                                 control={form.control}
                                 name="label"
@@ -81,8 +89,12 @@ export default function ReferralCreateModal({ children }: ReferralCreateDialogPr
                                     <FormItem>
                                         <FormLabel>Referral Label</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Example Referral" {...field} value={field.value ?? ""}
-                                                   type="text"/>
+                                            <Input
+                                                placeholder="Example Referral"
+                                                {...field}
+                                                value={field.value ?? ""}
+                                                type="text"
+                                            />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
@@ -95,8 +107,12 @@ export default function ReferralCreateModal({ children }: ReferralCreateDialogPr
                                     <FormItem>
                                         <FormLabel>Url</FormLabel>
                                         <FormControl>
-                                            <Input placeholder={APP_FRONTEND_FULL_PATH} {...field}
-                                                   value={field.value ?? ""} type="url"/>
+                                            <Input
+                                                placeholder={APP_FRONTEND_FULL_PATH}
+                                                {...field}
+                                                value={field.value ?? ""}
+                                                type="url"
+                                            />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
@@ -109,15 +125,25 @@ export default function ReferralCreateModal({ children }: ReferralCreateDialogPr
                                     <FormItem>
                                         <FormLabel>Disabled</FormLabel>
                                         <FormControl>
-                                            <Checkbox checked={field.value} onCheckedChange={field.onChange}/>
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
                                 )}
                             />
                             <DialogFooter>
-                                <Button type="submit" className="bg-green-600"
-                                        disabled={isCreating}> {isCreating ? "Creating" : "Create"} </Button>
+                                <Button
+                                    type="submit"
+                                    className="bg-green-600"
+                                    disabled={isCreating}
+                                >
+                                    {
+                                        isCreating ? "Creating" : "Create"
+                                    }
+                                </Button>
                             </DialogFooter>
                         </form>
                     </Form>

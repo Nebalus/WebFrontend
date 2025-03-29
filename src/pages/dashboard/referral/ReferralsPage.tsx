@@ -2,7 +2,7 @@ import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {Card, CardContent, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {Plus, RefreshCcw} from "lucide-react";
-import ReferralsDataTable from "@/features/referral/ReferralsDataTable.tsx";
+import ReferralsTable from "@/features/referral/ReferralsTable.tsx";
 import ReferralCreateModal from "@/features/referral/modal/ReferralCreateModal.tsx";
 
 export default function ReferralsPage() {
@@ -26,7 +26,7 @@ export default function ReferralsPage() {
                 </div>
             </CardHeader>
             <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
-                <ReferralsDataTable></ReferralsDataTable>
+                <ReferralsTable></ReferralsTable>
             </CardContent>
         </Card>
     )
