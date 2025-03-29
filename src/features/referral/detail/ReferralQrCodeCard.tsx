@@ -16,20 +16,18 @@ export function ReferralQrCodeCard({ referralCode, className }: { referralCode: 
                     </CardDescription>
                 </div>
             </CardHeader>
-            <CardContent>
-                <div className="flex items-center justify-center">
-                    <QRCodeCanvas
-                        value={APP_FRONTEND_FULL_PATH + "/ref/" + referralCode}
-                        imageSettings={{
-                            src: "/static/icons/dark_logo.svg",
-                            height: 60,
-                            width: 60,
-                            excavate: true,
-                        }}
-                        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                        size={256}
-                        level="Q"/>
-                </div>
+            <CardContent className="h-full">
+                <QRCodeCanvas
+                    value={APP_FRONTEND_FULL_PATH + "/ref/" + referralCode}
+                    imageSettings={{
+                        src: "/static/icons/dark_logo.svg",
+                        height: 60,
+                        width: 60,
+                        excavate: true,
+                    }}
+                    className="m-auto"
+                    size={256}
+                    level="Q"/>
             </CardContent>
         </Card>
     );

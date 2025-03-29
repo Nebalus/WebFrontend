@@ -35,19 +35,12 @@ export default function ReferralsDetailsBoard() {
 
     return (
         <div className="mt-4 flex flex-1 flex-col gap-4 p-4 pt-0">
-            <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div className="aspect-square bg-muted/50">
-                    <ReferralPersistentDetailsCard className="rounded-none" referralCode={referralCode.data} />
-                </div>
-
-                <div className="aspect-square bg-muted/50">
-                    <ReferralDetailsCard className="rounded-none" referralCode={referralCode.data}/>
-                </div>
-
-                <div className="aspect-square bg-muted/50">
-                    <ReferralQrCodeCard className="rounded-none" referralCode={referralCode.data} />
-                </div>
+            <div className="grid auto-rows-min gap-4 xl:grid-cols-3">
+                <ReferralPersistentDetailsCard className="rounded-none" referralCode={referralCode.data} />
+                <ReferralDetailsCard className="rounded-none" referralCode={referralCode.data}/>
+                <ReferralQrCodeCard className="rounded-none" referralCode={referralCode.data} />
             </div>
+
             <ReferralClickAnalyticsCard referralCode={referralCode.data}/>
 
             <Button variant="secondary" onClick={() => window.history.back()} className="mt-4">

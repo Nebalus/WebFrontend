@@ -64,7 +64,6 @@ export default function ReferralDetailsCard({ referralCode, className }: { refer
             });
     }
 
-
     return <>
         {referral != undefined ?
             <Card className={className}>
@@ -130,11 +129,11 @@ export default function ReferralDetailsCard({ referralCode, className }: { refer
                                     </FormItem>
                                 )}
                             />
-                            <div className="flex gap-2 w-full justify-end">
-                                <ReferralDeleteConfirmationModal referral={referral}>
-                                    <Button variant="destructive" className="cursor-pointer">Delete</Button>
+                            <div className="flex gap-2">
+                                <ReferralDeleteConfirmationModal referral={referral} className="w-1/2">
+                                    <Button variant="destructive" className="cursor-pointer w-full">Delete</Button>
                                 </ReferralDeleteConfirmationModal>
-                                <Button variant="default" className="cursor-pointer" disabled={isSaving}>{isSaving ? "Saving" : "Save"}</Button>
+                                <Button variant="default" className="cursor-pointer w-1/2" disabled={isSaving}>{isSaving ? "Saving" : "Save"}</Button>
                             </div>
                         </form>
                     </Form>
