@@ -1,5 +1,5 @@
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
-import {SuccessfulLoginResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
+import {SuccessfulLoginResponse, SuccessfulRegisterResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
 import {UserLoginRequest, UserRegisterRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
 import {handleAuthError} from "@/utils/authUtils.ts";
 import {APP_BACKEND_API_URL} from "@/constants.ts";
@@ -11,9 +11,10 @@ class ApiCommunicator {
             const response = await fetch(`${APP_BACKEND_API_URL}/ui/register`, {
                 method: "POST",
                 body: JSON.stringify(userRegisterRequest),
-            }).then(response => response.json()).then(data => SuccessfulLoginResponse.safeParseAsync(data));
+            }).then(response => response.json()).then(data => SuccessfulRegisterResponse.safeParseAsync(data));
 
             if (response.success) {
+                console.log("Registration successful");
                 return response.data.success;
             }
         } catch (e) {

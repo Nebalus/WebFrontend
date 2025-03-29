@@ -16,7 +16,7 @@ export default function RegisterPage() {
   const token = InvitationTokenSchema.safeParse(params.get('token')).data ?? '';
 
   return (
-      <div className="bg-black">
+      <>
         <StarBackground/>
         <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 z-50">
           <div className="mx-auto w-full max-w-sm z-10">
@@ -27,7 +27,8 @@ export default function RegisterPage() {
           </div>
 
           <div className="mt-5 mx-auto w-full max-w-sm z-10 bg-black">
-            {actionData && 'has_error' in actionData ? (
+            {
+              actionData && 'has_error' in actionData ? (
                 <Alert className="min-h-[50px] bg-red-800 mb-4">
                   <CircleAlert className="h-8 w-8"/>
                   <div>
@@ -39,7 +40,8 @@ export default function RegisterPage() {
                     </AlertDescription>
                   </div>
                 </Alert>
-            ) : null}
+              ) : null
+            }
             <Form method="POST" className="space-y-6">
               <div>
                 <label className="block text-sm font-medium leading-4 text-gray-300">
@@ -111,12 +113,6 @@ export default function RegisterPage() {
                   <label className="block text-sm font-medium leading-6 text-gray-300">
                     Invitation token
                   </label>
-                  
-                  {/*<div className="text-sm">*/}
-                  {/*  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">*/}
-                  {/*    What is this?*/}
-                  {/*  </a>*/}
-                  {/*</div>*/}
                 </div>
                 <div className="mt-2">
                   <input
@@ -153,6 +149,6 @@ export default function RegisterPage() {
             </p>
           </div>
         </div>
-      </div>
+      </>
   )
 }
