@@ -123,7 +123,7 @@ export default function ReferralDetailsCard({ referralCode, className }: { refer
                                     <FormItem>
                                         <FormLabel>Disabled</FormLabel>
                                         <FormControl>
-                                            <Checkbox checked={field.value} onCheckedChange={field.onChange}/>
+                                            <Checkbox className="cursor-pointer" checked={field.value} onCheckedChange={field.onChange}/>
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>

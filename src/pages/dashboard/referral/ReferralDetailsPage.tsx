@@ -43,7 +43,7 @@ export default function ReferralsDetailsBoard() {
 
             <ReferralClickAnalyticsCard referralCode={referralCode.data}/>
 
-            <Button variant="secondary" onClick={() => window.history.back()} className="mt-4">
+            <Button variant="secondary" onClick={() => window.history.back()} className="mt-4 cursor-pointer">
                 Back
             </Button>
         </div>

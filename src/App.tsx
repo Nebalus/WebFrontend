@@ -5,7 +5,7 @@ import ErrorPage from "@/pages/ErrorPage.tsx";
 
 function App() {
     return (
-          <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
+          <ThemeProvider defaultTheme="light" storageKey="ui-theme">
               <RouterProvider router={appRouter} fallbackElement={<ErrorPage />}></RouterProvider>
           </ThemeProvider>
     )

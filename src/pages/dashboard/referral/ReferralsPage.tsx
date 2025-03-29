@@ -15,11 +15,11 @@ export default function ReferralsPage() {
                     <CardTitle>Your Referrals</CardTitle>
                 </div>
                 <div className="flex gap-1 flex-row">
-                    <Button className="mr-1 hover:cursor-pointer" variant="outline" onClick={() => hydrateReferrals()}>
+                    <Button className="mr-1 cursor-pointer" variant="outline" onClick={() => hydrateReferrals()}>
                         <RefreshCcw/>
                     </Button>
                     <ReferralCreateModal>
-                        <Button className="bg-green-600 hover:bg-green-500 hover:cursor-pointer" variant="outline" >
+                        <Button className="bg-green-600 hover:bg-green-500 cursor-pointer" variant="outline" >
                             <Plus/>
                         </Button>
                     </ReferralCreateModal>

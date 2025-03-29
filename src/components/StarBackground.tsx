@@ -1,6 +1,7 @@
 import {JSX, useEffect, useState} from "react";
-import '@/style/StarBackground.css';
 import { motion } from "framer-motion";
+import {cn} from "@assets/lib/utils.ts";
+import {useTheme} from "@assets/providers/ThemeProvider.tsx";
 
 interface Star {
     id: number;
@@ -14,6 +15,8 @@ interface Star {
 export default function StarBackground(): JSX.Element {
     const numStars = 60;
     const [stars, setStars] = useState<Star[]>([]);
+    const { theme } = useTheme();
+    const isDarkMode = theme == "dark";
 
     useEffect(() => {
         const generateStars = () => {
@@ -34,7 +37,7 @@ export default function StarBackground(): JSX.Element {
     }, []);
 
     return (
-        <div className="overflow-hidden inset-0 fixed pointer-events-none z-0">
+        <div className={cn("bg-black overflow-hidden inset-0 fixed pointer-events-none z-0", isDarkMode ? "" : "invert")}>
             {stars.map((star) => (
                 star.isBig ? (
                     <div
