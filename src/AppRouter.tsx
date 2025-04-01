@@ -141,4 +141,8 @@ export const appRouter = createBrowserRouter([
         path: "privacy",
         element: <PrivacyPage />
     },
+    {
+        path: "terms",
+        element: <WorkInProgress />
+    }
 ]);
