@@ -1,10 +1,13 @@
-import ReferralClickAnalyticsCard from "@/components/dashboard/services/referral/detail/ReferralClickAnalyticsCard.tsx";
+import ReferralClickAnalyticsCard from "@/features/referral/detail/ReferralClickAnalyticsCard.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 import {ReferralCodeSchema} from "@/schemas/ReferralSchemas.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import {useEffect} from "react";
-import ReferralDetailsCard from "@/components/dashboard/services/referral/detail/ReferralDetailsCard.tsx";
+import ReferralDetailsCard from "@/features/referral/detail/ReferralDetailsCard.tsx";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
+import {Button} from "@assets/components/shadcnui/button.tsx";
+import ReferralPersistentDetailsCard from "@/features/referral/detail/ReferralPersistentDetailsCard.tsx";
+import {ReferralQrCodeCard} from "@/features/referral/detail/ReferralQrCodeCard.tsx";
 
 export default function ReferralsDetailsBoard() {
     const navigate = useNavigate();
@@ -31,9 +34,18 @@ export default function ReferralsDetailsBoard() {
     }
 
     return (
-        <>
+        <div className="mt-4 flex flex-1 flex-col gap-4 p-4 pt-0">
+            <div className="grid auto-rows-min gap-4 xl:grid-cols-3">
+                <ReferralPersistentDetailsCard className="rounded-none" referralCode={referralCode.data} />
+                <ReferralDetailsCard className="rounded-none" referralCode={referralCode.data}/>
+                <ReferralQrCodeCard className="rounded-none" referralCode={referralCode.data} />
+            </div>
+
             <ReferralClickAnalyticsCard referralCode={referralCode.data}/>
-            <ReferralDetailsCard referralCode={referralCode.data}/>
-        </>
+
+            <Button variant="secondary" onClick={() => window.history.back()} className="mt-4 cursor-pointer">
+                Back
+            </Button>
+        </div>
     );
 }

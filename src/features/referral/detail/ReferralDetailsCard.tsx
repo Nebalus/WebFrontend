@@ -1,10 +1,10 @@
 import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
-import {Card, CardContent, CardHeader} from "@assets/components/shadcnui/card.tsx";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {useEffect, useState} from "react";
 import {Button} from "@assets/components/shadcnui/button.tsx";
-import ReferralDeleteConfirmationDialog
-    from "@/components/dashboard/services/referral/dialog/ReferralDeleteConfirmationDialog.tsx";
+import ReferralDeleteConfirmationModal
+    from "@/features/referral/modal/ReferralDeleteConfirmationModal.tsx";
 import {useForm} from "react-hook-form";
 import {
     UpdateReferralForm,
@@ -18,7 +18,7 @@ import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
 import {ReferralStoreActionResponse} from "@/schemas/ZustandSchemas.ts";
 import {toast} from "sonner";
 
-export default function ReferralDetailsCard({ referralCode }: { referralCode: ReferralCode }) {
+export default function ReferralDetailsCard({ referralCode, className }: { referralCode: ReferralCode, className?: string }) {
     const {referrals, getReferralByCode, updateReferral} = useReferralStore();
     const [referral, setReferral] = useState<Referral>();
     const [isSaving, setIsSaving] = useState(false);
@@ -66,13 +66,18 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
 
     return <>
         {referral != undefined ?
-            <Card className="rounded-none">
-                <CardHeader></CardHeader>
+            <Card className={className}>
+                <CardHeader>
+                    <div className="grid gap-1 text-center sm:text-left">
+                        <CardTitle>
+                            Details
+                        </CardTitle>
+                        <CardDescription>
+                            Shows and edits the details of the referral
+                        </CardDescription>
+                    </div>
+                </CardHeader>
                 <CardContent>
-                    <p>Code: {referral.code}</p>
-                    <p>Created at: {referral.created_at}</p>
-                    <p>Updated at: {referral.updated_at}</p>
-                    <br/>
                     <Form {...form}>
                         <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
                             <FormField
@@ -82,8 +87,12 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                                     <FormItem>
                                         <FormLabel>Referral Label</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Example Referral" {...field} value={field.value ?? ""}
-                                                   type="text"/>
+                                            <Input
+                                                placeholder="Example Referral"
+                                                {...field}
+                                                value={field.value ?? ""}
+                                                type="text"
+                                            />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
@@ -96,8 +105,12 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                                     <FormItem>
                                         <FormLabel>Url</FormLabel>
                                         <FormControl>
-                                            <Input placeholder={APP_FRONTEND_FULL_PATH} {...field}
-                                                   value={field.value ?? ""} type="url"/>
+                                            <Input
+                                                placeholder={APP_FRONTEND_FULL_PATH}
+                                                {...field}
+                                                value={field.value ?? ""}
+                                                type="url"
+                                            />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
@@ -110,17 +123,17 @@ export default function ReferralDetailsCard({ referralCode }: { referralCode: Re
                                     <FormItem>
                                         <FormLabel>Disabled</FormLabel>
                                         <FormControl>
-                                            <Checkbox checked={field.value} onCheckedChange={field.onChange}/>
+                                            <Checkbox className="cursor-pointer" checked={field.value} onCheckedChange={field.onChange}/>
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
                                 )}
                             />
-                            <div className="flex gap-2 w-full justify-end">
-                                <ReferralDeleteConfirmationDialog referral={referral}>
-                                    <Button variant="destructive" className="cursor-pointer">Delete</Button>
-                                </ReferralDeleteConfirmationDialog>
-                                <Button variant="default" className="cursor-pointer" disabled={isSaving}>{isSaving ? "Saving" : "Save"}</Button>
+                            <div className="flex gap-2">
+                                <ReferralDeleteConfirmationModal referral={referral} className="w-1/2">
+                                    <Button variant="destructive" className="cursor-pointer w-full">Delete</Button>
+                                </ReferralDeleteConfirmationModal>
+                                <Button variant="default" className="cursor-pointer w-1/2" disabled={isSaving}>{isSaving ? "Saving" : "Save"}</Button>
                             </div>
                         </form>
                     </Form>

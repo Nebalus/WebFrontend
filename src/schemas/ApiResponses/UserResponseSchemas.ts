@@ -11,8 +11,6 @@ export const SuccessfulLoginResponse = GenericSuccessResponse.extend({
 
 export type SuccessfulLoginResponse = z.infer<typeof SuccessfulLoginResponse>;
 
-export const SuccessfulRegisterResponse = GenericSuccessResponse.extend({
-    payload: UserSchema
-})
+export const SuccessfulRegisterResponse = GenericSuccessResponse
 
 export type SuccessfulRegisterResponse = z.infer<typeof SuccessfulLoginResponse>;

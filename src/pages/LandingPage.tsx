@@ -4,9 +4,6 @@
 import StarBackground from "@/components/StarBackground.tsx";
 import LandingProjectCard from "../components/landing/LandingProjectCard.tsx";
 import LandingNavBar from "@/components/landing/LandingNavBar.tsx";
-import { Input } from "@assets/components/shadcnui/input.tsx";
-import { Textarea } from "@assets/components/shadcnui/textarea.tsx";
-import { Button } from "@assets/components/shadcnui/button.tsx";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
@@ -69,7 +66,7 @@ export default function LandingPage() {
                       pic_alt="Picture of an mandelbrot fractal"
                       title="Mandelbrot"
                       description="An user interface written in Java to explore the wonders of the Mandelbrot-set fractal."
-                      github_link="https://github.com/Nebalus/Mandelbrot-Fractal"
+                      github_link="https://nebalus.dev/ref/1tHraCGg"
                       work_and_progress={false}
                   />
                   <LandingProjectCard
@@ -77,7 +74,7 @@ export default function LandingPage() {
                       pic_alt="Games IRL Icon"
                       title="Games IRL Mobile App"
                       description='An mobile app that is used to participate in real life games and events such as Tag, Hide and Seek, Zombie and Capture the Flag hosted in a city, country, continent or even the whole world.'
-                      github_link="https://github.com/Nebalus/GamesIRLMobile"
+                      github_link="https://nebalus.dev/ref/BfocUNKq"
                       work_and_progress={true}
                   />
                   <LandingProjectCard
@@ -85,7 +82,7 @@ export default function LandingPage() {
                       pic_alt="Sanitizr Icon"
                       title="Sanitizr PHP Libary"
                       description='A Zod inspired validation and filter framework written in PHP'
-                      github_link="https://github.com/Nebalus/Sanitizr"
+                      github_link="https://nebalus.dev/ref/Bqi7APL3"
                       work_and_progress={true}
                   />
                   {/*<LandingProjectCard*/}
@@ -151,24 +148,24 @@ export default function LandingPage() {
             {/*    </div>*/}
             {/*  </div>*/}
             {/*</section>*/}
-            <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-950">
-              <div className="container px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                  <div className="space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h2>
-                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    </p>
-                  </div>
-                  <div className="mx-auto w-full max-w-sm space-y-2">
-                    <form className="flex flex-col gap-4">
-                      <Input type="text" placeholder="Name" className="max-w-lg flex-1" />
-                      <Textarea placeholder="Nachricht" className="max-w-lg flex-1" />
-                      <Button type="submit">Send</Button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </section>
+            {/*<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-950">*/}
+            {/*  <div className="container px-4 md:px-6">*/}
+            {/*    <div className="flex flex-col items-center justify-center space-y-4 text-center">*/}
+            {/*      <div className="space-y-2">*/}
+            {/*        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h2>*/}
+            {/*        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">*/}
+            {/*        </p>*/}
+            {/*      </div>*/}
+            {/*      <div className="mx-auto w-full max-w-sm space-y-2">*/}
+            {/*        <form className="flex flex-col gap-4">*/}
+            {/*          <Input type="text" placeholder="Name" className="max-w-lg flex-1" />*/}
+            {/*          <Textarea placeholder="Nachricht" className="max-w-lg flex-1" />*/}
+            {/*          <Button type="submit">Send</Button>*/}
+            {/*        </form>*/}
+            {/*      </div>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
+            {/*</section>*/}
           </main>
           <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-gray-950 z-10">
             <nav className="sm:ml-auto flex gap-4 sm:gap-4">

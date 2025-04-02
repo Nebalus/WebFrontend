@@ -1,7 +1,7 @@
 import {z} from 'zod';
 import {TimestampSchema} from "@/schemas/GenericSchemas.ts";
 
-export const UsernameSchema = z.string().min(3).max(32).transform(username => username.trim().toLowerCase().replace(/\s/g, ""));
+export const UsernameSchema = z.string().min(4).max(32).transform(username => username.trim().toLowerCase().replace(/\s/g, ""));
 
 export type Username = z.infer<typeof UsernameSchema>;
 
@@ -9,7 +9,7 @@ export const EmailSchema = z.string().email('Invalid email format');
 
 export type Email = z.infer<typeof EmailSchema>;
 
-export const PasswordSchema = z.string();
+export const PasswordSchema = z.string().min(8, "Password must contain at least 8 characters").max(64, "Password must contain at max 64 characters");
 
 export type Password = z.infer<typeof PasswordSchema>;
 

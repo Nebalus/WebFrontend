@@ -15,9 +15,10 @@ export default function LoginPage() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const next = params.get('next') || APP_DASHBOARD_PATH;
+  const registerSuccess = params.get('register_success') === 'true';
 
   return (
-      <div className="bg-black">
+      <>
         <StarBackground />
         <div className="w-screen h-screen items-center flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 z-50">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm z-10">
@@ -27,7 +28,24 @@ export default function LoginPage() {
             </h2>
           </div>
 
-          <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm z-10 bg-black">
+          <div className="mt-5 mx-auto w-full max-w-sm z-10 bg-black">
+
+            {
+                registerSuccess ? (
+                    <Alert className="min-h-[50px] bg-green-800 mb-4">
+                        <CircleAlert className="h-8 w-8"/>
+                        <div>
+                        <AlertTitle>
+                            Registration successful
+                        </AlertTitle>
+                        <AlertDescription className="overflow-">
+                            You can now login to your account
+                        </AlertDescription>
+                        </div>
+                    </Alert>
+                ) : null
+            }
+
             {actionData && 'has_error' in actionData ? (
                 <Alert className="min-h-[50px] bg-red-800 mb-4">
                   <CircleAlert className="h-8 w-8"/>
@@ -105,6 +123,6 @@ export default function LoginPage() {
             </p>
           </div>
         </div>
-      </div>
+      </>
   )
 }

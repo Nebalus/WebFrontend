@@ -2,10 +2,10 @@ import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {Card, CardContent, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
 import {Button} from "@assets/components/shadcnui/button.tsx";
 import {Plus, RefreshCcw} from "lucide-react";
-import ReferralsDataTable from "@/components/dashboard/services/referral/ReferralsDataTable.tsx";
-import ReferralCreateDialog from "@/components/dashboard/services/referral/dialog/ReferralCreateDialog.tsx";
+import ReferralsTable from "@/features/referral/ReferralsTable.tsx";
+import ReferralCreateModal from "@/features/referral/modal/ReferralCreateModal.tsx";
 
-export default function ReferralsPanel() {
+export default function ReferralsPage() {
     const {hydrateReferrals} = useReferralStore();
 
     return (
@@ -15,18 +15,18 @@ export default function ReferralsPanel() {
                     <CardTitle>Your Referrals</CardTitle>
                 </div>
                 <div className="flex gap-1 flex-row">
-                    <Button className="mr-1" variant="outline" onClick={() => hydrateReferrals()}>
+                    <Button className="mr-1 cursor-pointer" variant="outline" onClick={() => hydrateReferrals()}>
                         <RefreshCcw/>
                     </Button>
-                    <ReferralCreateDialog>
-                        <Button className="bg-green-600 hover:bg-green-500" variant="outline" >
+                    <ReferralCreateModal>
+                        <Button className="bg-green-600 hover:bg-green-500 cursor-pointer" variant="outline" >
                             <Plus/>
                         </Button>
-                    </ReferralCreateDialog>
+                    </ReferralCreateModal>
                 </div>
             </CardHeader>
             <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
-                <ReferralsDataTable></ReferralsDataTable>
+                <ReferralsTable></ReferralsTable>
             </CardContent>
         </Card>
     )
