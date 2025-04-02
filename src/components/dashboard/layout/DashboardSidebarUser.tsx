@@ -1,4 +1,4 @@
-import {ChevronsUpDown, LogOut, Mail, Settings, Ticket, History, HeartHandshake} from "lucide-react"
+import {ChevronsUpDown, LogOut, Mail, Settings, History, HeartHandshake} from "lucide-react"
 import {Avatar, AvatarFallback, AvatarImage,} from "@assets/components/shadcnui/avatar"
 import {
     DropdownMenu,
@@ -82,12 +82,6 @@ export function NavUser() {
               <DropdownMenuItem>
                 <Mail />
                 Invitation Program
-              </DropdownMenuItem>
-            </NavLink>
-            <NavLink to="">
-              <DropdownMenuItem>
-                <Ticket />
-                Tickets
               </DropdownMenuItem>
             </NavLink>
             <NavLink to="">
