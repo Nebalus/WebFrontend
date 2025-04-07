@@ -28,6 +28,11 @@ export default defineConfig(({ command, mode }) => {
           "@": path.resolve(__dirname, "./src"),
           "@assets": path.resolve(__dirname, "./assets"),
         },
+    },
+    build: {
+      rollupOptions: {
+        input: 'index.html'     
+      }
     }
   }
 });
