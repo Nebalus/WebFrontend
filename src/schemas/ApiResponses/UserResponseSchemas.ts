@@ -4,7 +4,7 @@ import {GenericSuccessResponse} from "@/schemas/ApiResponses/GenericResponseSche
 
 export const SuccessfulLoginResponse = GenericSuccessResponse.extend({
     payload: z.object({
-        jwt: z.string().jwt(),
+        jwt: z.jwt(),
         user: UserSchema
     })
 })

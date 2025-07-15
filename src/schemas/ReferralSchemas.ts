@@ -6,7 +6,7 @@ export const ReferralCodeSchema = z.string().length(8).regex(/^[a-zA-Z0-9]+$/);
 export type ReferralCode = z.infer<typeof ReferralCodeSchema>;
 
 export const ReferralClickHistoryDataPointSchema = z.object({
-    date: z.string().date(),
+    date: z.date(),
     count: z.number().int().nonnegative(),
     unique_visitors: z.number().int().nonnegative(),
 });
