@@ -13,4 +13,4 @@ export type SuccessfulLoginResponse = z.infer<typeof SuccessfulLoginResponse>;
 
 export const SuccessfulRegisterResponse = GenericSuccessResponse
 
-export type SuccessfulRegisterResponse = z.infer<typeof SuccessfulLoginResponse>;
+export type SuccessfulRegisterResponse = z.infer<typeof SuccessfulRegisterResponse>;
