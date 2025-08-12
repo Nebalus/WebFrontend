@@ -28,7 +28,7 @@ import {
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {ReferralClickHistoryDataPoint, ReferralCode} from "@/schemas/ReferralSchemas.ts";
 import {
-    ReferralClickHistoryResponse
+    ReferralClickHistoryResponseSchema
 } from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import {useEffect} from "react";
 
@@ -43,7 +43,7 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                     method: 'GET'
                 },
                 route: `/ui/user/services/referrals/${referralCode}/click_history?range=${timeRange}`
-            }).catch().then(response => response.json()).then(data => ReferralClickHistoryResponse.safeParseAsync(data));
+            }).catch().then(response => response.json()).then(data => ReferralClickHistoryResponseSchema.safeParseAsync(data));
 
             if(response.success) {
                 setChartData(response.data.payload.history);

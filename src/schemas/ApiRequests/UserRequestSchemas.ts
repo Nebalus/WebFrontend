@@ -1,18 +1,18 @@
 import {z} from "zod";
 import {EmailSchema, InvitationTokenSchema, PasswordSchema, UsernameSchema} from "@/schemas/UserSchema.ts";
 
-export const UserRegisterRequest = z.object({
+export const UserRegisterRequestSchema = z.object({
     "invitation_token": InvitationTokenSchema,
     "email": EmailSchema,
     "username": UsernameSchema,
     "password": PasswordSchema,
 });
 
-export type UserRegisterRequest = z.infer<typeof UserRegisterRequest>;
+export type UserRegisterRequest = z.infer<typeof UserRegisterRequestSchema>;
 
-export const UserLoginRequest = z.object({
+export const UserLoginRequestSchema = z.object({
     "username": UsernameSchema,
     "password": PasswordSchema,
 });
 
-export type UserLoginRequest = z.infer<typeof UserLoginRequest>;
+export type UserLoginRequest = z.infer<typeof UserLoginRequestSchema>;

@@ -1,17 +1,17 @@
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
-import {SuccessfulLoginResponse, SuccessfulRegisterResponse} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
-import {UserLoginRequest, UserRegisterRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
+import {LoginResponseSchema, RegisterResponseSchema} from "@/schemas/ApiResponses/UserResponseSchemas.ts";
+import {UserLoginRequestSchema, UserRegisterRequestSchema} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
 import {handleAuthError} from "@/utils/authUtils.ts";
 import {APP_BACKEND_API_URL} from "@/constants.ts";
 
 class ApiCommunicator {
 
-    async register(userRegisterRequest: UserRegisterRequest): Promise<boolean> {
+    async register(userRegisterRequest: UserRegisterRequestSchema): Promise<boolean> {
         try {
             const response = await fetch(`${APP_BACKEND_API_URL}/ui/register`, {
                 method: "POST",
                 body: JSON.stringify(userRegisterRequest),
-            }).then(response => response.json()).then(data => SuccessfulRegisterResponse.safeParseAsync(data));
+            }).then(response => response.json()).then(data => RegisterResponseSchema.safeParseAsync(data));
 
             if (response.success) {
                 console.log("Registration successful");
@@ -23,14 +23,14 @@ class ApiCommunicator {
         return false;
     }
 
-    async login(userLoginRequest: UserLoginRequest): Promise<boolean> {
+    async login(userLoginRequest: UserLoginRequestSchema): Promise<boolean> {
         const { setUser, setJwt } = useAuthenticatedUserStore.getState();
 
         try {
             const response = await fetch(`${APP_BACKEND_API_URL}/ui/auth`, {
                 method: 'POST',
                 body: JSON.stringify(userLoginRequest),
-            }).then(response => response.json()).then(data => SuccessfulLoginResponse.safeParseAsync(data));
+            }).then(response => response.json()).then(data => LoginResponseSchema.safeParseAsync(data));
 
             if (response.success) {
                 setUser(response.data.payload.user);

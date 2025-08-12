@@ -1,5 +1,5 @@
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-import {UserRegisterRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
+import {UserRegisterRequestSchema} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
 import {redirect} from "react-router-dom";
 
 export default async function registerAction({request}: { request: Request}) {
@@ -26,7 +26,7 @@ export default async function registerAction({request}: { request: Request}) {
         }
     }
 
-    const userRegisterRequest = UserRegisterRequest.safeParse({
+    const userRegisterRequest = UserRegisterRequestSchema.safeParse({
         "invitation_token": invitationTokenAsString,
         "email": email,
         "username": username,

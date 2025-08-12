@@ -1,7 +1,7 @@
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {redirect} from "react-router-dom";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
-import {UserLoginRequest} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
+import {UserLoginRequestSchema} from "@/schemas/ApiRequests/UserRequestSchemas.ts";
 
 export default async function loginAction({request}: { request: Request}) {
     const formData = await request.formData();
@@ -16,7 +16,7 @@ export default async function loginAction({request}: { request: Request}) {
         }
     }
 
-    const userLoginRequest = UserLoginRequest.safeParse({
+    const userLoginRequest = UserLoginRequestSchema.safeParse({
         "username": username,
         "password": password,
     });

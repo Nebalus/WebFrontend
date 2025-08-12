@@ -1,35 +1,56 @@
-import {GenericSuccessResponse} from "@/schemas/ApiResponses/GenericResponseSchemas.ts";
+import {GenericErrorResponseSchema, GenericSuccessResponseSchema} from "@/schemas/ApiResponses/GenericResponseSchemas.ts";
 import {z} from "zod";
 import {ReferralClickHistoryDataPointSchema, ReferralCodeSchema, ReferralSchema} from "@/schemas/ReferralSchemas.ts";
 import {UrlSchema} from "@/schemas/GenericSchemas.ts";
 
-export const ReferralClickResponse = GenericSuccessResponse.extend({
-    payload: z.object({
-        url: UrlSchema
-    })
-})
+export const ReferralClickResponseSchema = z.discriminatedUnion("success", [
+    GenericSuccessResponseSchema.extend({
+        payload: z.object({
+            url: UrlSchema
+        })
+    }),
+    GenericErrorResponseSchema
+]);
 
-export const ReferralClickHistoryResponse = GenericSuccessResponse.extend({
-    payload: z.object({
-        code: ReferralCodeSchema,
-        history: z.array(ReferralClickHistoryDataPointSchema)
-    })
-})
+export const ReferralClickHistoryResponseSchema = z.discriminatedUnion("success", [
+    GenericSuccessResponseSchema.extend({
+        payload: z.object({
+            code: ReferralCodeSchema,
+            history: z.array(ReferralClickHistoryDataPointSchema)
+        })
+    }),
+    GenericErrorResponseSchema
+]);
 
-export const ReferralListAllOwnedResponse = GenericSuccessResponse.extend({
-    payload: z.array(ReferralSchema)
-})
+export const ReferralListAllOwnedResponseSchema = z.discriminatedUnion("success", [
+    GenericSuccessResponseSchema.extend({
+        payload: z.array(ReferralSchema)
+    }),
+    GenericErrorResponseSchema
+]);
 
-export const ReferralCreateResponse = GenericSuccessResponse.extend({
-    payload: ReferralSchema
-})
+export const ReferralCreateResponseSchema = z.discriminatedUnion("success", [
+    GenericSuccessResponseSchema.extend({
+        payload: ReferralSchema
+    }),
+    GenericErrorResponseSchema
+]);
 
-export const ReferralDeleteResponse = GenericSuccessResponse.extend({})
+export const ReferralDeleteResponseSchema = z.discriminatedUnion("success", [
+    GenericSuccessResponseSchema,
+    GenericErrorResponseSchema
+]);
 
-export const ReferralGetResponse = GenericSuccessResponse.extend({
-    payload: ReferralSchema
-});
+export const ReferralGetResponseSchema = z.discriminatedUnion("success", [
+    GenericSuccessResponseSchema.extend({
+        payload: ReferralSchema
+    }),
+    GenericErrorResponseSchema
+]);
 
-export const ReferralUpdateResponse = GenericSuccessResponse.extend({
-    payload: ReferralSchema
-})
+export const ReferralUpdateResponseSchema = z.discriminatedUnion("success", [
+    GenericSuccessResponseSchema.extend({
+        payload: ReferralSchema
+    }),
+    GenericErrorResponseSchema
+]);

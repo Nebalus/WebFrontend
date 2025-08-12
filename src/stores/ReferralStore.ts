@@ -2,9 +2,9 @@ import {create} from "zustand";
 import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {
-    ReferralCreateResponse,
-    ReferralDeleteResponse, ReferralGetResponse,
-    ReferralListAllOwnedResponse, ReferralUpdateResponse
+    ReferralCreateResponseSchema,
+    ReferralDeleteResponseSchema, ReferralGetResponseSchema,
+    ReferralListAllOwnedResponseSchema, ReferralUpdateResponseSchema
 } from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import {CreateReferralForm, UpdateReferralForm} from "@/schemas/Forms/ReferralFormSchemas.ts";
 import { ReferralStoreActionResponse, ReferralStoreActionResponseSchema } from "@/schemas/ZustandSchemas";
@@ -39,7 +39,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
                     method: 'GET'
                 },
                 route: `/ui/user/services/referrals/all`
-            }).then(response => response.json()).then(data => ReferralListAllOwnedResponse.safeParseAsync(data));
+            }).then(response => response.json()).then(data => ReferralListAllOwnedResponseSchema.safeParseAsync(data));
 
             if (parsedResponse.success) {
                 set({referrals: parsedResponse.data.payload, hydrated: true});
@@ -70,7 +70,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
                     body: JSON.stringify(createReferralForm),
                 },
                 route: `/ui/user/services/referrals`
-            }).then(response => response.json()).then(data => ReferralCreateResponse.safeParseAsync(data));
+            }).then(response => response.json()).then(data => ReferralCreateResponseSchema.safeParseAsync(data));
     
             if(parsedResponse.success) {
                 set({referrals: [...get().referrals, parsedResponse.data.payload]});
@@ -101,7 +101,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
                     body: JSON.stringify(updateReferralForm),
                 },
                 route: `/ui/user/services/referrals/${referralCode.toString()}`
-            }).then(response => response.json()).then(data => ReferralUpdateResponse.safeParseAsync(data));
+            }).then(response => response.json()).then(data => ReferralUpdateResponseSchema.safeParseAsync(data));
 
             if(parsedResponse.success) {
                 set({
@@ -139,7 +139,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
                     method: 'DELETE',
                 },
                 route: `/ui/user/services/referrals/${referralCode.toString()}`
-            }).then(response => response.json()).then(data => ReferralDeleteResponse.safeParseAsync(data));
+            }).then(response => response.json()).then(data => ReferralDeleteResponseSchema.safeParseAsync(data));
 
             if(parsedResponse.success) {
                 set({ referrals: get().referrals.filter(ref => ref.code !== referralCode) });
@@ -161,7 +161,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
                 method: 'GET',
             },
             route: `/ui/user/services/referrals/${referralCode.toString()}`
-        }).then(response => response.json()).then(data => ReferralGetResponse.safeParseAsync(data));
+        }).then(response => response.json()).then(data => ReferralGetResponseSchema.safeParseAsync(data));
 
         if(parsedResponse.success) {
             set({referrals: [...get().referrals, parsedResponse.data.payload]});

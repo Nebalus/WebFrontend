@@ -1,7 +1,7 @@
 import StarBackground from "@/components/StarBackground.tsx";
 import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {ReferralClickResponse} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
+import {ReferralClickResponseSchema} from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
 import SiteLogo from "@/components/SiteLogo.tsx";
 import wait from "waait";
 import {APP_BACKEND_API_URL} from "@/constants.ts";
@@ -18,7 +18,7 @@ export default function ReferralPage() {
             try {
                 const response = await fetch(`${APP_BACKEND_API_URL}/services/referral/` + referralCode, {
                     method: 'GET',
-                }).then(response => response.json()).then(data => ReferralClickResponse.safeParseAsync(data));
+                }).then(response => response.json()).then(data => ReferralClickResponseSchema.safeParseAsync(data));
 
                 if (response.success) {
                     window.location.replace(response.data.payload.url);
