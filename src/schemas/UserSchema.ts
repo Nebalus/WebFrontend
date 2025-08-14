@@ -5,7 +5,7 @@ export const UsernameSchema = z.string().min(4).max(32).transform(username => us
 
 export type Username = z.infer<typeof UsernameSchema>;
 
-export const EmailSchema = z.string().email('Invalid email format');
+export const EmailSchema = z.email('Invalid email format');
 
 export type Email = z.infer<typeof EmailSchema>;
 

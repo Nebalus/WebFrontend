@@ -2,15 +2,15 @@ import {z} from "zod";
 import {UserSchema} from "@/schemas/UserSchema.ts";
 import {GenericSuccessResponseSchema} from "@/schemas/ApiResponses/GenericResponseSchemas.ts";
 
-export const LoginResponseSchema = GenericSuccessResponseSchema.extend({
+export const SuccessfulLoginResponseSchema = GenericSuccessResponseSchema.extend({
     payload: z.object({
-        jwt: z.string().jwt(),
+        jwt: z.jwt(),
         user: UserSchema
     })
-});
+})
 
-export type LoginResponse = z.infer<typeof LoginResponseSchema>;
+export type SuccessfulLoginResponse = z.infer<typeof SuccessfulLoginResponseSchema>;
 
-export const RegisterResponseSchema = GenericSuccessResponseSchema;
+export const SuccessfulRegisterResponseSchema = GenericSuccessResponseSchema
 
-export type RegisterResponse = z.infer<typeof RegisterResponseSchema>;
+export type SuccessfulRegisterResponse = z.infer<typeof SuccessfulRegisterResponseSchema>;
