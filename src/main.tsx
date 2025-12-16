@@ -1,15 +1,10 @@
-import '@/style/globals.css'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from '@/App.tsx'
-import en from 'javascript-time-ago/locale/en'
-import TimeAgo from "javascript-time-ago";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
 
-TimeAgo.addDefaultLocale(en)
-
-const root = ReactDOM.createRoot(document.getElementById('root')!);
-root.render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <App />
-  </React.StrictMode>,
-);
+  </StrictMode>,
+)

@@ -1,14 +1,24 @@
-import {ThemeProvider} from "../assets/providers/ThemeProvider.tsx";
-import {RouterProvider} from "react-router-dom";
-import {appRouter} from '@/AppRouter.tsx';
-import ErrorPage from "@/pages/ErrorPage.tsx";
+import { useState } from 'react'
 
 function App() {
-    return (
-          <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
-              <RouterProvider router={appRouter} fallbackElement={<ErrorPage />}></RouterProvider>
-          </ThemeProvider>
-    )
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
 export default App
