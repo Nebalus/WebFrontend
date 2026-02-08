@@ -20,7 +20,7 @@ RUN pnpm run build
 # Production stage - nginx to serve the built files
 FROM nginx:latest
 WORKDIR /app
-RUN adduser --disabled-password --no-create-home --gecos '' app
+RUN useradd --no-create-home --shell /bin/false app
 RUN mkdir -p /var/run && chown -R app:app /var/run
 RUN mkdir -p /var/cache/nginx && chown -R app:app /var/cache/nginx
 COPY --from=builder /app/apps/web/dist /app/public
