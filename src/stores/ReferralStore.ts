@@ -1,12 +1,13 @@
-import {create} from "zustand";
-import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
+import { create } from "zustand";
+import { useAuthenticatedUserStore } from "@/stores/UserStore.ts";
+import { Referral, ReferralCode } from "@/schemas/ReferralSchemas.ts";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {
     ReferralCreateResponse,
     ReferralDeleteResponse, ReferralGetResponse,
     ReferralListAllOwnedResponse, ReferralUpdateResponse
 } from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
-import {CreateReferralForm, UpdateReferralForm} from "@/schemas/Forms/ReferralFormSchemas.ts";
+import { CreateReferralForm, UpdateReferralForm } from "@/schemas/Forms/ReferralFormSchemas.ts";
 import { ReferralStoreActionResponse, ReferralStoreActionResponseSchema } from "@/schemas/ZustandSchemas";
 
 type ReferralState = {
@@ -34,15 +35,19 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
     isHydrated: () => get().hydrated,
     hydrateReferrals: async (): Promise<ReferralStoreActionResponse> => {
         try {
+            const { user } = useAuthenticatedUserStore.getState();
+
+            if (!user) throw new Error("User not authenticated");
+
             const parsedResponse = await ApiCommunicator.apiFetch({
                 context: {
                     method: 'GET'
                 },
-                route: `/ui/user/services/referrals/all`
+                route: `/ui/users/${user.user_id}/services/referrals/all`
             }).then(response => response.json()).then(data => ReferralListAllOwnedResponse.safeParseAsync(data));
 
             if (parsedResponse.success) {
-                set({referrals: parsedResponse.data.payload, hydrated: true});
+                set({ referrals: parsedResponse.data.payload, hydrated: true });
                 return ReferralStoreActionResponseSchema.parse({
                     success: true,
                     message: parsedResponse.data.message,
@@ -64,53 +69,59 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
     },
     createReferral: async (createReferralForm: CreateReferralForm): Promise<ReferralStoreActionResponse> => {
         try {
+            const { user } = useAuthenticatedUserStore.getState();
+            if (!user) throw new Error("User not authenticated");
+
             const parsedResponse = await ApiCommunicator.apiFetch({
                 context: {
                     method: 'POST',
                     body: JSON.stringify(createReferralForm),
                 },
-                route: `/ui/user/services/referrals`
+                route: `/ui/users/${user.user_id}/services/referrals`
             }).then(response => response.json()).then(data => ReferralCreateResponse.safeParseAsync(data));
-    
-            if(parsedResponse.success) {
-                set({referrals: [...get().referrals, parsedResponse.data.payload]});
+
+            if (parsedResponse.success) {
+                set({ referrals: [...get().referrals, parsedResponse.data.payload] });
                 return ReferralStoreActionResponseSchema.parse({
                     success: true,
                     message: parsedResponse.data.message,
-                    referral: parsedResponse.data.payload            
+                    referral: parsedResponse.data.payload
                 });
             }
-        } catch(e) {
-             return ReferralStoreActionResponseSchema.parse({
-                 success: false,
-                 message: e instanceof Error ? e.message : undefined,
-                 referral: undefined
+        } catch (e) {
+            return ReferralStoreActionResponseSchema.parse({
+                success: false,
+                message: e instanceof Error ? e.message : undefined,
+                referral: undefined
             });
         }
 
         return ReferralStoreActionResponseSchema.parse({
             success: false,
-            referral: undefined           
+            referral: undefined
         });
     },
     updateReferral: async (updateReferralForm: UpdateReferralForm, referralCode: ReferralCode): Promise<ReferralStoreActionResponse> => {
         try {
+            const { user } = useAuthenticatedUserStore.getState();
+            if (!user) throw new Error("User not authenticated");
+
             const parsedResponse = await ApiCommunicator.apiFetch({
                 context: {
                     method: 'PUT',
                     body: JSON.stringify(updateReferralForm),
                 },
-                route: `/ui/user/services/referrals/${referralCode.toString()}`
+                route: `/ui/users/${user.user_id}/services/referrals/${referralCode.toString()}`
             }).then(response => response.json()).then(data => ReferralUpdateResponse.safeParseAsync(data));
 
-            if(parsedResponse.success) {
+            if (parsedResponse.success) {
                 set({
                     referrals: get().referrals.map(referral => {
-                            if (referral.code === referralCode) {
-                                return parsedResponse.data.payload;
-                            }
-                            return referral
+                        if (referral.code === referralCode) {
+                            return parsedResponse.data.payload;
                         }
+                        return referral
+                    }
                     )
                 });
                 return ReferralStoreActionResponseSchema.parse({
@@ -119,7 +130,7 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
                     referral: parsedResponse.data.payload
                 });
             }
-        } catch(e) {
+        } catch (e) {
             return ReferralStoreActionResponseSchema.parse({
                 success: false,
                 message: e instanceof Error ? e.message : undefined,
@@ -134,14 +145,17 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
     },
     deleteReferral: async (referralCode: ReferralCode): Promise<boolean> => {
         try {
+            const { user } = useAuthenticatedUserStore.getState();
+            if (!user) throw new Error("User not authenticated");
+
             const parsedResponse = await ApiCommunicator.apiFetch({
                 context: {
                     method: 'DELETE',
                 },
-                route: `/ui/user/services/referrals/${referralCode.toString()}`
+                route: `/ui/users/${user.user_id}/services/referrals/${referralCode.toString()}`
             }).then(response => response.json()).then(data => ReferralDeleteResponse.safeParseAsync(data));
 
-            if(parsedResponse.success) {
+            if (parsedResponse.success) {
                 set({ referrals: get().referrals.filter(ref => ref.code !== referralCode) });
             }
             return parsedResponse.success;
@@ -152,19 +166,22 @@ export const useReferralStore = create<ReferralState & ReferralAction>()((set, g
     getReferralByCode: async (referralCode: ReferralCode): Promise<Referral | undefined> => {
         const referral = get().referrals.find(ref => ref.code === referralCode) || undefined;
 
-        if(referral) {
+        if (referral) {
             return referral;
         }
+
+        const { user } = useAuthenticatedUserStore.getState();
+        if (!user) throw new Error("User not authenticated");
 
         const parsedResponse = await ApiCommunicator.apiFetch({
             context: {
                 method: 'GET',
             },
-            route: `/ui/user/services/referrals/${referralCode.toString()}`
+            route: `/ui/users/${user.user_id}/services/referrals/${referralCode.toString()}`
         }).then(response => response.json()).then(data => ReferralGetResponse.safeParseAsync(data));
 
-        if(parsedResponse.success) {
-            set({referrals: [...get().referrals, parsedResponse.data.payload]});
+        if (parsedResponse.success) {
+            set({ referrals: [...get().referrals, parsedResponse.data.payload] });
             return parsedResponse.data.payload;
         }
 

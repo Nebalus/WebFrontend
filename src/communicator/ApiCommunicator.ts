@@ -11,6 +11,9 @@ class ApiCommunicator {
             const response = await fetch(`${APP_BACKEND_API_URL}/ui/register`, {
                 method: "POST",
                 body: JSON.stringify(userRegisterRequest),
+                headers : {
+                    "Content-Type": "application/json"
+                }
             }).then(response => response.json()).then(data => SuccessfulRegisterResponse.safeParseAsync(data));
 
             if (response.success) {
@@ -30,6 +33,9 @@ class ApiCommunicator {
             const response = await fetch(`${APP_BACKEND_API_URL}/ui/auth`, {
                 method: 'POST',
                 body: JSON.stringify(userLoginRequest),
+                headers : {
+                    "Content-Type": "application/json"
+                }
             }).then(response => response.json()).then(data => SuccessfulLoginResponse.safeParseAsync(data));
 
             if (response.success) {
@@ -53,7 +59,7 @@ class ApiCommunicator {
 
         context.headers = new Headers({
             ...context.headers,
-            Authorization: `${jwt}`
+            Authorization: `Bearer ${jwt}`
         });
 
         const response = await fetch(url, context);

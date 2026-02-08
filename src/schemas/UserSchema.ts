@@ -1,5 +1,5 @@
-import {z} from 'zod';
-import {TimestampSchema} from "@/schemas/GenericSchemas.ts";
+import { z } from 'zod';
+import { TimestampSchema } from "@/schemas/GenericSchemas.ts";
 
 export const UsernameSchema = z.string().min(4).max(32).transform(username => username.trim().toLowerCase().replace(/\s/g, ""));
 
@@ -14,11 +14,12 @@ export const PasswordSchema = z.string().min(8, "Password must contain at least 
 export type Password = z.infer<typeof PasswordSchema>;
 
 export const UserSchema = z.object({
+    user_id: z.number(),
     username: UsernameSchema,
     email: EmailSchema,
     disabled: z.boolean(),
     created_at: TimestampSchema,
-    updated_at: TimestampSchema,
+    password_updated_at: TimestampSchema,
 });
 
 export type User = z.infer<typeof UserSchema>;
@@ -28,9 +29,9 @@ export const InvitationTokenSchema = z.string()
     .refine((data) => {
         const [field_1, field_2, field_3, field_4, checksum] = data.split('-').map(Number);
         const count = field_1 + field_2 + field_3 + field_4;
-        const calculatedChecksum = Math.floor( count / 4 );
+        const calculatedChecksum = Math.floor(count / 4);
         return checksum === calculatedChecksum;
     }
-);
+    );
 
 export type InvitationToken = z.infer<typeof InvitationTokenSchema>;

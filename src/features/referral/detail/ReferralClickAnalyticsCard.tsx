@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Area, AreaChart, CartesianGrid, XAxis} from "recharts"
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import {
     Card,
@@ -26,11 +26,12 @@ import {
     SelectValue,
 } from "@assets/components/shadcnui/select.tsx"
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
-import {ReferralClickHistoryDataPoint, ReferralCode} from "@/schemas/ReferralSchemas.ts";
+import { useAuthenticatedUserStore } from "@/stores/UserStore.ts";
+import { ReferralClickHistoryDataPoint, ReferralCode } from "@/schemas/ReferralSchemas.ts";
 import {
     ReferralClickHistoryResponse
 } from "@/schemas/ApiResponses/ReferralResponseSchemas.ts";
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 export default function ReferralClickAnalyticsCard({ referralCode }: { referralCode: ReferralCode }) {
     const [timeRange, setTimeRange] = React.useState("90")
@@ -38,14 +39,17 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
 
     useEffect(() => {
         (async () => {
+            const { user } = useAuthenticatedUserStore.getState();
+            if (!user) return;
+
             const response = await ApiCommunicator.apiFetch({
                 context: {
                     method: 'GET'
                 },
-                route: `/ui/user/services/referrals/${referralCode}/click_history?range=${timeRange}`
+                route: `/ui/users/${user.user_id}/services/referrals/${referralCode}/click_history?range=${timeRange}`
             }).catch().then(response => response.json()).then(data => ReferralClickHistoryResponse.safeParseAsync(data));
 
-            if(response.success) {
+            if (response.success) {
                 setChartData(response.data.payload.history);
             }
         })();
@@ -76,7 +80,7 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                         className="w-[160px] rounded-lg sm:ml-auto"
                         aria-label="Select a value"
                     >
-                        <SelectValue placeholder="Last 3 months"/>
+                        <SelectValue placeholder="Last 3 months" />
                     </SelectTrigger>
                     <SelectContent className="rounded-xl">
                         <SelectItem value="90" className="rounded-lg">
@@ -125,7 +129,7 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                                 />
                             </linearGradient>
                         </defs>
-                        <CartesianGrid vertical={false}/>
+                        <CartesianGrid vertical={false} />
                         <XAxis
                             dataKey="date"
                             tickLine={true}
@@ -168,7 +172,7 @@ export default function ReferralClickAnalyticsCard({ referralCode }: { referralC
                             stroke="var(--color-unique_visitors)"
                             stackId="c;)"
                         />
-                        <ChartLegend content={<ChartLegendContent/>}/>
+                        <ChartLegend content={<ChartLegendContent />} />
                     </AreaChart>
                 </ChartContainer>
             </CardContent>
