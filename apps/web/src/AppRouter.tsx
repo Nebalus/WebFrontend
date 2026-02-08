@@ -1,4 +1,4 @@
-import {createBrowserRouter, redirect} from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import LandingPage from "@/pages/LandingPage.tsx";
 import ErrorPage from "@/pages/ErrorPage.tsx";
 import LoginPage from "@/pages/user/LoginPage";
@@ -14,10 +14,10 @@ import ReferralPage from "@/pages/ReferralPage.tsx";
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import protectedLoader from "@/loader/protectedLoader.ts";
 import authenticatedLoader from "@/loader/authenticatedLoader.ts";
-import {APP_DASHBOARD_PATH} from "@/constants.ts";
+import { APP_DASHBOARD_PATH } from "@/constants.ts";
 import WorkInProgress from "@/components/WorkInProgress.tsx";
 import TimeCapsuleBoard from "@/features/timecapsule/TimeCapsuleBoard";
-import {AccountSettingsPage} from "@/pages/user/settings/AccountSettingsPage.tsx";
+import { AccountSettingsPage } from "@/pages/user/settings/AccountSettingsPage.tsx";
 import FormsBoard from "./pages/dashboard/FormsBoard.tsx";
 import ApodBoard from "./pages/dashboard/ApodBoard.tsx";
 import PasteBinBoard from "./pages/dashboard/PasteBinBoard.tsx";
@@ -112,7 +112,7 @@ export const appRouter = createBrowserRouter([
         path: "blogs",
         element: <BlogPage />,
         children: [
-            {        
+            {
                 path: ":blog_id",
                 element: <WorkInProgress />
             }

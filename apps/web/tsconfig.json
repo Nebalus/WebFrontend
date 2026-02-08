@@ -6,13 +6,17 @@
     },
     {
       "path": "./tsconfig.node.json"
-    },
+    }
   ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [ "./src/*" ],
-      "@assets/*": [ "./assets/*" ],
+      "@/*": [
+        "./src/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ]
     }
   }
 }
