@@ -59,7 +59,8 @@ class ApiCommunicator {
 
         context.headers = new Headers({
             ...context.headers,
-            Authorization: `Bearer ${jwt}`
+            Authorization: `Bearer ${jwt}`,
+            "Content-Type": "application/json"
         });
 
         const response = await fetch(url, context);
