@@ -5,7 +5,7 @@ import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import {useEffect} from "react";
 import ReferralDetailsCard from "@/features/referral/detail/ReferralDetailsCard.tsx";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
-import {Button} from "@assets/components/shadcnui/button.tsx";
+import {Button} from "@nebalus/ui";
 import ReferralPersistentDetailsCard from "@/features/referral/detail/ReferralPersistentDetailsCard.tsx";
 import {ReferralQrCodeCard} from "@/features/referral/detail/ReferralQrCodeCard.tsx";
 

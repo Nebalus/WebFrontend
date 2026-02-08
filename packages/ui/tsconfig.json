@@ -1,0 +1,16 @@
+{
+    "extends": "@nebalus/typescript-config/react.json",
+    "compilerOptions": {
+        "declaration": false,
+        "declarationMap": false,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "include": [
+        "src/"
+    ]
+}

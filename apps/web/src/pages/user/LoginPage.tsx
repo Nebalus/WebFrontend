@@ -1,11 +1,11 @@
 import SiteLogo from "@/components/SiteLogo.tsx";
 import StarBackground from "@/components/StarBackground.tsx";
 import {Form, Link, useActionData, useLocation, useNavigation} from "react-router-dom";
-import {Button} from "@assets/components/shadcnui/button.tsx";
+import {Button} from "@nebalus/ui";
 import {CircleAlert} from "lucide-react";
-import {Alert, AlertDescription, AlertTitle} from "@assets/components/shadcnui/alert.tsx";
+import {Alert, AlertDescription, AlertTitle} from "@nebalus/ui";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
-import {Input} from "@assets/components/shadcnui/input.tsx";
+import {Input} from "@nebalus/ui";
 
 export default function LoginPage() {
   const navigation = useNavigation();

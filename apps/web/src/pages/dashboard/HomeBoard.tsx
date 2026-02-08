@@ -1,4 +1,4 @@
-import { Button } from "@assets/components/shadcnui/button.tsx";
+import { Button } from "@nebalus/ui";
 import {toast} from "sonner";
 export default function HomeBoard() {
     return (

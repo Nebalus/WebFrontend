@@ -7,18 +7,10 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@assets/*": [
-        "./assets/*"
       ]
     }
   },
   "include": [
-    "src/",
-    "assets/",
-    "snippets/app-sidebar.tsx",
-    "snippets/nav-main.tsx",
-    "snippets/nav-projects.tsx",
-    "snippets/team-switcher.tsx"
+    "src/"
   ]
 }

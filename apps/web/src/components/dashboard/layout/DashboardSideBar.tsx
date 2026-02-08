@@ -23,7 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@assets/components/shadcnui/sidebar"
+} from "@nebalus/ui"
 import SiteLogo from "@/components/SiteLogo"
 import {NavUser} from "@/components/dashboard/layout/DashboardSidebarUser"
 import {NavLink, useLocation} from "react-router-dom"
@@ -34,7 +34,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from "@assets/components/shadcnui/dropdown-menu"
+} from "@nebalus/ui"
 
 interface NavItem {
   title: string;
@@ -220,7 +220,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@assets/components/shadcnui/sidebar"
+} from "@nebalus/ui"
 import SiteLogo from "@/components/SiteLogo"
 import {NavUser} from "@/components/dashboard/layout/DashboardSideBarUser"
 import {NavLink, useLocation} from "react-router-dom"
@@ -231,7 +231,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from "@assets/components/shadcnui/dropdown-menu"
+} from "@nebalus/ui"
 
 interface User {
   name: string;

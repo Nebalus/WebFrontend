@@ -1,9 +1,9 @@
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@assets/components/shadcnui/table.tsx"
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@nebalus/ui"
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import TableSkeleton from "@/components/TableSkeleton.tsx";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import {Badge} from "@assets/components/shadcnui/badge.tsx";
+import {Badge} from "@nebalus/ui";
 import {Copy, Trash2} from "lucide-react";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
 import {toast} from "sonner";

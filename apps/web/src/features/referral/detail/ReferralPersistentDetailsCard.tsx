@@ -1,5 +1,5 @@
 import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@nebalus/ui";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {useEffect, useState} from "react";
 import ReactTimeAgo from "react-time-ago";

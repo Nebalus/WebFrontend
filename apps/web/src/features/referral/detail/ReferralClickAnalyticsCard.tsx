@@ -7,7 +7,7 @@ import {
     CardDescription,
     CardHeader,
     CardTitle,
-} from "@assets/components/shadcnui/card.tsx"
+} from "@nebalus/ui"
 
 import {
     ChartConfig,
@@ -16,7 +16,7 @@ import {
     ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
-} from "@assets/components/shadcnui/chart.tsx"
+} from "@nebalus/ui"
 
 import {
     Select,
@@ -24,7 +24,7 @@ import {
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@assets/components/shadcnui/select.tsx"
+} from "@nebalus/ui"
 import ApiCommunicator from "@/communicator/ApiCommunicator.ts";
 import {ReferralClickHistoryDataPoint, ReferralCode} from "@/schemas/ReferralSchemas.ts";
 import {

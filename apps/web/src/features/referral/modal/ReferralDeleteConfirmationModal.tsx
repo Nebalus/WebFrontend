@@ -5,8 +5,8 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger
-} from "@assets/components/shadcnui/dialog.tsx";
-import {Button} from "@assets/components/shadcnui/button.tsx";
+} from "@nebalus/ui";
+import {Button} from "@nebalus/ui";
 import {ReactElement, useState} from "react";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {Referral} from "@/schemas/ReferralSchemas.ts";

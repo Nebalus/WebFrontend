@@ -1,6 +1,6 @@
 import {useReferralStore} from "@/stores/ReferralStore.ts";
-import {Card, CardContent, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
-import {Button} from "@assets/components/shadcnui/button.tsx";
+import {Card, CardContent, CardHeader, CardTitle} from "@nebalus/ui";
+import {Button} from "@nebalus/ui";
 import {Plus, RefreshCcw} from "lucide-react";
 import ReferralsTable from "@/features/referral/ReferralsTable.tsx";
 import ReferralCreateModal from "@/features/referral/modal/ReferralCreateModal.tsx";

@@ -1,5 +1,5 @@
-import {Skeleton} from "@assets/components/shadcnui/skeleton.tsx";
-import {TableCell, TableRow} from "@assets/components/shadcnui/table.tsx";
+import {Skeleton} from "@nebalus/ui";
+import {TableCell, TableRow} from "@nebalus/ui";
 
 export default function TableSkeleton({ rows = 5, columns = 5 }:{ rows: number, columns: number}) {
     return Array.from({ length: rows }).map((_, i) => (

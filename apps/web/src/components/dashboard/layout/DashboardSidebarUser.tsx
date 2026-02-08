@@ -1,5 +1,5 @@
 import {ChevronsUpDown, LogOut, Mail, Settings, History, HeartHandshake} from "lucide-react"
-import {Avatar, AvatarFallback, AvatarImage,} from "@assets/components/shadcnui/avatar"
+import {Avatar, AvatarFallback, AvatarImage,} from "@nebalus/ui"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,8 +8,8 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@assets/components/shadcnui/dropdown-menu"
-import {SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar,} from "@assets/components/shadcnui/sidebar"
+} from "@nebalus/ui"
+import {SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar,} from "@nebalus/ui"
 import {NavLink} from "react-router-dom"
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";

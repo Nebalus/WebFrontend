@@ -2,8 +2,8 @@ import {SquareTerminal} from "lucide-react";
 import {Link} from "react-router-dom";
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
-import {useSidebar} from "@assets/components/shadcnui/sidebar.tsx";
-import {cn} from "@assets/lib/utils.ts";
+import {useSidebar} from "@nebalus/ui";
+import {cn} from "@nebalus/ui";
 
 interface SiteLogoProps {
     className?: string

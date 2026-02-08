@@ -1,7 +1,7 @@
 import {QRCodeCanvas} from "qrcode.react";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
 import {ReferralCode} from "@/schemas/ReferralSchemas.ts";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@nebalus/ui";
 
 export function ReferralQrCodeCard({ referralCode, className }: { referralCode: ReferralCode, className?: string  }) {
     return (

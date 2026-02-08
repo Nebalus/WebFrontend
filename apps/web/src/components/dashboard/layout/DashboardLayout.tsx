@@ -1,6 +1,6 @@
-import {SidebarInset, SidebarProvider, SidebarTrigger} from "@assets/components/shadcnui/sidebar"
+import {SidebarInset, SidebarProvider, SidebarTrigger} from "@nebalus/ui"
 import DashboardSideBar from "@/components/dashboard/layout/DashboardSideBar"
-import {Separator} from "@assets/components/shadcnui/separator"
+import {Separator} from "@nebalus/ui"
 import {Outlet} from "react-router-dom";
 import {Toaster} from "sonner";
 import {DashboardDynamicBreadcrumb} from "@/components/dashboard/layout/DashboardDynamicBreadcrumb.tsx";

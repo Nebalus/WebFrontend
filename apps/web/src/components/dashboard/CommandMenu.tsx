@@ -1,5 +1,5 @@
 import React from "react";
-import {CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from "@assets/components/shadcnui/command.tsx";
+import {CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList} from "@nebalus/ui";
 
 export function CommandMenu() {
     const [open, setOpen] = React.useState(false)

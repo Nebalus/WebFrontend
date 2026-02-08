@@ -1,7 +1,7 @@
 import {JSX, useEffect, useState} from "react";
 import { motion } from "framer-motion";
-import {cn} from "@assets/lib/utils.ts";
-import {useTheme} from "@assets/providers/ThemeProvider.tsx";
+import {cn} from "@nebalus/ui";
+import {useTheme} from "@nebalus/ui";
 
 interface Star {
     id: number;

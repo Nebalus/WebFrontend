@@ -6,7 +6,7 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator
-} from "@assets/components/shadcnui/breadcrumb";
+} from "@nebalus/ui";
 import { Fragment } from "react";
 import {APP_DASHBOARD_PATH} from "@/constants.ts";
 

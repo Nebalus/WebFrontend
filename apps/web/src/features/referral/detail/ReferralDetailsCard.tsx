@@ -1,8 +1,8 @@
 import {Referral, ReferralCode} from "@/schemas/ReferralSchemas.ts";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@assets/components/shadcnui/card.tsx";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@nebalus/ui";
 import {useReferralStore} from "@/stores/ReferralStore.ts";
 import {useEffect, useState} from "react";
-import {Button} from "@assets/components/shadcnui/button.tsx";
+import {Button} from "@nebalus/ui";
 import ReferralDeleteConfirmationModal
     from "@/features/referral/modal/ReferralDeleteConfirmationModal.tsx";
 import {useForm} from "react-hook-form";
@@ -11,10 +11,10 @@ import {
     UpdateReferralFormSchema
 } from "@/schemas/Forms/ReferralFormSchemas.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@assets/components/shadcnui/form.tsx";
-import {Input} from "@assets/components/shadcnui/input.tsx";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@nebalus/ui";
+import {Input} from "@nebalus/ui";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
-import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
+import {Checkbox} from "@nebalus/ui";
 import {ReferralStoreActionResponse} from "@/schemas/ZustandSchemas.ts";
 import {toast} from "sonner";
 

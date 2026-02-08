@@ -1,4 +1,4 @@
-import { AspectRatio } from "@assets/components/shadcnui/aspect-ratio";
+import { AspectRatio } from "@nebalus/ui";
 import { Github, Pickaxe } from "lucide-react";
 import ExternalLink from "@/components/ExternalLink.tsx";
 

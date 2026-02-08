@@ -1,6 +1,6 @@
 import SiteLogo from "@/components/SiteLogo.tsx";
 import {Link} from "react-router-dom";
-import {buttonVariants} from "@assets/components/shadcnui/button.tsx";
+import {buttonVariants} from "@nebalus/ui";
 import {useAuthenticatedUserStore} from "@/stores/UserStore.ts";
 import ExternalLink from "@/components/ExternalLink.tsx";
 

@@ -6,12 +6,12 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger
-} from "@assets/components/shadcnui/dialog.tsx";
-import {Button} from "@assets/components/shadcnui/button.tsx";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@assets/components/shadcnui/form.tsx";
-import {Input} from "@assets/components/shadcnui/input.tsx";
+} from "@nebalus/ui";
+import {Button} from "@nebalus/ui";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@nebalus/ui";
+import {Input} from "@nebalus/ui";
 import {APP_FRONTEND_FULL_PATH} from "@/constants.ts";
-import {Checkbox} from "@assets/components/shadcnui/checkbox.tsx";
+import {Checkbox} from "@nebalus/ui";
 import {useForm} from "react-hook-form";
 import {CreateReferralForm, CreateReferralFormSchema} from "@/schemas/Forms/ReferralFormSchemas.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
