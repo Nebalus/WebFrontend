@@ -27,6 +27,7 @@ import ReferralsDetailsBoard from "@/pages/dashboard/referral/ReferralDetailsPag
 import LinktreePage from "./pages/LinktreePage";
 import BlogPage from "./pages/BlogPage";
 import PrivacyPage from "./pages/PrivacyPage";
+import BlogDetailPage from "@/pages/BlogDetailPage.tsx";
 
 export const appRouter: any = createBrowserRouter([
     {
@@ -111,12 +112,10 @@ export const appRouter: any = createBrowserRouter([
     {
         path: "blogs",
         element: <BlogPage />,
-        children: [
-            {
-                path: ":blog_id",
-                element: <WorkInProgress />
-            }
-        ]
+    },
+    {
+        path: "blogs/:slug",
+        element: <BlogDetailPage />
     },
     {
         path: "login",

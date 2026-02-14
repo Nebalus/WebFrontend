@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { APP_BACKEND_API_URL } from "@/constants.ts";
 import { BlogPublicListResponse } from "@/schemas/ApiResponses/BlogResponseSchemas.ts";
 import { PublicBlog, Pagination } from "@/schemas/BlogSchemas.ts";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Button } from "@assets/components/shadcnui/button.tsx";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Badge } from "@assets/components/shadcnui/badge.tsx";
@@ -13,6 +13,7 @@ export default function BlogPage() {
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -70,7 +71,8 @@ export default function BlogPage() {
                 {blogs.map((blog) => (
                   <article
                     key={blog.blog_id}
-                    className="group rounded-lg border bg-card p-6 transition-all duration-200 hover:shadow-lg hover:border-primary/20"
+                    className="group rounded-lg border bg-card p-6 transition-all duration-200 hover:shadow-lg hover:border-primary/20 cursor-pointer flex flex-col"
+                    onClick={() => navigate(`/blogs/${blog.slug}`)}
                   >
                     <div className="flex items-start justify-between mb-3">
                       <h2 className="text-lg font-semibold group-hover:text-primary transition-colors line-clamp-2">
@@ -80,15 +82,18 @@ export default function BlogPage() {
                         <Star className="h-4 w-4 text-yellow-500 fill-yellow-500 shrink-0 ml-2" />
                       )}
                     </div>
-                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
+                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-grow">
                       {blog.excerpt}
                     </p>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 mt-auto">
                       {blog.published_at && (
                         <Badge variant="outline" className="text-xs">
                           {new Date(blog.published_at).toLocaleDateString()}
                         </Badge>
                       )}
+                      <span className="text-xs text-primary font-medium ml-auto group-hover:underline">
+                        Read more →
+                      </span>
                     </div>
                   </article>
                 ))}

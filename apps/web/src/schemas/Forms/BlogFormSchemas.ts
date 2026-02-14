@@ -11,3 +11,14 @@ export const CreateBlogFormSchema = z.object({
 });
 
 export type CreateBlogForm = z.infer<typeof CreateBlogFormSchema>;
+
+export const UpdateBlogFormSchema = z.object({
+    slug: BlogSlugSchema,
+    title: z.string().min(1).max(256),
+    content: z.string().min(1),
+    excerpt: z.string().min(1).max(512),
+    status: BlogStatusSchema,
+    is_featured: z.boolean(),
+});
+
+export type UpdateBlogForm = z.infer<typeof UpdateBlogFormSchema>;

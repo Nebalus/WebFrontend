@@ -6,8 +6,9 @@ import {
     BlogCreateResponse,
     BlogDeleteResponse,
     BlogListAllOwnedResponse,
+    BlogUpdateResponse,
 } from "@/schemas/ApiResponses/BlogResponseSchemas.ts";
-import { CreateBlogForm } from "@/schemas/Forms/BlogFormSchemas.ts";
+import { CreateBlogForm, UpdateBlogForm } from "@/schemas/Forms/BlogFormSchemas.ts";
 
 type BlogState = {
     hydrated: boolean;
@@ -18,6 +19,7 @@ type BlogAction = {
     isHydrated: () => boolean;
     hydrateBlogs: () => Promise<boolean>;
     createBlog: (form: CreateBlogForm) => Promise<{ success: boolean; message?: string }>;
+    updateBlog: (blogId: number, form: UpdateBlogForm) => Promise<{ success: boolean; message?: string }>;
     deleteBlog: (blogId: number) => Promise<boolean>;
     reset: () => void;
 };
@@ -64,6 +66,30 @@ export const useBlogStore = create<BlogState & BlogAction>()((set, get) => ({
 
             if (parsedResponse.success) {
                 set({ blogs: [...get().blogs, parsedResponse.data.payload] });
+                return { success: true, message: parsedResponse.data.message ?? undefined };
+            }
+        } catch (e) {
+            return { success: false, message: e instanceof Error ? e.message : undefined };
+        }
+        return { success: false };
+    },
+    updateBlog: async (blogId: number, form: UpdateBlogForm): Promise<{ success: boolean; message?: string }> => {
+        try {
+            const { user } = useAuthenticatedUserStore.getState();
+            if (!user) throw new Error("User not authenticated");
+
+            const parsedResponse = await ApiCommunicator.apiFetch({
+                context: {
+                    method: 'PUT',
+                    body: JSON.stringify(form),
+                },
+                route: `/ui/users/${user.user_id}/services/blogs/${blogId}`
+            }).then(response => response.json()).then(data => BlogUpdateResponse.safeParseAsync(data));
+
+            if (parsedResponse.success) {
+                set({
+                    blogs: get().blogs.map(b => b.blog_id === blogId ? parsedResponse.data.payload : b)
+                });
                 return { success: true, message: parsedResponse.data.message ?? undefined };
             }
         } catch (e) {
